@@ -10,8 +10,20 @@ import { SwUpdate } from '@angular/service-worker';
 	styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-	title = 'hd2-buttons';
-	constructor(private swUpdate: SwUpdate) {}
+	title = 'Helldivers 2 Buttons Soundboard App';
+	installPrompt: Event | undefined;
+
+	constructor(private swUpdate: SwUpdate) {
+		window.addEventListener("beforeinstallprompt", (event) => {
+			console.log("install prompt event");
+			event.preventDefault();
+			this.installPrompt = event;
+		});
+
+		window.addEventListener("appinstalled", () => {
+			this.installPrompt = undefined;
+		});
+	}
 
 	ngOnInit() {
 		if (this.swUpdate.isEnabled) {
@@ -37,6 +49,15 @@ export class AppComponent implements OnInit {
 				},
 				1000 * 10,
 			);
+		}
+	}
+
+	async install() {
+		if(this.installPrompt != undefined)
+		{
+			const result = await (this.installPrompt as any).prompt();
+			console.log(`Install prompt was: ${result.outcome}`);
+			this.installPrompt = undefined;
 		}
 	}
 }

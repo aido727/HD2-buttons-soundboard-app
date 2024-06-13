@@ -1,8 +1,11 @@
 {
-  "name": "hd2-buttons",
-  "short_name": "hd2-buttons",
+  "name": "Helldivers 2 Buttons Soundboard App",
+  "short_name": "HD2 Buttons",
+  "lang": "en",
+  "description": "A soundboard in the design of Strategem inputs from Helldivers 2",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
+  "orientation": "landscape-primary",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hd2-buttons": {
+    "HD2-buttons-soundboard-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/hd2-buttons",
+            "outputPath": "dist/HD2-buttons-soundboard-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "hd2-buttons:build:production"
+              "buildTarget": "HD2-buttons-soundboard-app:build:production"
             },
             "development": {
-              "buildTarget": "hd2-buttons:build:development"
+              "buildTarget": "HD2-buttons-soundboard-app:build:development"
             }
           },
           "defaultConfiguration": "development"
