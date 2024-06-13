@@ -1,0 +1,35 @@
+#stratagem-input-view {
+    width: 100px;
+    height: 100px;
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#stratagem-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    #inputUp {
+        grid-column-start: 2;
+    }
+
+    #inputLeft, #inputDown, #inputRight {
+        grid-row-start: 2;
+    }
+}
+
+.stratagem-input-button {
+    
+}

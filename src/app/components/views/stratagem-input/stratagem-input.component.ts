@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { inputDirection } from '../../../models/stratagem-values';
+import { UtilsService } from '../../../services/utils.service';
 
 @Component({
   selector: 'app-stratagem-input',
@@ -11,18 +12,20 @@ import { inputDirection } from '../../../models/stratagem-values';
 
 export class StratagemInputComponent implements OnInit{
 
-  // while particular element is active, accept keyboard inputs and if they match possible, input them!
-  // update to include ctrl key held
-  ngOnInit(): void {
+  public inputDirection = inputDirection;
+
+  constructor(private utils: UtilsService) { }
+
+  ngOnInit() {
     document.onkeydown = (evt: KeyboardEvent) => {
-      if(['w', 'a', 's', 'd'].includes(evt.key)) {
-        console.log(evt.key);
-        // this.buttonInput(evt.key);
-      };
+      this.buttonInput(evt.key);
     }
   }
   
-  public buttonInput(direction: inputDirection) {
-    console.log(direction);
+  public buttonInput(direction: string) {
+    var input = this.utils.getKeyByValue(this.inputDirection, direction);
+    if(input) {
+      console.log(input);
+    }
   }
 }

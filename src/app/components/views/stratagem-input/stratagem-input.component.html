@@ -1,6 +1,8 @@
-<div id="stratagem-input">
-    <button (click)="buttonInput('w')">UP</button>
-    <button (click)="buttonInput('a')">LEFT</button>
-    <button (click)="buttonInput('s')">DOWN</button>
-    <button (click)="buttonInput('d')">RIGHT</button>
+<div id="stratagem-input-view">
+    <div id="stratagem-inputs">
+        <button id="inputUp" class="stratagem-input-button" (click)="buttonInput(inputDirection.Up)">UP</button>
+        <button id="inputLeft" class="stratagem-input-button" (click)="buttonInput(inputDirection.Left)">LEFT</button>
+        <button id="inputDown" class="stratagem-input-button" (click)="buttonInput(inputDirection.Down)">DOWN</button>
+        <button id="inputRight" class="stratagem-input-button" (click)="buttonInput(inputDirection.Right)">RIGHT</button>
+    </div>
 </div>
