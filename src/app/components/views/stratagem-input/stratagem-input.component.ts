@@ -18,6 +18,7 @@ export class StratagemInputComponent implements OnInit{
 
   ngOnInit() {
     document.onkeydown = (evt: KeyboardEvent) => {
+      //document.getElementById('input'+this.utils.getKeyByValue(this.inputDirection, evt.key))?.click();
       this.buttonInput(evt.key);
     }
   }
