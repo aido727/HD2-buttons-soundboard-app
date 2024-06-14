@@ -27,7 +27,7 @@
     height: 10px;
     background-color: var(--light-blue);
     position: absolute;
-    z-index: -1;
+    z-index: -10;
     box-shadow: 0 0 15px 0 var(--light-blue);
 
     &.top {
@@ -40,7 +40,7 @@
 }
 
 .skull-header {
-    z-index: -1;
+    z-index: -10;
     position: absolute;
     top: 40px;
 }
@@ -48,7 +48,7 @@
 .battery-container {
     display: flex;
     flex-direction: row;
-    z-index: -1;
+    z-index: -10;
     position: absolute;
     bottom: 90px;
     width: 91vw;
@@ -59,12 +59,12 @@
     width: 26px;
     height: 56px;
     position: relative;
+    z-index: -10;
 }
 
 .battery-start:before, .battery-start:after, .battery-end:before, .battery-end:after {
     content: "";
     position: absolute;
-    z-index: -1;
     background-color: var(--light-blue);
 }
 
@@ -95,6 +95,7 @@
     margin: 8px 18px;
     box-shadow: 0 0 8px 0 var(--light-blue),
     inset 0 0 8px 0 var(--light-blue);
+    z-index: -10;
 }
 
 .battery-fill {
@@ -105,6 +106,7 @@
     background-repeat:repeat-x;
     background-size: 52px 100%;
     animation: AnimationName 5s linear infinite;
+    z-index: -11;
 }
 
 @keyframes AnimationName {
