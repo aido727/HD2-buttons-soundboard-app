@@ -1,17 +1,9 @@
 #stratagem-input-view {
-    width: 100px;
-    height: 100px;
-    
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
+    width: 100vw;
+    height: 100vh;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -32,4 +24,94 @@
 
 .stratagem-input-button {
     
+}
+
+.border-bar {
+    width: 100vw;
+    height: 10px;
+    background-color: var(--light-blue);
+    position: absolute;
+    z-index: -1;
+    box-shadow: 0 0 15px 0 var(--light-blue);
+
+    &.top {
+        top: 20px;
+    }
+
+    &.bottom {
+        bottom: 20px;
+    }
+}
+
+.skull-header {
+    z-index: -1;
+    position: absolute;
+    top: 40px;
+}
+
+.battery-container {
+    display: flex;
+    flex-direction: row;
+    z-index: -1;
+    position: absolute;
+    bottom: 90px;
+    width: 91vw;
+    justify-content: space-between;
+}
+
+.battery-start, .battery-end {
+    width: 26px;
+    height: 56px;
+    position: relative;
+}
+
+.battery-start:before, .battery-start:after, .battery-end:before, .battery-end:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background-color: var(--light-blue);
+}
+
+.battery-start:before {
+    left: 100%;
+    width: 5px;
+    margin-left: -15%;
+    height: 100%;
+}
+
+.battery-end:before {
+    right: 100%;
+    width: 5px;
+    margin-right: -15%;
+    height: 100%;
+}
+
+.battery-start:after, .battery-end:after {
+    top: 50%;
+    height: 8px;
+    margin-top: -15%;
+    width: 100%;
+}
+
+.battery-outline {
+    border: 5px solid var(--light-blue);
+    width: 100%;
+    margin: 8px 18px;
+    box-shadow: 0 0 8px 0 var(--light-blue),
+    inset 0 0 8px 0 var(--light-blue);
+}
+
+.battery-fill {
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    margin: 5px;
+    background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 25px, transparent 15px, transparent 40px);
+    background-repeat:repeat-x;
+    background-size: 52px 100%;
+    animation: AnimationName 5s linear infinite;
+}
+
+@keyframes AnimationName {
+    0%{background-position: 0% 50%}
+    100%{background-position: 100% 50%}
 }

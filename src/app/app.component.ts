@@ -13,7 +13,7 @@ import { StratagemInputComponent } from './components/views/stratagem-input/stra
 	styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-	title = 'Helldivers 2 Buttons Soundboard App';
+	title = 'Personal Hellpad System';
 
 	constructor(private swUpdate: SwUpdate) {}
 

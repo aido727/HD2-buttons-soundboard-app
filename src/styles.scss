@@ -1,7 +1,14 @@
+:root {
+  --navy: #002742;
+  --light-blue: #9ce0fa;
+}
+
 html, body {
   height: 100%;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--navy);
+  background-image: radial-gradient(#67a1bf -5%, transparent 70%);
 }

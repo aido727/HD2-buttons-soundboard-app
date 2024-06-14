@@ -1,0 +1,12 @@
+.background-crosses {
+    opacity: 0.1;
+    position: fixed;
+    top: 20px;
+    height: calc(100vh - 40px);
+    width: 100vw;
+    background-image: url('../../public/images/background-cross.png');
+    background-repeat: repeat;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -10;
+}
