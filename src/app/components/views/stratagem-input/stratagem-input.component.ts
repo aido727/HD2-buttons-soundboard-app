@@ -10,7 +10,7 @@ import { UtilsService } from '../../../services/utils.service';
   styleUrl: './stratagem-input.component.scss'
 })
 
-export class StratagemInputComponent implements OnInit{
+export class StratagemInputComponent implements OnInit {
 
   public inputDirection = inputDirection;
 

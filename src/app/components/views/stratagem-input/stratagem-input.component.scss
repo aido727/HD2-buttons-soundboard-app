@@ -56,60 +56,63 @@
     width: 91vw;
     justify-content: space-between;
     height: 56px;
-}
 
-.battery-start, .battery-end {
-    width: 26px;
-    height: 56px;
-    position: relative;
-    z-index: -10;
-}
+    .battery-start, .battery-end {
+        width: 26px;
+        height: 56px;
+        position: relative;
+        z-index: -10;
+    }
+    
+    .battery-start:before, .battery-start:after, .battery-end:before, .battery-end:after {
+        content: "";
+        position: absolute;
+        background-color: var(--light-blue);
+        width: 5px;
+        margin-right: -15%;
+        height: 100%;
+    }
+    
+    .battery-start:before {
+        left: 100%;
+    }
+    
+    .battery-end:before {
+        right: 100%;
+    }
+    
+    .battery-start:after, .battery-end:after {
+        top: 50%;
+        height: 8px;
+        margin-top: -15%;
+        width: 100%;
+    }
+    
+    .battery-outline {
+        border: 5px solid var(--light-blue);
+        width: 100%;
+        margin: 8px 18px;
+        box-shadow: 0 0 8px 0 var(--light-blue),
+        inset 0 0 8px 0 var(--light-blue);
+        z-index: -10;
+    }
 
-.battery-start:before, .battery-start:after, .battery-end:before, .battery-end:after {
-    content: "";
-    position: absolute;
-    background-color: var(--light-blue);
-    width: 5px;
-    margin-right: -15%;
-    height: 100%;
-}
+    .battery-fill {
+        height: calc(100% - 10px);
+        width: calc(100% - 10px);
+        margin: 5px;
+        background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 25px, transparent 25px, transparent 40px);
+        background-repeat: repeat-x;
+        background-size: 52.25px;
+        animation-name: BatteryScrollAnimation;
+        animation-duration: 0.4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        z-index: -11;
+    }
 
-.battery-start:before {
-    left: 100%;
-}
-
-.battery-end:before {
-    right: 100%;
-}
-
-.battery-start:after, .battery-end:after {
-    top: 50%;
-    height: 8px;
-    margin-top: -15%;
-    width: 100%;
-}
-
-.battery-outline {
-    border: 5px solid var(--light-blue);
-    width: 100%;
-    margin: 8px 18px;
-    box-shadow: 0 0 8px 0 var(--light-blue),
-    inset 0 0 8px 0 var(--light-blue);
-    z-index: -10;
-}
-
-.battery-fill {
-    height: calc(100% - 10px);
-    width: calc(100% - 10px);
-    margin: 5px;
-    background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 25px, transparent 15px, transparent 40px);
-    background-repeat: repeat-x;
-    background-size: 52px 100%;
-    animation: AnimationName 5s linear infinite;
-    z-index: -11;
-}
-
-@keyframes AnimationName {
-    0%{background-position: 0% 50%}
-    100%{background-position: 100% 50%}
+    @keyframes BatteryScrollAnimation {
+        0%{background-position: 0% 0}
+        100%{background-position: 52.25px 0}
+    }
 }
