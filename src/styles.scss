@@ -65,41 +65,49 @@ body {
       }
     }
 
-    &.bordered-button {
-      height: 62px;
-      color: var(--disabled-grey);
-      border-width: 4px;
-      border-style: solid;
-      border-image-slice: 1;
-      border-image-source: linear-gradient(to bottom, var(--light-gray-trans) 20px, transparent 20px, transparent 42px, var(--light-gray-trans) 42px);
-      background-color: transparent;
-      padding: 12px 16px;
-      cursor: pointer;
-      text-transform: uppercase;
-      -webkit-text-stroke-width: 2px;
-      -webkit-text-stroke-color: black;
-      paint-order: stroke fill;
-
-      &::before {
-        z-index: -1;
-        content: "";
-        top: 31px; right: 31px; bottom: 31px; left: 31px;
-        position: absolute;
-        display: block;
-        box-shadow: 0 0 0 23px var(--gray-trans);
-      }
-    
-      &:hover, &:active {
-        color: var(--white);
-        border-image-source: linear-gradient(to bottom, var(--white) 20px, transparent 20px, transparent 42px, var(--white) 42px);
-        &::before {
-          box-shadow: 0 0 0 23px var(--light-gray-trans);
-        }
-      }
-    }
-    
     &.stratagem-input-button {
         
+    }
+  }
+
+  .bordered-button {
+    height: 62px;
+    display: flex;
+    position: relative;
+    height: 100%;
+    color: var(--disabled-grey);
+    border-width: 4px;
+    border-style: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom, var(--light-gray-trans) 20px, transparent 20px, transparent 42px, var(--light-gray-trans) 42px);
+    background-color: transparent;
+    padding: 12px 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    paint-order: stroke fill;
+
+    span {
+      z-index: 2;
+    }
+
+    .background {
+      height: calc(100% - 8px);
+      width: calc(100% - 8px);
+      background-color: var(--gray-trans);
+      position: absolute;
+      top: 4px;
+      left: 4px;
+    }
+
+    &:hover, &:active {
+      color: var(--white);
+      border-image-source: linear-gradient(to bottom, var(--white) 20px, transparent 20px, transparent 42px, var(--white) 42px);
+
+      .background {
+        background-color: var(--light-gray-trans);
+      }
     }
   }
 }

@@ -14,6 +14,7 @@ import { StratagemInputComponent } from './components/views/stratagem-input/stra
 })
 export class AppComponent implements OnInit {
 	title = 'Personal Hellpad System';
+	// private autoUpdateMinutes = 30;
 
 	constructor(private swUpdate: SwUpdate) {}
 
@@ -26,19 +27,19 @@ export class AppComponent implements OnInit {
 			// manually handle live updates by presenting the option to the user
 			this.swUpdate.versionUpdates.subscribe((event) => {
 				if(event.type == "VERSION_READY") {
-					if(confirm("New version available. Load New Version?")) {
+					if(confirm("An update is available! Reload now to update?")) {
 						window.location.reload();
 					}
 				}
 			});
 
 			/* manual check optional, otherwise it will only check on full app refresh/reload */
-			setInterval(
-				() => {
-					this.swUpdate.checkForUpdate();
-				},
-				1000 * 10,
-			);
+			// setInterval(
+			// 	() => {
+			// 		this.swUpdate.checkForUpdate();
+			// 	},
+			// 	1000 * 60 * this.autoUpdateMinutes
+			// );
 		}
 	}
 }

@@ -10,19 +10,3 @@
     background-attachment: fixed;
     z-index: -10;
 }
-
-app-install-button {
-    position: absolute;
-    top: 45px;
-    right: 12px;
-}
-@media screen and (max-width: 1365px) {
-    app-install-button {
-        top: 147px;
-    }
-}
-@media screen and (max-width: 902px) {
-    app-install-button {
-        top: 175px;
-    }
-}

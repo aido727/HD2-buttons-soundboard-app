@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './install-button.component.scss'
 })
 export class InstallButtonComponent {
-  installPrompt: Event | undefined;
+  public installPrompt: Event | undefined = undefined;
 
   constructor() {
     window.addEventListener("beforeinstallprompt", (event) => {
@@ -16,15 +16,19 @@ export class InstallButtonComponent {
 	});
 
 	window.addEventListener("appinstalled", () => {
-		this.installPrompt = undefined;
+		this.hide();
 	});
   }
 
-  async install() {
+	async install() {
 		if(this.installPrompt != undefined)
 		{
 			const result = await (this.installPrompt as any).prompt();
-			this.installPrompt = undefined;
+			this.hide();
 		}
+	}
+
+	public hide() {
+		this.installPrompt = undefined;
 	}
 }

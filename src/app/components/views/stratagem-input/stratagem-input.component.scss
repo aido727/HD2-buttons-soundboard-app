@@ -43,6 +43,8 @@
     z-index: -10;
     position: absolute;
     top: 40px;
+    width: 87.5%;
+    max-width: 896px;
 }
 
 .battery-container {
@@ -50,9 +52,10 @@
     flex-direction: row;
     z-index: -10;
     position: absolute;
-    bottom: 90px;
+    bottom: 56px;
     width: 91vw;
     justify-content: space-between;
+    height: 56px;
 }
 
 .battery-start, .battery-end {

@@ -1,1 +1,6 @@
-<button id="install-button" class="bordered-button" [hidden]="installPrompt == undefined" (click)="install()">Install as App</button>
+<div class="install-button-container" [style.display]="installPrompt == undefined ? 'none' : 'flex'">
+    <div class="install-button-edge" (click)="hide()"></div>
+    <div class="inner-button">
+        <button id="install-button" class="bordered-button" (click)="install()"><span>Install as App</span><div class="background"></div></button>
+    </div>
+</div>
