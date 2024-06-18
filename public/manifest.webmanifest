@@ -1,8 +1,8 @@
 {
-  "name": "Helldivers 2 Buttons Soundboard App",
-  "short_name": "HD2 Buttons",
+  "name": "Helldivers 2 - Personal Hellpad System",
+  "short_name": "Personal Hellpad System",
   "lang": "en",
-  "description": "A soundboard in the design of Strategem inputs from Helldivers 2",
+  "description": "An eleborate Helldivers 2 soundboard app simulating a Perosnal Hellpad System input UI",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "orientation": "landscape-primary",

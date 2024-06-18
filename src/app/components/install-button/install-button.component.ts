@@ -11,13 +11,13 @@ export class InstallButtonComponent {
 
   constructor() {
     window.addEventListener("beforeinstallprompt", (event) => {
-			event.preventDefault();
-			this.installPrompt = event;
-		});
+		event.preventDefault();
+		this.installPrompt = event;
+	});
 
-		window.addEventListener("appinstalled", () => {
-			this.installPrompt = undefined;
-		});
+	window.addEventListener("appinstalled", () => {
+		this.installPrompt = undefined;
+	});
   }
 
   async install() {

@@ -66,20 +66,17 @@
     content: "";
     position: absolute;
     background-color: var(--light-blue);
+    width: 5px;
+    margin-right: -15%;
+    height: 100%;
 }
 
 .battery-start:before {
     left: 100%;
-    width: 5px;
-    margin-left: -15%;
-    height: 100%;
 }
 
 .battery-end:before {
     right: 100%;
-    width: 5px;
-    margin-right: -15%;
-    height: 100%;
 }
 
 .battery-start:after, .battery-end:after {
@@ -103,7 +100,7 @@
     width: calc(100% - 10px);
     margin: 5px;
     background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 25px, transparent 15px, transparent 40px);
-    background-repeat:repeat-x;
+    background-repeat: repeat-x;
     background-size: 52px 100%;
     animation: AnimationName 5s linear infinite;
     z-index: -11;
