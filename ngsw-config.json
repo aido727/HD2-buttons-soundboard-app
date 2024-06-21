@@ -11,7 +11,8 @@
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
-          "/*.js"
+          "/*.js",
+          "/*.map"
         ]
       }
     },
@@ -22,7 +23,8 @@
       "resources": {
         "files": [
           "/images/*.*",
-          "/fonts/*.*"
+          "/fonts/*.*",
+          "/icons/*.*"
         ]
       }
     }
