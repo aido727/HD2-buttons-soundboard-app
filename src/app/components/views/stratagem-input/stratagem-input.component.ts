@@ -18,11 +18,28 @@ export class StratagemInputComponent implements OnInit {
   ngOnInit() {
     document.onkeydown = (evt: KeyboardEvent) => {
       if (evt.repeat) { return }
-      this.buttonInput(inputDirectionMap.get(evt.key));
+      this.keyInput(inputDirectionMap.get(evt.key));
+    }
+
+    document.onkeyup = (evt: KeyboardEvent) => {
+      if (evt.repeat) { return }
+      const direction = inputDirectionMap.get(evt.key);
+      if(direction && inputDirections.includes(direction))
+      {
+        const button = document.getElementById('input'+direction)?.classList.remove("active");
+      }
     }
   }
   
-  public buttonInput(direction: string | undefined) {
+  public keyInput(direction: string | undefined) {
+    if(direction && inputDirections.includes(direction))
+    {
+      const button = document.getElementById('input'+direction)?.classList.add("active");
+      console.log(direction);
+    }
+  }
+
+  public clickInput(direction: string | undefined) {
     if(direction && inputDirections.includes(direction))
     {
       console.log(direction);

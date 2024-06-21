@@ -81,14 +81,14 @@ body {
     margin: 16px;
     filter: drop-shadow(6px 6px 2px var(--black-trans));
 
-    &:hover, &:active {
+    &:hover, &:active, &.active {
       opacity: 100%;
     }
 
-    &:active {
-      width: 144px;
-      height: 144px;
-      margin: 19px;
+    &:active, &.active {
+      width: 142px;
+      height: 142px;
+      margin: 18px;
       svg, image {
         width: 99%;
       }
