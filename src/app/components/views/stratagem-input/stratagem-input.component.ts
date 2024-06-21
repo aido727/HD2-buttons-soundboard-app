@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { inputDirection } from '../../../models/stratagem-values';
-import { UtilsService } from '../../../services/utils.service';
+import { inputDirectionMap, inputDirections } from '../../../models/stratagem-values';
 
 @Component({
   selector: 'app-stratagem-input',
@@ -12,21 +11,20 @@ import { UtilsService } from '../../../services/utils.service';
 
 export class StratagemInputComponent implements OnInit {
 
-  public inputDirection = inputDirection;
+  public inputDirectionMap = inputDirectionMap;
 
-  constructor(private utils: UtilsService) { }
+  constructor() { }
 
   ngOnInit() {
     document.onkeydown = (evt: KeyboardEvent) => {
-      //document.getElementById('input'+this.utils.getKeyByValue(this.inputDirection, evt.key))?.click();
-      this.buttonInput(evt.key);
+      this.buttonInput(inputDirectionMap.get(evt.key));
     }
   }
   
-  public buttonInput(direction: string) {
-    var input = this.utils.getKeyByValue(this.inputDirection, direction);
-    if(input) {
-      console.log(input);
+  public buttonInput(direction: string | undefined) {
+    if(direction && inputDirections.includes(direction))
+    {
+      console.log(direction);
     }
   }
 }
