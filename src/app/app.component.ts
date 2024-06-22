@@ -13,33 +13,35 @@ import { StratagemInputComponent } from './components/views/stratagem-input/stra
 	styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-	title = 'Personal Hellpad System';
-	// private autoUpdateMinutes = 30;
+	private autoUpdateMinutes = 30;
+	public updating: boolean = false;
 
 	constructor(private swUpdate: SwUpdate) {}
 
 	ngOnInit() {
 		if (this.swUpdate.isEnabled) {
 			// handle if the service worker detects the app has reached an unrecoverable state that requires a reload
-			this.swUpdate.unrecoverable.subscribe((event) => {
+			this.swUpdate.unrecoverable.subscribe(() => {
 				window.location.reload();
 			});
 			// manually handle live updates by presenting the option to the user
 			this.swUpdate.versionUpdates.subscribe((event) => {
+				if(event.type == "VERSION_DETECTED") {
+					this.updating = true;
+				}
 				if(event.type == "VERSION_READY") {
-					if(confirm("An update is available! Reload now to update?")) {
-						window.location.reload();
-					}
+					window.location.reload();
 				}
 			});
 
+			this.swUpdate.checkForUpdate();
 			/* manual check optional, otherwise it will only check on full app refresh/reload */
-			// setInterval(
-			// 	() => {
-			// 		this.swUpdate.checkForUpdate();
-			// 	},
-			// 	1000 * 60 * this.autoUpdateMinutes
-			// );
+			setInterval(
+				() => {
+					this.swUpdate.checkForUpdate();
+				},
+				1000 * 60 * this.autoUpdateMinutes
+			);
 		}
 	}
 }

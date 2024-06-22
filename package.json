@@ -1,6 +1,6 @@
 {
-  "name": "HD2-buttons-soundboard-app",
-  "version": "0.0.0",
+  "name": "hd2-buttons-soundboard-app",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

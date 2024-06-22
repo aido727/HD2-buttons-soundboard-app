@@ -8,6 +8,7 @@
   --gray-trans: #58585890;
   --light-gray: #A8A8A8;
   --light-gray-trans: #98989890;
+  --dark-gray: #353535;
   --disabled-grey: #A8A8A8;
 }
 
@@ -34,6 +35,10 @@
 
 html, body {
   height: 100%;
+}
+
+.hidden {
+  display: none !important;
 }
 
 body {
@@ -152,6 +157,42 @@ body {
       .background {
         background-color: var(--light-gray-trans);
       }
+    }
+  }
+
+  .modal-box {
+    background-color: var(--dark-gray);
+    max-width: 90%;
+    max-height: 90%;
+    min-width: 50%;
+    min-height: 20%;
+    width: fit-content;
+    height: fit-content;
+
+    --s: 10px; /* the size on the corner */
+    --t: 2px;  /* the thickness of the border */
+    --g: 0px; /* the gap between the border and image */
+    
+    padding: calc(var(--g) + var(--t));
+    outline: var(--t) solid var(--white); /* the color here */
+    outline-offset: calc(-1*var(--t));
+    mask:
+      conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+      0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+      linear-gradient(#000 0 0) content-box;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    font-size: 32px;
+    color: var(--light-gray);
+
+    .title {
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
     }
   }
 }

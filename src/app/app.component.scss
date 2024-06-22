@@ -10,3 +10,15 @@
     background-attachment: fixed;
     z-index: -100;
 }
+
+#update-loader {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black-trans);
+}
