@@ -17,15 +17,24 @@
       }
     },
     {
-      "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
+      "name": "required-assets",
+      "installMode": "prefetch",
       "resources": {
         "files": [
           "/images/*.*",
           "/fonts/*.*",
           "/icons/*.*",
           "/audio/**/*.*"
+        ]
+      }
+    },
+    {
+      "name": "lazy-assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+
         ]
       }
     }

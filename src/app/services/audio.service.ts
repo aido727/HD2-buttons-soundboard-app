@@ -5,9 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class AudioService {
 
-  constructor() {}
+  constructor() { }
 
   playStratagemInput() {
+    console.log('play audio');
     new Audio("/audio/sounds/stratagem-input.ogg").play();
   }
 }
