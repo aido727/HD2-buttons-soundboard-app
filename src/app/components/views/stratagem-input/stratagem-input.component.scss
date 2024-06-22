@@ -4,8 +4,20 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+
+    --top-space: 45px;
+    --bottom-space: 60px;
+    --skull-height: 146px;
+    --battery-height: 56px;
+}
+
+.stratagem-inputs-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: calc(var(--top-space) + var(--skull-height));
+    height: calc(100vh - var(--top-space) - var(--bottom-space) - var(--skull-height) - var(--battery-height));
 }
 
 #stratagem-inputs {
@@ -40,18 +52,23 @@
 }
 
 .skull-header {
+    position: absolute;
+    top: var(--top-space);
     z-index: -10;
     width: 87.5%;
     max-width: 896px;
+    height: var(--skull-height);
 }
 
 .battery-container {
+    position: absolute;
+    bottom: var(--bottom-space);
     display: flex;
     flex-direction: row;
     z-index: -10;
     width: 91vw;
     justify-content: space-between;
-    height: 56px;
+    height: var(--battery-height);
 
     .battery-start, .battery-end {
         width: 26px;

@@ -1,11 +1,13 @@
 <div id="stratagem-input-view">
     <div class="border-bar top"></div>
     <img class="skull-header" src="/images/skull-header.png"/>
-    <div id="stratagem-inputs">
-        <button id="inputUp" class="stratagem-input up" (click)="clickInput(inputDirectionMap.get('w'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
-        <button id="inputLeft" class="stratagem-input left" (click)="clickInput(inputDirectionMap.get('s'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
-        <button id="inputDown" class="stratagem-input down" (click)="clickInput(inputDirectionMap.get('s'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
-        <button id="inputRight" class="stratagem-input right" (click)="clickInput(inputDirectionMap.get('d'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
+    <div class="stratagem-inputs-container">
+        <div id="stratagem-inputs">
+            <button id="inputUp" class="stratagem-input up" (click)="clickInput(inputDirectionMap.get('w'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
+            <button id="inputLeft" class="stratagem-input left" (click)="clickInput(inputDirectionMap.get('s'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
+            <button id="inputDown" class="stratagem-input down" (click)="clickInput(inputDirectionMap.get('s'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
+            <button id="inputRight" class="stratagem-input right" (click)="clickInput(inputDirectionMap.get('d'))"><svg><image xlink:href="/images/left-arrow.svg"/></svg></button>
+        </div>
     </div>
     <div class="battery-container">
         <div class="battery-start"></div>
