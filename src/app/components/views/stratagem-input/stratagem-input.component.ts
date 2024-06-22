@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { inputDirectionMap, inputDirections } from '../../../models/stratagem-values';
+import { AudioService } from '../../../services/audio.service';
 
 @Component({
   selector: 'app-stratagem-input',
@@ -13,7 +14,7 @@ export class StratagemInputComponent implements OnInit {
 
   public inputDirectionMap = inputDirectionMap;
 
-  constructor() { }
+  constructor(private audioService: AudioService) { }
 
   ngOnInit() {
     document.onkeydown = (evt: KeyboardEvent) => {
@@ -35,14 +36,19 @@ export class StratagemInputComponent implements OnInit {
     if(direction && inputDirections.includes(direction))
     {
       const button = document.getElementById('input'+direction)?.classList.add("active");
-      console.log(direction);
+      this.registerInput(direction);
     }
   }
 
   public clickInput(direction: string | undefined) {
     if(direction && inputDirections.includes(direction))
     {
-      console.log(direction);
+      this.registerInput(direction);
     }
+  }
+
+  public registerInput(direction: string) {
+    console.log(direction);
+    this.audioService.playStratagemInput();
   }
 }

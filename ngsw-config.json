@@ -24,7 +24,8 @@
         "files": [
           "/images/*.*",
           "/fonts/*.*",
-          "/icons/*.*"
+          "/icons/*.*",
+          "/sounds/*.*"
         ]
       }
     }
