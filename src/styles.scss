@@ -1,3 +1,5 @@
+/* treat 0.25vw as 4px */
+
 :root {
   --navy: #002742;
   --light-blue: #9ce0fa;
@@ -34,7 +36,7 @@
 }
 
 html, body {
-  height: 100%;
+  height: 100vh;
 }
 
 .hidden {
@@ -50,7 +52,7 @@ body {
 
   button {
     font-family: "FS Sinclair Medium";
-    font-size: 18pt;
+    font-size: 2.5vw;
   }
 
   .equip-button {
@@ -73,21 +75,16 @@ body {
 
   .stratagem-input {
     img {
-      width: 20vw;
-      height: 20vw;
-      max-width: 150px;
-      max-height: 150px;
+      width: 100%;
+      height: 100%;
     }
     
     cursor: pointer;
     opacity: 85%;
-    width: 20vw;
-    height: 20vw;
-    max-width: 150px;
-    max-height: 150px;
     border: 0;
     background-color: transparent;
-    margin: 16px;
+    margin: 5%;
+    aspect-ratio: 1;
     filter: drop-shadow(6px 6px 2px var(--black-trans));
 
     &:hover, &:active, &.active {
@@ -123,20 +120,19 @@ body {
   }
 
   .bordered-button {
-    height: 62px;
     display: flex;
     position: relative;
-    height: 100%;
+    height: 5.5vw;
     color: var(--disabled-grey);
-    border-width: 4px;
+    border-width: 0.25vw;
     border-style: solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to bottom, var(--light-gray-trans) 20px, transparent 20px, transparent 42px, var(--light-gray-trans) 42px);
+    border-image-source: linear-gradient(to bottom, var(--light-gray-trans) 1.75vw, transparent 1.75vw, transparent 3.75vw, var(--light-gray-trans) 3.75vw);
     background-color: transparent;
-    padding: 12px 16px;
+    padding: 1.25vw 1.5vw;
     cursor: pointer;
     text-transform: uppercase;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 0.2vw;
     -webkit-text-stroke-color: black;
     paint-order: stroke fill;
 
@@ -145,12 +141,12 @@ body {
     }
 
     .background {
-      height: calc(100% - 8px);
-      width: calc(100% - 8px);
+      height: calc(100% - 0.5vw);
+      width: calc(100% - 0.5vw);
       background-color: var(--gray-trans);
       position: absolute;
-      top: 4px;
-      left: 4px;
+      top: 0.25vw;
+      left: 0.25vw;
     }
 
     &:hover, &:active {
@@ -163,39 +159,51 @@ body {
     }
   }
 
-  .modal-box {
-    background-color: var(--dark-gray);
-    max-width: 90%;
-    max-height: 90%;
-    min-width: 50%;
-    min-height: 20%;
-    width: fit-content;
-    height: fit-content;
-
-    --s: 10px; /* the size on the corner */
-    --t: 2px;  /* the thickness of the border */
-    --g: 0px; /* the gap between the border and image */
-    
-    padding: calc(var(--g) + var(--t));
-    outline: var(--t) solid var(--white); /* the color here */
-    outline-offset: calc(-1*var(--t));
-    mask:
-      conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
-      0 0/calc(100% - var(--s)) calc(100% - var(--s)),
-      linear-gradient(#000 0 0) content-box;
-  }
-
-  .content {
+  #update-loader {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
     display: flex;
-    flex-direction: column;
-    padding: 16px;
-    font-size: 32px;
-    color: var(--light-gray);
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black-trans);
+    
+    .modal-box {
+      background-color: var(--dark-gray);
+      max-width: 90%;
+      max-height: 90%;
+      min-width: 50%;
+      min-height: 20%;
+      width: fit-content;
+      height: fit-content;
+  
+      --s: 2.5vw; /* the size on the corner */
+      --t: 0.5vw;  /* the thickness of the border */
+      --g: 0px; /* the gap between the border and image */
+      
+      padding: calc(var(--g) + var(--t));
+      outline: var(--t) solid var(--white); /* the color here */
+      outline-offset: calc(-1*var(--t));
+      mask:
+        conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+        0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+        linear-gradient(#000 0 0) content-box;
 
-    .title {
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 16px;
+      .content {
+        display: flex;
+        flex-direction: column;
+        padding: 3vw;
+        font-size: 4vw;
+        color: var(--light-gray);
+    
+        .title {
+          text-transform: uppercase;
+          color: var(--white);
+          margin-bottom: 2vw;
+        }
+      }
     }
   }
 }

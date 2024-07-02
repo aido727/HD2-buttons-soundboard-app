@@ -25,9 +25,30 @@
             max-width: 896px;
         }
 
-        .stratagem-inputs-container {
+        .content-container {
             display: flex;
             align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+
+            .stratagem-inputs-container {
+                aspect-ratio: 3 / 2;
+                height: 100%;
+                max-height: 80%;
+                max-width: 80%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 50% 50%;
+
+                #inputUp {
+                    grid-column-start: 2;
+                }
+
+                #inputLeft, #inputDown, #inputRight {
+                    grid-row-start: 2;
+                }
+            }
         }
 
         .battery-container {
@@ -93,19 +114,5 @@
                 100%{background-position: 52.25px 0}
             }
         }
-    }
-}
-
-#stratagem-inputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-
-    #inputUp {
-        grid-column-start: 2;
-    }
-
-    #inputLeft, #inputDown, #inputRight {
-        grid-row-start: 2;
     }
 }

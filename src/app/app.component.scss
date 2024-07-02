@@ -1,24 +1,13 @@
 .background-crosses {
     opacity: 0.1;
     position: fixed;
-    top: 15px;
-    height: calc(100vh - 40px);
+    top: 1vw;
+    height: calc(100vh - 2vw);
     width: 100vw;
     background-image: url('/images/background-cross.png');
+    background-size: 7.15vw;
     background-repeat: repeat;
     background-position: center;
     background-attachment: fixed;
     z-index: -100;
-}
-
-#update-loader {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--black-trans);
 }
