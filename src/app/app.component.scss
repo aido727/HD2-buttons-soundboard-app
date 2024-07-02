@@ -10,11 +10,11 @@
 .background-crosses {
     opacity: 0.1;
     position: fixed;
-    top: 2vh;
-    height: calc(100vh - 4vh);
+    top: 2rem;
+    height: calc(100vh - 4rem);
     width: 100vw;
     background-image: url('/images/background-cross.png');
-    background-size: 7.15%;
+    background-size: 13.2rem;
     background-repeat: repeat;
     background-position: center;
     background-attachment: fixed;
@@ -23,8 +23,8 @@
 
 .border-bar {
     width: 100vw;
-    height: 1vh;
+    height: 1rem;
     background-color: var(--light-blue);
-    box-shadow: 0 0 1.5vh 0 var(--light-blue);
-    margin: 2vh 0;
+    box-shadow: 0 0 1.5rem 0 var(--light-blue);
+    margin: 2rem 0;
 }
