@@ -125,7 +125,7 @@ body {
     background-color: transparent;
     margin: 5%;
     aspect-ratio: 1;
-    filter: drop-shadow(6px 6px 2px var(--black-trans));
+    filter: drop-shadow(0.75rem 0.75rem 3px var(--black-trans));
 
     &:hover, &:active, &.active {
       opacity: 100%;
@@ -133,11 +133,11 @@ body {
 
     &:active, &.active {
       img {
-        width: 19vw;
-        height: 19vw;
-        margin: 1vw;
+        width: 90%;
+        height: 90%;
+        margin: 1rem;
       }
-      filter: drop-shadow(0.25vw 0.25vw 0.1vw var(--black-trans));
+      filter: drop-shadow(0.25rem 0.25rem 1px var(--black-trans));
     }
 
     &.up {
