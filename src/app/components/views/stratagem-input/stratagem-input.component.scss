@@ -11,17 +11,10 @@
     align-items: center;
 
     .skull-header {
-        height: 100%;
         width: 100%;
         max-height: 25%;
         max-width: 95%;
-        text-align: center;
-
-        img {
-            aspect-ratio: 896 / 146;
-            width: 100%;
-            height: auto;
-        }
+        object-fit: contain;
     }
 
     .content-container {
@@ -30,11 +23,10 @@
         justify-content: center;
         height: 100%;
         width: 100%;
+        padding: 1.5rem;
 
         .stratagem-inputs-container {
-            aspect-ratio: 3 / 2;
-            height: 100%;
-            max-height: 80%;
+            max-height: 100%;
             max-width: 80%;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -46,6 +38,19 @@
 
             #inputLeft, #inputDown, #inputRight {
                 grid-row-start: 2;
+            }
+        }
+
+        @media (orientation: landscape) {
+            .stratagem-inputs-container {
+                height: 100%;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .stratagem-inputs-container {
+                width: 100%;
+                align-items: baseline;
             }
         }
     }
