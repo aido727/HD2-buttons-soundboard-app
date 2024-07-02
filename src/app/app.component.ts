@@ -4,11 +4,13 @@ import { SwUpdate } from '@angular/service-worker';
 
 import { InstallButtonComponent } from './components/install-button/install-button.component';
 import { StratagemInputComponent } from './components/views/stratagem-input/stratagem-input.component';
+import { CommonModule } from '@angular/common';
+import { AudioService } from './services/audio.service';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, InstallButtonComponent, StratagemInputComponent],
+	imports: [RouterOutlet, CommonModule, InstallButtonComponent, StratagemInputComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss'
 })
@@ -16,7 +18,9 @@ export class AppComponent implements OnInit {
 	private autoUpdateMinutes = 30;
 	public updating: boolean = false;
 
-	constructor(private swUpdate: SwUpdate) {}
+	public stratagemInputBeepCopies = this.audioService.stratagemInputBeepCopies;
+
+	constructor(private swUpdate: SwUpdate, private audioService: AudioService) {}
 
 	ngOnInit() {
 		if (this.swUpdate.isEnabled) {

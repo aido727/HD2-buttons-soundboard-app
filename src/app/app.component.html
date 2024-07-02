@@ -15,3 +15,8 @@
         </div>
      </div>
 </div>
+
+
+<ng-container *ngFor="let stratagemInputBeepNum of [].constructor(stratagemInputBeepCopies), let i = index">
+    <audio [id]="'stratagem.input.beep.'+i" src="/audio/sounds/stratagem-input.ogg"></audio>
+</ng-container>

@@ -49,6 +49,6 @@ export class StratagemInputComponent implements OnInit {
 
   public registerInput(direction: string) {
     console.log(direction);
-    this.audioService.playStratagemInput();
+    this.audioService.playStratagemInputBeep();
   }
 }
