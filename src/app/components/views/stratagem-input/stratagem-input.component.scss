@@ -7,10 +7,10 @@
 
     .border-bar {
         width: 100vw;
-        height: 10px;
+        height: 0.7vw;
         background-color: var(--light-blue);
-        box-shadow: 0 0 15px 0 var(--light-blue);
-        margin: 15px 0;
+        box-shadow: 0 0 1vw 0 var(--light-blue);
+        margin: 1vw 0;
     }
 
     .inside-borders {
@@ -21,8 +21,7 @@
         align-items: center;
 
         .skull-header {
-            width: 87.5%;
-            max-width: 896px;
+            height: 35%;
         }
 
         .content-container {
@@ -54,12 +53,12 @@
         .battery-container {
             display: flex;
             flex-direction: row;
-            width: 91vw;
+            width: 90vw;
             justify-content: space-between;
         
             .battery-start, .battery-end {
-                width: 26px;
-                height: 56px;
+                width: 1.625vw;
+                height: 3.5vw;
                 position: relative;
             }
             
@@ -67,7 +66,7 @@
                 content: "";
                 position: absolute;
                 background-color: var(--light-blue);
-                width: 5px;
+                width: 0.30vw;
                 margin-right: -15%;
                 height: 100%;
             }
@@ -82,28 +81,28 @@
             
             .battery-start:after, .battery-end:after {
                 top: 50%;
-                height: 8px;
-                margin-top: -15%;
+                height: 0.3vw;
+                margin-top: -12.5%;
                 width: 100%;
             }
             
             .battery-outline {
-                border: 5px solid var(--light-blue);
+                border: 0.3vw solid var(--light-blue);
                 width: 100%;
-                margin: 8px 18px;
-                box-shadow: 0 0 8px 0 var(--light-blue),
-                inset 0 0 8px 0 var(--light-blue);
+                margin: 0.5vw 1.1vw;
+                box-shadow: 0 0 0.65vw 0 var(--light-blue),
+                inset 0 0 0.65vw 0 var(--light-blue);
             }
         
             .battery-fill {
-                height: calc(100% - 10px);
-                width: calc(100% - 10px);
-                margin: 5px;
-                background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 25px, transparent 25px, transparent 40px);
+                height: calc(100% - 0.6vw);
+                width: calc(100% - 0.6vw);
+                margin: 0.3vw;
+                background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 50%, transparent 50%, transparent 75%);
                 background-repeat: repeat-x;
-                background-size: 52.25px;
+                background-size: 5%;
                 animation-name: BatteryScrollAnimation;
-                animation-duration: 0.4s;
+                animation-duration: 4s;
                 animation-iteration-count: infinite;
                 animation-timing-function: linear;
                 z-index: -1;
@@ -111,7 +110,7 @@
         
             @keyframes BatteryScrollAnimation {
                 0%{background-position: 0% 0}
-                100%{background-position: 52.25px 0}
+                100%{background-position: 100% 0}
             }
         }
     }
