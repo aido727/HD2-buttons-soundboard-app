@@ -1,22 +1,18 @@
 <div id="stratagem-input-view">
-    <div class="border-bar top"></div>
-    <div class="inside-borders">
-        <img class="skull-header" src="/images/skull-header.png"/>
-        <div class="content-container">
-            <div class="stratagem-inputs-container">
-                <button id="inputUp" class="stratagem-input up" (mousedown)="clickInput(inputDirectionMap.get('w'))"><img src="/images/left-arrow.svg"/></button>
-                <button id="inputLeft" class="stratagem-input left" (mousedown)="clickInput(inputDirectionMap.get('a'))"><img src="/images/left-arrow.svg"/></button>
-                <button id="inputDown" class="stratagem-input down" (mousedown)="clickInput(inputDirectionMap.get('s'))"><img src="/images/left-arrow.svg"/></button>
-                <button id="inputRight" class="stratagem-input right" (mousedown)="clickInput(inputDirectionMap.get('d'))"><img src="/images/left-arrow.svg"/></button>
-            </div>
-        </div>
-        <div class="battery-container">
-            <div class="battery-start"></div>
-            <div class="battery-outline">
-                <div class="battery-fill"></div>
-            </div>
-            <div class="battery-end"></div>
+    <img class="skull-header" src="/images/skull-header.png"/>
+    <div class="content-container">
+        <div class="stratagem-inputs-container">
+            <button id="inputUp" class="stratagem-input up" (mousedown)="clickInput(inputDirectionMap.get('w'))"><img src="/images/left-arrow.svg"/></button>
+            <button id="inputLeft" class="stratagem-input left" (mousedown)="clickInput(inputDirectionMap.get('a'))"><img src="/images/left-arrow.svg"/></button>
+            <button id="inputDown" class="stratagem-input down" (mousedown)="clickInput(inputDirectionMap.get('s'))"><img src="/images/left-arrow.svg"/></button>
+            <button id="inputRight" class="stratagem-input right" (mousedown)="clickInput(inputDirectionMap.get('d'))"><img src="/images/left-arrow.svg"/></button>
         </div>
     </div>
-    <div class="border-bar bottom"></div>
+    <div class="battery-container">
+        <div class="battery-start"></div>
+        <div class="battery-outline">
+            <div class="battery-fill"></div>
+        </div>
+        <div class="battery-end"></div>
+    </div>
 </div>

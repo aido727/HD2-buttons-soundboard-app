@@ -1,13 +1,30 @@
+.main-app-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .background-crosses {
     opacity: 0.1;
     position: fixed;
-    top: 1vw;
-    height: calc(100vh - 2vw);
+    top: 2vh;
+    height: calc(100vh - 4vh);
     width: 100vw;
     background-image: url('/images/background-cross.png');
-    background-size: 7.15vw;
+    background-size: 7.15%;
     background-repeat: repeat;
     background-position: center;
     background-attachment: fixed;
     z-index: -100;
+}
+
+.border-bar {
+    width: 100vw;
+    height: 1vh;
+    background-color: var(--light-blue);
+    box-shadow: 0 0 1.5vh 0 var(--light-blue);
+    margin: 2vh 0;
 }
