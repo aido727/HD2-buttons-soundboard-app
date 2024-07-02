@@ -1,23 +1,104 @@
 #stratagem-input-view {
     width: 100vw;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 
-    --top-space: 45px;
-    --bottom-space: 60px;
-    --skull-height: 146px;
-    --battery-height: 56px;
-}
+    .border-bar {
+        width: 100vw;
+        height: 10px;
+        background-color: var(--light-blue);
+        z-index: -10;
+        box-shadow: 0 0 15px 0 var(--light-blue);
+        margin: 15px 0;
+    }
 
-.stratagem-inputs-container {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: calc(var(--top-space) + var(--skull-height));
-    height: calc(100vh - var(--top-space) - var(--bottom-space) - var(--skull-height) - var(--battery-height));
+    .inside-borders {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        .skull-header {
+            z-index: -10;
+            width: 87.5%;
+            max-width: 896px;
+        }
+
+        .stratagem-inputs-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .battery-container {
+            display: flex;
+            flex-direction: row;
+            z-index: -10;
+            width: 91vw;
+            justify-content: space-between;
+        
+            .battery-start, .battery-end {
+                width: 26px;
+                height: 56px;
+                position: relative;
+                z-index: -10;
+            }
+            
+            .battery-start:before, .battery-start:after, .battery-end:before, .battery-end:after {
+                content: "";
+                position: absolute;
+                background-color: var(--light-blue);
+                width: 5px;
+                margin-right: -15%;
+                height: 100%;
+            }
+            
+            .battery-start:before {
+                left: 100%;
+            }
+            
+            .battery-end:before {
+                right: 100%;
+            }
+            
+            .battery-start:after, .battery-end:after {
+                top: 50%;
+                height: 8px;
+                margin-top: -15%;
+                width: 100%;
+            }
+            
+            .battery-outline {
+                border: 5px solid var(--light-blue);
+                width: 100%;
+                margin: 8px 18px;
+                box-shadow: 0 0 8px 0 var(--light-blue),
+                inset 0 0 8px 0 var(--light-blue);
+                z-index: -10;
+            }
+        
+            .battery-fill {
+                height: calc(100% - 10px);
+                width: calc(100% - 10px);
+                margin: 5px;
+                background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 25px, transparent 25px, transparent 40px);
+                background-repeat: repeat-x;
+                background-size: 52.25px;
+                animation-name: BatteryScrollAnimation;
+                animation-duration: 0.4s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                z-index: -11;
+            }
+        
+            @keyframes BatteryScrollAnimation {
+                0%{background-position: 0% 0}
+                100%{background-position: 52.25px 0}
+            }
+        }
+    }
 }
 
 #stratagem-inputs {
@@ -31,100 +112,5 @@
 
     #inputLeft, #inputDown, #inputRight {
         grid-row-start: 2;
-    }
-}
-
-.border-bar {
-    width: 100vw;
-    height: 10px;
-    background-color: var(--light-blue);
-    position: absolute;
-    z-index: -10;
-    box-shadow: 0 0 15px 0 var(--light-blue);
-
-    &.top {
-        top: 20px;
-    }
-
-    &.bottom {
-        bottom: 20px;
-    }
-}
-
-.skull-header {
-    position: absolute;
-    top: var(--top-space);
-    z-index: -10;
-    width: 87.5%;
-    max-width: 896px;
-}
-
-.battery-container {
-    position: absolute;
-    bottom: var(--bottom-space);
-    display: flex;
-    flex-direction: row;
-    z-index: -10;
-    width: 91vw;
-    justify-content: space-between;
-    height: var(--battery-height);
-
-    .battery-start, .battery-end {
-        width: 26px;
-        height: 56px;
-        position: relative;
-        z-index: -10;
-    }
-    
-    .battery-start:before, .battery-start:after, .battery-end:before, .battery-end:after {
-        content: "";
-        position: absolute;
-        background-color: var(--light-blue);
-        width: 5px;
-        margin-right: -15%;
-        height: 100%;
-    }
-    
-    .battery-start:before {
-        left: 100%;
-    }
-    
-    .battery-end:before {
-        right: 100%;
-    }
-    
-    .battery-start:after, .battery-end:after {
-        top: 50%;
-        height: 8px;
-        margin-top: -15%;
-        width: 100%;
-    }
-    
-    .battery-outline {
-        border: 5px solid var(--light-blue);
-        width: 100%;
-        margin: 8px 18px;
-        box-shadow: 0 0 8px 0 var(--light-blue),
-        inset 0 0 8px 0 var(--light-blue);
-        z-index: -10;
-    }
-
-    .battery-fill {
-        height: calc(100% - 10px);
-        width: calc(100% - 10px);
-        margin: 5px;
-        background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 25px, transparent 25px, transparent 40px);
-        background-repeat: repeat-x;
-        background-size: 52.25px;
-        animation-name: BatteryScrollAnimation;
-        animation-duration: 0.4s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        z-index: -11;
-    }
-
-    @keyframes BatteryScrollAnimation {
-        0%{background-position: 0% 0}
-        100%{background-position: 52.25px 0}
     }
 }
