@@ -14,7 +14,7 @@
 	height: calc(100vh - 30px);
 	width: 100vw;
 	background-image: url("/images/background-cross.png");
-	background-size: 87px;
+	background-size: 70px;
 	background-repeat: repeat;
 	background-position: center;
 	z-index: -100;
@@ -41,12 +41,8 @@
 
 	.modal-box {
 		background-color: var(--dark-gray);
-		max-width: 90%;
-		max-height: 90%;
-		min-width: 50%;
-		min-height: 20%;
-		width: fit-content;
-		height: fit-content;
+		width: 75%;
+		height: 60%;
 
 		--s: 10px; /* the size on the corner */
 		--t: 2px; /* the thickness of the border */
