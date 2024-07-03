@@ -43,6 +43,14 @@ body {
 	display: none !important;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
 	margin: 0;
 	font-family: "FS Sinclair Regular", Roboto, "Helvetica Neue", sans-serif;
