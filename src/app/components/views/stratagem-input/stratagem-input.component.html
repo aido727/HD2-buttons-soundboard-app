@@ -2,10 +2,10 @@
     <img class="skull-header" src="/images/skull-header.png"/>
     <div class="content-container">
         <div class="stratagem-inputs-container">
-            <button id="inputUp" class="stratagem-input up" (mousedown)="clickInput(inputDirectionMap.get('w'))"><img src="/images/left-arrow.svg"/></button>
-            <button id="inputLeft" class="stratagem-input left" (mousedown)="clickInput(inputDirectionMap.get('a'))"><img src="/images/left-arrow.svg"/></button>
-            <button id="inputDown" class="stratagem-input down" (mousedown)="clickInput(inputDirectionMap.get('s'))"><img src="/images/left-arrow.svg"/></button>
-            <button id="inputRight" class="stratagem-input right" (mousedown)="clickInput(inputDirectionMap.get('d'))"><img src="/images/left-arrow.svg"/></button>
+            <button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirectionMap.get('w'))"><img src="/images/left-arrow.svg"/></button>
+            <button id="inputLeft" class="stratagem-input left" (pointerdown)="clickInput(inputDirectionMap.get('a'))"><img src="/images/left-arrow.svg"/></button>
+            <button id="inputDown" class="stratagem-input down" (pointerdown)="clickInput(inputDirectionMap.get('s'))"><img src="/images/left-arrow.svg"/></button>
+            <button id="inputRight" class="stratagem-input right" (pointerdown)="clickInput(inputDirectionMap.get('d'))"><img src="/images/left-arrow.svg"/></button>
         </div>
     </div>
     <div class="battery-container">
