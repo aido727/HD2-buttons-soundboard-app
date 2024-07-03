@@ -5,9 +5,9 @@
   "description": "An eleborate HELLDIVERS 2 soundboard app simulating a Perosnal Hellpad System input UI",
   "theme_color": "#9ce0fa",
   "background_color": "#002742",
-  "orientation": "landscape-primary",
-  "display": "standalone",
-  "scope": "./",
+  "orientation": "landscape-secondary",
+  "display": "fullscreen",
+  "scope": "https://xanlordnas.myqnapcloud.com:8081/",
   "start_url": "./",
   "icons": [
     {

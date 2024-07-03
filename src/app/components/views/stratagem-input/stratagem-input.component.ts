@@ -23,7 +23,6 @@ export class StratagemInputComponent implements OnInit {
     }
 
     document.onkeyup = (evt: KeyboardEvent) => {
-      if (evt.repeat) { return }
       const direction = inputDirectionMap.get(evt.key);
       if(direction && inputDirections.includes(direction))
       {
