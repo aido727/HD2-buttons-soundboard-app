@@ -1,16 +1,16 @@
 .install-button-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: var(--black-trans);
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: var(--black-trans);
 
-    .install-button-edge {
-        width: 0.75rem;
-        background-color: var(--white);
-        cursor: pointer;
-    }
+	.install-button-edge {
+		width: 8px;
+		background-color: var(--white);
+		cursor: pointer;
+	}
 
-    .inner-button {
-        padding: 1rem;
-    }
+	.inner-button {
+		padding: 12px;
+	}
 }

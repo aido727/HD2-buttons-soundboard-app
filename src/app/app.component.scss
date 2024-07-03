@@ -1,29 +1,76 @@
 .main-app-container {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .background-crosses {
-    opacity: 0.1;
-    position: fixed;
-    top: 2rem;
-    height: calc(100vh - 4rem);
-    width: 100vw;
-    background-image: url('/images/background-cross.png');
-    background-size: 13.2rem;
-    background-repeat: repeat;
-    background-position: center;
-    z-index: -100;
+	opacity: 0.1;
+	position: fixed;
+	top: 15px;
+	height: calc(100vh - 30px);
+	width: 100vw;
+	background-image: url("/images/background-cross.png");
+	background-size: 87px;
+	background-repeat: repeat;
+	background-position: center;
+	z-index: -100;
 }
 
 .border-bar {
-    width: 100vw;
-    height: 1rem;
-    background-color: var(--light-blue);
-    box-shadow: 0 0 1.5rem 0 var(--light-blue);
-    margin: 2rem 0;
+	width: 100vw;
+	height: 10px;
+	background-color: var(--light-blue);
+	box-shadow: 0 0 15px 0 var(--light-blue);
+	margin: 15px 0;
+}
+
+#update-loader {
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--black-trans);
+
+	.modal-box {
+		background-color: var(--dark-gray);
+		max-width: 90%;
+		max-height: 90%;
+		min-width: 50%;
+		min-height: 20%;
+		width: fit-content;
+		height: fit-content;
+
+		--s: 10px; /* the size on the corner */
+		--t: 2px; /* the thickness of the border */
+		--g: 0px; /* the gap between the border and image */
+
+		padding: calc(var(--g) + var(--t));
+		outline: var(--t) solid var(--white); /* the color here */
+		outline-offset: calc(-1 * var(--t));
+		mask:
+			conic-gradient(at var(--s) var(--s), #0000 75%, #000 0) 0 0 / calc(100% - var(--s)) calc(100% - var(--s)),
+			linear-gradient(#000 0 0) content-box;
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			padding: 32px;
+			font-size: 24pt;
+			color: var(--light-gray);
+
+			.title {
+				text-transform: uppercase;
+				color: var(--white);
+				margin-bottom: 16px;
+			}
+		}
+	}
 }

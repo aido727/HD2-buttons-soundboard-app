@@ -1,18 +1,30 @@
 <div id="stratagem-input-view">
-    <img class="skull-header" src="/images/skull-header.png"/>
-    <div class="content-container">
-        <div class="stratagem-inputs-container">
-            <button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirectionMap.get('w'))"><img src="/images/left-arrow.svg"/></button>
-            <button id="inputLeft" class="stratagem-input left" (pointerdown)="clickInput(inputDirectionMap.get('a'))"><img src="/images/left-arrow.svg"/></button>
-            <button id="inputDown" class="stratagem-input down" (pointerdown)="clickInput(inputDirectionMap.get('s'))"><img src="/images/left-arrow.svg"/></button>
-            <button id="inputRight" class="stratagem-input right" (pointerdown)="clickInput(inputDirectionMap.get('d'))"><img src="/images/left-arrow.svg"/></button>
-        </div>
-    </div>
-    <div class="battery-container">
-        <div class="battery-start"></div>
-        <div class="battery-outline">
-            <div class="battery-fill"></div>
-        </div>
-        <div class="battery-end"></div>
-    </div>
+	<img class="skull-header" src="/images/skull-header.png" />
+	<div class="content-container">
+		<div class="stratagem-inputs-container">
+			<button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirectionMap.get('w'))">
+				<img />
+			</button>
+			<button id="inputLeft" class="stratagem-input left" (pointerdown)="clickInput(inputDirectionMap.get('a'))">
+				<img />
+			</button>
+			<button id="inputDown" class="stratagem-input down" (pointerdown)="clickInput(inputDirectionMap.get('s'))">
+				<img />
+			</button>
+			<button
+				id="inputRight"
+				class="stratagem-input right"
+				(pointerdown)="clickInput(inputDirectionMap.get('d'))"
+			>
+				<img />
+			</button>
+		</div>
+	</div>
+	<div class="battery-container">
+		<div class="battery-start"></div>
+		<div class="battery-outline">
+			<div class="battery-fill"></div>
+		</div>
+		<div class="battery-end"></div>
+	</div>
 </div>

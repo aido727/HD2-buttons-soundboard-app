@@ -1,122 +1,140 @@
 :host {
-    height: 100%;
+	height: 100%;
 }
 
 #stratagem-input-view {
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+	width: 100vw;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 
-    .skull-header {
-        width: 100%;
-        max-height: 25%;
-        max-width: 95%;
-        object-fit: contain;
-    }
+	.skull-header {
+		width: 100%;
+		max-height: 25%;
+		max-width: 95%;
+		object-fit: contain;
+	}
 
-    .content-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        width: 100%;
-        padding: 1.5rem;
+	.content-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		padding: 1rem;
 
-        .stratagem-inputs-container {
-            max-height: 100%;
-            max-width: 80%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 50% 50%;
+		.stratagem-inputs-container {
+			max-height: 100%;
+			max-width: 80%;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: 50% 50%;
 
-            #inputUp {
-                grid-column-start: 2;
-            }
+			#inputUp {
+				grid-column-start: 2;
+			}
 
-            #inputLeft, #inputDown, #inputRight {
-                grid-row-start: 2;
-            }
-        }
+			#inputLeft,
+			#inputDown,
+			#inputRight {
+				grid-row-start: 2;
+			}
+		}
 
-        @media (orientation: landscape) {
-            .stratagem-inputs-container {
-                height: 100%;
-            }
-        }
+		@media (orientation: landscape) {
+			.stratagem-inputs-container {
+				height: 100%;
+			}
+		}
 
-        @media (orientation: portrait) {
-            .stratagem-inputs-container {
-                width: 100%;
-                align-items: baseline;
-            }
-        }
-    }
+		@media (orientation: portrait) {
+			.stratagem-inputs-container {
+				width: 100%;
+				align-items: baseline;
+			}
+		}
+	}
 
-    .battery-container {
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        justify-content: space-between;
-    
-        .battery-start, .battery-end {
-            width: 3rem;
-            height: 6.25rem;
-            position: relative;
-        }
-        
-        .battery-start:before, .battery-start:after, .battery-end:before, .battery-end:after {
-            content: "";
-            position: absolute;
-            background-color: var(--light-blue);
-            width: 0.8rem;
-            height: 100%;
-        }
-        
-        .battery-start:before {
-            left: 100%;
-            margin-left: -12.5%;
-        }
-        
-        .battery-end:before {
-            right: 100%;
-            margin-right: -12.5%;
-        }
-        
-        .battery-start:after, .battery-end:after {
-            top: 50%;
-            height: 0.8rem;
-            margin-top: -12.5%;
-            width: 100%;
-        }
-        
-        .battery-outline {
-            border: 0.6rem solid var(--light-blue);
-            width: 100%;
-            margin: 0.9rem 1.75rem;
-            box-shadow: 0 0 1.2rem 0 var(--light-blue),
-            inset 0 0 1.2rem 0 var(--light-blue);
-        }
-    
-        .battery-fill {
-            height: calc(100% - 1.2rem);
-            width: calc(100% - 1.2rem);
-            margin: 0.6rem;
-            background: repeating-linear-gradient(130deg, var(--light-blue), var(--light-blue) 35%, transparent 35%, transparent 65%);
-            background-repeat: repeat-x;
-            background-size: 100px;
-            animation-name: BatteryScrollAnimation;
-            animation-duration: 0.3s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-            z-index: -1;
-        }
-    
-        @keyframes BatteryScrollAnimation {
-            0%{background-position: 0% 0}
-            100%{background-position: 100px 0}
-        }
-    }
+	.battery-container {
+		display: flex;
+		flex-direction: row;
+		width: 90%;
+		justify-content: space-between;
+
+		.battery-start,
+		.battery-end {
+			width: 26px;
+			height: 56px;
+			position: relative;
+		}
+
+		.battery-start:before,
+		.battery-start:after,
+		.battery-end:before,
+		.battery-end:after {
+			content: "";
+			position: absolute;
+			background-color: var(--light-blue);
+			width: 6px;
+			height: 100%;
+		}
+
+		.battery-start:before {
+			left: 100%;
+			margin-left: -15%;
+		}
+
+		.battery-end:before {
+			right: 100%;
+			margin-right: -15%;
+		}
+
+		.battery-start:after,
+		.battery-end:after {
+			top: 50%;
+			height: 8px;
+			margin-top: -15%;
+			width: 100%;
+		}
+
+		.battery-outline {
+			border: 5px solid var(--light-blue);
+			width: 100%;
+			margin: 8px 18px;
+			box-shadow:
+				0 0 8px 0 var(--light-blue),
+				inset 0 0 8px 0 var(--light-blue);
+		}
+
+		.battery-fill {
+			height: calc(100% - 10px);
+			width: calc(100% - 10px);
+			margin: 5px;
+			background: repeating-linear-gradient(
+				130deg,
+				var(--light-blue),
+				var(--light-blue) 35%,
+				transparent 35%,
+				transparent 65%
+			);
+			background-repeat: repeat-x;
+			background-size: 60px;
+			animation-name: BatteryScrollAnimation;
+			animation-duration: 0.3s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+			z-index: -1;
+		}
+
+		@keyframes BatteryScrollAnimation {
+			0% {
+				background-position: 0% 0;
+			}
+			100% {
+				background-position: 60px 0;
+			}
+		}
+	}
 }

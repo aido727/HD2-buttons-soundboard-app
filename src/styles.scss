@@ -1,209 +1,180 @@
 :root {
-  --navy: #002742;
-  --light-blue: #9ce0fa;
-  --yellow: #ffe900;
-  --yellow-trans: #ffbc0090;
-  --white: #ffffff;
-  --black-trans: #00000090;
-  --gray-trans: #58585890;
-  --light-gray: #A8A8A8;
-  --light-gray-trans: #98989890;
-  --dark-gray: #353535;
-  --disabled-grey: #A8A8A8;
+	--navy: #002742;
+	--light-blue: #9ce0fa;
+	--yellow: #ffe900;
+	--yellow-trans: #ffbc0090;
+	--white: #ffffff;
+	--black-trans: #00000090;
+	--gray-trans: #58585890;
+	--light-gray: #a8a8a8;
+	--light-gray-trans: #98989890;
+	--dark-gray: #353535;
+	--disabled-grey: #a8a8a8;
 }
 
 @font-face {
-  font-family: 'FS Sinclair Medium';
-  src: url('../public/fonts/FS Sinclair Medium.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "FS Sinclair Medium";
+	src: url("../public/fonts/FS Sinclair Medium.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'FS Sinclair Regular';
-  src: url('../public/fonts/FS Sinclair Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "FS Sinclair Regular";
+	src: url("../public/fonts/FS Sinclair Regular.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'FS Sinclair Light';
-  src: url('../public/fonts/FS Sinclair Light.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "FS Sinclair Light";
+	src: url("../public/fonts/FS Sinclair Light.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 
-html, body {
-  height: 100vh;
-  width: 100vw;
+html,
+body {
+	height: 100vh;
+	width: 100vw;
 }
 
 .hidden {
-  display: none !important;
+	display: none !important;
 }
 
 body {
-  margin: 0;
-  font-family: "FS Sinclair Regular", Roboto, "Helvetica Neue", sans-serif;
-  color: var(--white);
-  background-color: var(--navy);
-  background-image: radial-gradient(#67a1bf -5%, transparent 70%);
+	margin: 0;
+	font-family: "FS Sinclair Regular", Roboto, "Helvetica Neue", sans-serif;
+	color: var(--white);
+	background-color: var(--navy);
+	background-image: radial-gradient(#67a1bf -5%, transparent 70%);
 
-  button {
-    font-family: "FS Sinclair Medium";
-    font-size: 5rem;
-  }
+	button {
+		font-family: "FS Sinclair Medium";
+		font-size: 18pt;
+	}
 
-  .equip-button {
-    height: 11rem;
-    border: 0.5rem solid transparent;
-    background-color: var(--black-trans);
-    padding: 2rem 3rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    color: var(--white);
-    -webkit-text-stroke-width: 0.4rem;
-    -webkit-text-stroke-color: black;
-    paint-order: stroke fill;
-  
-    &:hover, &:active {
-      background-color: var(--yellow-trans);
-      border-color: var(--yellow);
-      box-shadow: 0 0 2rem 0 var(--yellow);
-    }
-  }
+	.equip-button {
+		height: 62px;
+		border: 4px solid transparent;
+		background-color: var(--black-trans);
+		padding: 12px;
+		cursor: pointer;
+		text-transform: uppercase;
+		color: var(--white);
+		-webkit-text-stroke-width: 0.25rem;
+		-webkit-text-stroke-color: black;
+		paint-order: stroke fill;
 
-  .bordered-button {
-    display: flex;
-    position: relative;
-    height: 11rem;
-    color: var(--disabled-grey);
-    border-width: 0.5rem;
-    border-style: solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to bottom, var(--light-gray-trans) 32%, transparent 32%, transparent 68%, var(--light-gray-trans) 68%);
-    background-color: transparent;
-    padding: 2rem 3rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    -webkit-text-stroke-width: 0.4rem;
-    -webkit-text-stroke-color: black;
-    paint-order: stroke fill;
+		&:hover,
+		&:active {
+			background-color: var(--yellow-trans);
+			border-color: var(--yellow);
+			box-shadow: 0 0 16px 0 var(--yellow);
+		}
+	}
 
-    span {
-      z-index: 2;
-    }
+	.bordered-button {
+		display: flex;
+		position: relative;
+		height: 62px;
+		color: var(--disabled-grey);
+		border-width: 4px;
+		border-style: solid;
+		border-image-slice: 1;
+		border-image-source: linear-gradient(
+			to bottom,
+			var(--light-gray-trans) 32%,
+			transparent 32%,
+			transparent 68%,
+			var(--light-gray-trans) 68%
+		);
+		background-color: transparent;
+		padding: 12px 16px;
+		cursor: pointer;
+		text-transform: uppercase;
+		-webkit-text-stroke-width: 0.25rem;
+		-webkit-text-stroke-color: black;
+		paint-order: stroke fill;
 
-    .background {
-      height: calc(100% - 1rem);
-      width: calc(100% - 1rem);
-      background-color: var(--gray-trans);
-      position: absolute;
-      top: 0.5rem;
-      left: 0.5rem;
-    }
+		span {
+			z-index: 2;
+		}
 
-    &:hover, &:active {
-      color: var(--white);
-      border-image-source: linear-gradient(to bottom, var(--white) 32%, transparent 32%, transparent 68%, var(--white) 68%);
+		.background {
+			height: calc(100% - 8px);
+			width: calc(100% - 8px);
+			background-color: var(--gray-trans);
+			position: absolute;
+			top: 4px;
+			left: 4px;
+		}
 
-      .background {
-        background-color: var(--light-gray-trans);
-      }
-    }
-  }
+		&:hover,
+		&:active {
+			color: var(--white);
+			border-image-source: linear-gradient(
+				to bottom,
+				var(--white) 32%,
+				transparent 32%,
+				transparent 68%,
+				var(--white) 68%
+			);
 
-  .stratagem-input {
-    img {
-      width: 100%;
-      height: 100%;
-    }
-    
-    cursor: pointer;
-    opacity: 85%;
-    border: 0;
-    background-color: transparent;
-    margin: 5%;
-    aspect-ratio: 1;
-    filter: drop-shadow(0.75rem 0.75rem 3px var(--black-trans));
+			.background {
+				background-color: var(--light-gray-trans);
+			}
+		}
+	}
 
-    &:hover, &:active, &.active {
-      opacity: 100%;
-    }
+	.stratagem-input {
+		img {
+			width: 100%;
+			height: 100%;
+			content: url("/images/left-arrow.svg");
+		}
 
-    &:active, &.active {
-      img {
-        width: 90%;
-        height: 90%;
-        margin: 1rem;
-      }
-      filter: drop-shadow(0.25rem 0.25rem 1px var(--black-trans));
-    }
+		cursor: pointer;
+		opacity: 85%;
+		border: 0;
+		background-color: transparent;
+		margin: 5%;
+		aspect-ratio: 1;
+		filter: drop-shadow(6px 6px 2px var(--black-trans));
 
-    &.up {
-      img {
-        transform: rotate(90deg);
-      }
-    }
+		&:hover,
+		&:active,
+		&.active {
+			opacity: 100%;
+		}
 
-    &.right {
-      img {
-        transform: rotate(180deg);
-      }
-    }
+		&:active,
+		&.active {
+			img {
+				width: 90%;
+				height: 90%;
+				margin: 5%;
+			}
+			filter: drop-shadow(3px 3px 1px var(--black-trans));
+		}
 
-    &.down {
-      img {
-        transform: rotate(-90deg);
-      }
-    }
-  }
+		&.up {
+			img {
+				transform: rotate(90deg);
+			}
+		}
 
-  #update-loader {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--black-trans);
-    
-    .modal-box {
-      background-color: var(--dark-gray);
-      max-width: 90%;
-      max-height: 90%;
-      min-width: 50%;
-      min-height: 20%;
-      width: fit-content;
-      height: fit-content;
-  
-      --s: 5rem; /* the size on the corner */
-      --t: 1rem;  /* the thickness of the border */
-      --g: 0rem; /* the gap between the border and image */
-      
-      padding: calc(var(--g) + var(--t));
-      outline: var(--t) solid var(--white); /* the color here */
-      outline-offset: calc(-1*var(--t));
-      mask:
-        conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
-        0 0/calc(100% - var(--s)) calc(100% - var(--s)),
-        linear-gradient(#000 0 0) content-box;
+		&.right {
+			img {
+				transform: rotate(180deg);
+			}
+		}
 
-      .content {
-        display: flex;
-        flex-direction: column;
-        padding: 5rem;
-        font-size: 7rem;
-        color: var(--light-gray);
-    
-        .title {
-          text-transform: uppercase;
-          color: var(--white);
-          margin-bottom: 2rem;
-        }
-      }
-    }
-  }
+		&.down {
+			img {
+				transform: rotate(-90deg);
+			}
+		}
+	}
 }

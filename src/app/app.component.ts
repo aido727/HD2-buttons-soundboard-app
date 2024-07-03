@@ -12,7 +12,7 @@ import { AudioService } from './services/audio.service';
 	standalone: true,
 	imports: [RouterOutlet, CommonModule, InstallButtonComponent, StratagemInputComponent],
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss'
+	styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
 	private autoUpdateMinutes = 30;
@@ -20,7 +20,10 @@ export class AppComponent implements OnInit {
 
 	public stratagemInputBeepCopies = this.audioService.stratagemInputBeepCopies;
 
-	constructor(private swUpdate: SwUpdate, private audioService: AudioService) {}
+	constructor(
+		private swUpdate: SwUpdate,
+		private audioService: AudioService,
+	) {}
 
 	ngOnInit() {
 		if (this.swUpdate.isEnabled) {
@@ -30,10 +33,10 @@ export class AppComponent implements OnInit {
 			});
 			// manually handle live updates by presenting the option to the user
 			this.swUpdate.versionUpdates.subscribe((event) => {
-				if(event.type == "VERSION_DETECTED") {
+				if (event.type == 'VERSION_DETECTED') {
 					this.updating = true;
 				}
-				if(event.type == "VERSION_READY") {
+				if (event.type == 'VERSION_READY') {
 					window.location.reload();
 				}
 			});
@@ -44,7 +47,7 @@ export class AppComponent implements OnInit {
 				() => {
 					this.swUpdate.checkForUpdate();
 				},
-				1000 * 60 * this.autoUpdateMinutes
+				1000 * 60 * this.autoUpdateMinutes,
 			);
 		}
 	}
