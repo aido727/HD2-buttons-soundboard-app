@@ -10,8 +10,8 @@
 .background-crosses {
 	opacity: 0.1;
 	position: fixed;
-	top: 15px;
-	height: calc(100vh - 30px);
+	top: 10px;
+	height: calc(100vh - 20px);
 	width: 100vw;
 	background-image: url("/images/background-cross.png");
 	background-size: 70px;
@@ -25,7 +25,7 @@
 	height: 10px;
 	background-color: var(--light-blue);
 	box-shadow: 0 0 15px 0 var(--light-blue);
-	margin: 15px 0;
+	margin: 10px 0;
 }
 
 #update-loader {
