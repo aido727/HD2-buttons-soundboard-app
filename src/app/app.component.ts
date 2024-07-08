@@ -18,7 +18,9 @@ export class AppComponent implements OnInit {
 	private autoUpdateMinutes = 30;
 	public updating: boolean = false;
 
-	public stratagemInputBeepCopies = this.audioService.stratagemInputBeepCopies;
+	// public stratagemInputBeepCopies = this.audioService.stratagemInputBeepCopies;
+
+	public stratagemInputBeepPitches = this.audioService.stratagemInputBeepPitches;
 
 	constructor(
 		private swUpdate: SwUpdate,
