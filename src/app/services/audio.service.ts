@@ -7,6 +7,8 @@ export class AudioService {
 	// private stratagemInputBeepsInUse: number[] = [];
 	// public stratagemInputBeepCopies = 6;
 
+	private lastPlayedStratagemInputFail = 2;
+
 	constructor() {}
 
 	public playStratagemInputBeep(pitchNum: number = 1) {
@@ -15,7 +17,16 @@ export class AudioService {
 	}
 
 	public playStratagemInputFail() {
-		this.playOne('stratagem.input.fail');
+		if(this.lastPlayedStratagemInputFail != 1)
+		{
+			this.lastPlayedStratagemInputFail = 1;
+			this.playOne('stratagem.input.fail.1');
+		}
+		else
+		{
+			this.lastPlayedStratagemInputFail = 2;
+			this.playOne('stratagem.input.fail.2');
+		}
 		this.stopOne('stratagem.input.ready');
 		// this.stopOne('stratagem.input.loop');
 	}
