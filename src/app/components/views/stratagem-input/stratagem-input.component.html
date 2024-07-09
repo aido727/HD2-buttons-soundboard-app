@@ -3,7 +3,7 @@
 		<img src="/images/skull-header.png" />
 		<div
 			class="stratagem-code-container"
-			(click)="codeClick()"
+			(pointerdown)="codeClick()"
 			[class.cancel]="getInputMode() != inputMode.Free || getCodeReady() != ''"
 			[class.ready]="getInputMode() == inputMode.Free && getCodeReady() == ''"
 		>
@@ -18,7 +18,7 @@
 	</div>
 	<div class="content-container">
 		<div *ngIf="(codeReady | async) != ''" class="deploy-button-container">
-			<button id="inputDeploy" class="deploy-button" (click)="deploy()">
+			<button id="inputDeploy" class="deploy-button" (pointerdown)="deploy()">
 				<span>DEPLOY {{ getCodeReady() }}</span>
 			</button>
 		</div>
