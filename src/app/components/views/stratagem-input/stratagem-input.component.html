@@ -1,21 +1,38 @@
 <div id="stratagem-input-view">
-	<img class="skull-header" src="/images/skull-header.png" />
+	<div class="skull-header">
+		<img src="/images/skull-header.png" />
+		<div
+			class="stratagem-code-container"
+			(click)="codeClick()"
+			[class.cancel]="getInputMode() != inputMode.Free || getCodeReady() != ''"
+			[class.ready]="getInputMode() == inputMode.Free && getCodeReady() == ''"
+		>
+			<ng-template ngFor [ngForOf]="currentInputCode | async" let-input>
+				<div class="stratagem-direction-container">
+					<div class="stratagem-direction" [class]="inputDirection[input]">
+						<img />
+					</div>
+				</div>
+			</ng-template>
+		</div>
+	</div>
 	<div class="content-container">
+		<div *ngIf="(codeReady | async) != ''" class="deploy-button-container">
+			<button id="inputDeploy" class="deploy-button" (click)="deploy()">
+				<span>DEPLOY {{ getCodeReady() }}</span>
+			</button>
+		</div>
 		<div class="stratagem-inputs-container">
-			<button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirectionMap.get('w'))">
+			<button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirection.Up)" [disabled]="isInputDisabled | async">
 				<img />
 			</button>
-			<button id="inputLeft" class="stratagem-input left" (pointerdown)="clickInput(inputDirectionMap.get('a'))">
+			<button id="inputLeft" class="stratagem-input left" (pointerdown)="clickInput(inputDirection.Left)" [disabled]="isInputDisabled | async">
 				<img />
 			</button>
-			<button id="inputDown" class="stratagem-input down" (pointerdown)="clickInput(inputDirectionMap.get('s'))">
+			<button id="inputDown" class="stratagem-input down" (pointerdown)="clickInput(inputDirection.Down)" [disabled]="isInputDisabled | async">
 				<img />
 			</button>
-			<button
-				id="inputRight"
-				class="stratagem-input right"
-				(pointerdown)="clickInput(inputDirectionMap.get('d'))"
-			>
+			<button id="inputRight" class="stratagem-input right" (pointerdown)="clickInput(inputDirection.Right)" [disabled]="isInputDisabled | async">
 				<img />
 			</button>
 		</div>
@@ -23,7 +40,7 @@
 	<div class="battery-container">
 		<div class="battery-start"></div>
 		<div class="battery-outline">
-			<div class="battery-fill"></div>
+			<div *ngIf="(codeReady | async) != ''" class="battery-fill"></div>
 		</div>
 		<div class="battery-end"></div>
 	</div>

@@ -26,6 +26,7 @@
 	background-color: var(--light-blue);
 	box-shadow: 0 0 15px 0 var(--light-blue);
 	margin: 10px 0;
+	z-index: -10;
 }
 
 #update-loader {

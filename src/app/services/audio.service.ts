@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class AudioService {
 	// private stratagemInputBeepsInUse: number[] = [];
 	// public stratagemInputBeepCopies = 6;
-	public stratagemInputBeepPitches = 8;
 
 	constructor() {}
 
@@ -15,7 +14,18 @@ export class AudioService {
 		this.playOne('stratagem.input.beep.' + pitchNum);
 	}
 
-	//#region helpers
+	public playStratagemInputFail() {
+		this.playOne('stratagem.input.fail');
+	}
+
+	public playStratagemInputReady() {
+		this.playOne('stratagem.input.ready');
+	}
+
+	public playStratagemInputDeploy() {
+		this.playOne('stratagem.input.deploy');
+	}
+
 	private playOne(elementId: string) {
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
 		if (audio) {
@@ -54,5 +64,4 @@ export class AudioService {
 	// 	}
 	// 	return random;
 	// }
-	//#endregion helpers
 }

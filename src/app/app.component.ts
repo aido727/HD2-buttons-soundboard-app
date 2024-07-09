@@ -5,7 +5,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { InstallButtonComponent } from './components/install-button/install-button.component';
 import { StratagemInputComponent } from './components/views/stratagem-input/stratagem-input.component';
 import { CommonModule } from '@angular/common';
-import { AudioService } from './services/audio.service';
+import { StratagemInputService } from './services/stratagem-input.service';
 
 @Component({
 	selector: 'app-root',
@@ -20,11 +20,11 @@ export class AppComponent implements OnInit {
 
 	// public stratagemInputBeepCopies = this.audioService.stratagemInputBeepCopies;
 
-	public stratagemInputBeepPitches = this.audioService.stratagemInputBeepPitches;
+	public stratagemInputBeepPitches = this.stratagemInputService.maxInputs;
 
 	constructor(
 		private swUpdate: SwUpdate,
-		private audioService: AudioService,
+		private stratagemInputService: StratagemInputService,
 	) {}
 
 	ngOnInit() {
