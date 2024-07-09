@@ -16,14 +16,19 @@ export class AudioService {
 
 	public playStratagemInputFail() {
 		this.playOne('stratagem.input.fail');
+		this.stopOne('stratagem.input.ready');
+		// this.stopOne('stratagem.input.loop');
 	}
 
 	public playStratagemInputReady() {
+		// this.playOneThenNext('stratagem.input.ready', 'stratagem.input.loop');
 		this.playOne('stratagem.input.ready');
 	}
 
 	public playStratagemInputDeploy() {
 		this.playOne('stratagem.input.deploy');
+		this.stopOne('stratagem.input.ready');
+		// this.stopOne('stratagem.input.loop');
 	}
 
 	private playOne(elementId: string) {
@@ -31,6 +36,27 @@ export class AudioService {
 		if (audio) {
 			audio.currentTime = 0;
 			audio.play();
+		}
+	}
+
+	// leaves a gap, as does looping audio at all...
+	// private playOneThenNext(elementId: string, nextElementId: string) {
+	// 	const audio = document.getElementById(elementId) as HTMLAudioElement;
+	// 	if (audio) {
+	// 		audio.onended = () => {
+	// 			this.playOne(nextElementId);
+	// 		};
+			
+	// 		audio.currentTime = 0;
+	// 		audio.play();
+	// 	}
+	// }
+
+	private stopOne(elementId: string) {
+		const audio = document.getElementById(elementId) as HTMLAudioElement;
+		if (audio) {
+			audio.pause();
+			audio.currentTime = 0;
 		}
 	}
 
