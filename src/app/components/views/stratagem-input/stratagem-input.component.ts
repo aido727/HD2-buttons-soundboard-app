@@ -18,6 +18,8 @@ export class StratagemInputComponent implements OnInit {
 	public isInputDisabled?: Observable<boolean>;
 	public codeReady?: Observable<string>;
 
+	private deployDelayInSeconds: number = 1.5;
+
 	constructor(private stratagemInputService: StratagemInputService) {}
 
 	ngOnInit() {
@@ -58,7 +60,7 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public deploy() {
-		this.stratagemInputService.deploy();
+		this.stratagemInputService.deploy(this.deployDelayInSeconds);
 	}
 
 	public clickInput(direction: inputDirection) {

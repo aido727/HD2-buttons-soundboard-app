@@ -159,29 +159,32 @@
 				}
 
 				@keyframes pulseYellow {
-					25%, 75% {
-					  background-color: var(--black-trans);
+					25%,
+					75% {
+						background-color: var(--black-trans);
 					}
 					50% {
-					  background-color: var(--yellow-trans);
+						background-color: var(--yellow-trans);
 					}
 				}
 
 				@keyframes pulseRed {
-					25%, 75% {
-					  background-color: var(--black-trans);
+					25%,
+					75% {
+						background-color: var(--black-trans);
 					}
 					50% {
-					  background-color: var(--red-trans);
+						background-color: var(--red-trans);
 					}
 				}
 
 				@keyframes pulseBlue {
-					25%, 75% {
-					  background-color: var(--black-trans);
+					25%,
+					75% {
+						background-color: var(--black-trans);
 					}
 					50% {
-					  background-color: var(--blue-trans);
+						background-color: var(--blue-trans);
 					}
 				}
 			}

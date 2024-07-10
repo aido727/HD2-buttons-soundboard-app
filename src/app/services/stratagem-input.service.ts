@@ -50,8 +50,8 @@ export class StratagemInputService {
 		this.audioService.playStratagemInputReady();
 	}
 
-	public deploy() {
-		this.audioService.playStratagemInputDeploy();
+	public deploy(delayInSeconds: number = 1.5) {
+		this.audioService.playStratagemInputDeploy(delayInSeconds);
 		this.currentInputCode$.next([]);
 		this.isInputDisabled$.next(false);
 		this.isCodeReady$.next('');
