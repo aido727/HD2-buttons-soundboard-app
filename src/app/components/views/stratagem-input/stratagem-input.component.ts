@@ -17,6 +17,7 @@ export class StratagemInputComponent implements OnInit {
 	public currentInputCode?: Observable<inputDirection[]>;
 	public isInputDisabled?: Observable<boolean>;
 	public codeReady?: Observable<string>;
+	public isDeploying?: Observable<boolean>;
 
 	private deployDelayInSeconds: number = 1.5;
 
@@ -26,6 +27,7 @@ export class StratagemInputComponent implements OnInit {
 		this.currentInputCode = this.stratagemInputService.currentInputCode;
 		this.isInputDisabled = this.stratagemInputService.isInputDisabled;
 		this.codeReady = this.stratagemInputService.codeReady;
+		this.isDeploying = this.stratagemInputService.isDeploying;
 
 		document.onkeydown = (evt: KeyboardEvent) => {
 			if (evt.repeat) {
@@ -52,7 +54,7 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public codeClick() {
-		if (this.getInputMode() == inputMode.Free && this.getCodeReady() == '') {
+		if (this.getInputMode() == inputMode.Free && this.getCodeReady() == '' && this.getIsDeploying() == false) {
 			this.stratagemInputService.forceReady();
 		} else {
 			this.stratagemInputService.cancelCode();
@@ -60,7 +62,10 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public deploy() {
-		this.stratagemInputService.deploy(this.deployDelayInSeconds);
+		if (this.getIsDeploying() == false) {
+			document.getElementById('inputDeploy')?.classList.add('active');
+			this.stratagemInputService.deploy(this.deployDelayInSeconds);
+		}
 	}
 
 	public clickInput(direction: inputDirection) {
@@ -71,6 +76,10 @@ export class StratagemInputComponent implements OnInit {
 		if (this.stratagemInputService.getIsInputDisabled() == false) {
 			this.stratagemInputService.registerInput(direction);
 		}
+	}
+
+	public getIsDeploying(): boolean {
+		return this.stratagemInputService.getIsDeploying();
 	}
 
 	public getInputMode(): inputMode {

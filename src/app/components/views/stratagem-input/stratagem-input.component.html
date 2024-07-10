@@ -4,8 +4,8 @@
 		<div
 			class="stratagem-code-container"
 			(pointerdown)="codeClick()"
-			[class.cancel]="getInputMode() != inputMode.Free || getCodeReady() != ''"
-			[class.ready]="getInputMode() == inputMode.Free && getCodeReady() == ''"
+			[class.cancel]="getIsDeploying() == false && (getInputMode() != inputMode.Free || getCodeReady() != '')"
+			[class.ready]="getIsDeploying() == false && (getInputMode() == inputMode.Free && getCodeReady() == '')"
 		>
 			<ng-template ngFor [ngForOf]="currentInputCode | async" let-input>
 				<div class="stratagem-direction-container">
@@ -18,8 +18,8 @@
 	</div>
 	<div class="content-container">
 		<div *ngIf="(codeReady | async) != ''" class="deploy-button-container">
-			<button id="inputDeploy" class="deploy-button" (pointerdown)="deploy()">
-				<span>DEPLOY {{ getCodeReady() }}</span>
+			<button id="inputDeploy" class="deploy-button" (pointerdown)="deploy()" [disabled]="(isDeploying | async) == true">
+				<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady() }}</span>
 			</button>
 		</div>
 		<div class="stratagem-inputs-container">

@@ -27,7 +27,7 @@ export class AudioService {
 		this.playOne('stratagem.input.ready');
 	}
 
-	public playStratagemInputDeploy(delayInSeconds: number) {
+	public playStratagemInputDeploy(delayInSeconds: number = 0) {
 		this.fadeOut('stratagem.input.ready', delayInSeconds);
 		setTimeout(() => {
 			this.playOne('stratagem.input.deploy');
@@ -48,7 +48,6 @@ export class AudioService {
 			const targetVolume = 0;
 			const tick = 50; // milliseconds
 			const volumeDecrease = timeInSeconds / tick;
-			console.log(volumeDecrease);
 
 			this.decreaseVolume(targetVolume, audio, volumeDecrease, tick);
 		}
@@ -56,9 +55,7 @@ export class AudioService {
 
 	private decreaseVolume(targetVolume: number, audio: HTMLAudioElement, volumeDecrease: number, tick: number) {
 		var vol = Math.max(targetVolume, audio.volume - volumeDecrease);
-		console.log(vol);
 		audio.volume = vol;
-		console.log(audio.volume);
 
 		if (audio.volume > targetVolume) {
 			setTimeout(() => {

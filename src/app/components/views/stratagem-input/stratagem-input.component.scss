@@ -129,16 +129,21 @@
 				animation-iteration-count: infinite;
 
 				&:hover,
-				&:active {
+				&:active,
+				&.active {
 					animation: none;
 					background-color: var(--yellow-trans);
 					border-color: var(--yellow);
 					box-shadow: 0 0 16px 0 var(--yellow);
 				}
 
+				&.active:not(.red, .blue) {
+					border-color: var(--white);
+				}
+
 				&.red {
 					animation-name: pulseRed;
-					&:hover,
+					&:hover:not(.active),
 					&:active {
 						animation: none;
 						background-color: var(--red-trans);
@@ -149,7 +154,7 @@
 
 				&.blue {
 					animation-name: pulseBlue;
-					&:hover,
+					&:hover:not(.active),
 					&:active {
 						animation: none;
 						background-color: var(--blue-trans);

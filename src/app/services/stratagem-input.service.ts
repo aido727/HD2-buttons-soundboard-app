@@ -19,6 +19,9 @@ export class StratagemInputService {
 	private isCodeReady$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	public codeReady = this.isCodeReady$.asObservable();
 
+	private isDeploying$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+	public isDeploying = this.isDeploying$.asObservable();
+
 	constructor(private audioService: AudioService) {}
 
 	public registerInput(direction: inputDirection) {
@@ -50,18 +53,17 @@ export class StratagemInputService {
 		this.audioService.playStratagemInputReady();
 	}
 
-	public deploy(delayInSeconds: number = 1.5) {
+	public deploy(delayInSeconds: number = 0) {
+		this.isDeploying$.next(true);
 		this.audioService.playStratagemInputDeploy(delayInSeconds);
-		this.currentInputCode$.next([]);
-		this.isInputDisabled$.next(false);
-		this.isCodeReady$.next('');
+		setTimeout(() => {
+			this.reset();
+		}, 1000 * delayInSeconds);
 	}
 
 	public cancelCode() {
 		this.audioService.playStratagemInputFail();
-		this.currentInputCode$.next([]);
-		this.isInputDisabled$.next(false);
-		this.isCodeReady$.next('');
+		this.reset();
 	}
 
 	public getIsInputDisabled(): boolean {
@@ -76,7 +78,18 @@ export class StratagemInputService {
 		return this.isCodeReady$.getValue();
 	}
 
+	public getIsDeploying(): boolean {
+		return this.isDeploying$.getValue();
+	}
+
 	private addInput(direction: inputDirection) {
 		this.currentInputCode$.next(this.currentInputCode$.getValue().concat(direction));
+	}
+
+	private reset() {
+		this.isDeploying$.next(false);
+		this.currentInputCode$.next([]);
+		this.isInputDisabled$.next(false);
+		this.isCodeReady$.next('');
 	}
 }
