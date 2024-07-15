@@ -57,7 +57,7 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public codeClick() {
-		if (this.getInputMode() == inputMode.Free && this.getCodeReady() == '' && this.getIsDeploying() == false) {
+		if (this.getInputMode() == inputMode[0] && this.getCodeReady() == '' && this.getIsDeploying() == false) {
 			this.stratagemInputService.forceReady();
 		} else {
 			this.stratagemInputService.cancelCode();
@@ -85,7 +85,7 @@ export class StratagemInputComponent implements OnInit {
 		return this.stratagemInputService.getIsDeploying();
 	}
 
-	public getInputMode(): inputMode {
+	public getInputMode(): string {
 		return this.stratagemInputService.getInputMode();
 	}
 

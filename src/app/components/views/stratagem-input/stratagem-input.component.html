@@ -4,8 +4,8 @@
 		<div
 			class="stratagem-code-container"
 			(pointerdown)="codeClick()"
-			[class.cancel]="getIsDeploying() == false && (getInputMode() != inputMode.Free || getCodeReady() != '')"
-			[class.ready]="getIsDeploying() == false && (getInputMode() == inputMode.Free && getCodeReady() == '')"
+			[class.cancel]="getIsDeploying() == false && (getInputMode() != inputMode[0] || getCodeReady() != '')"
+			[class.ready]="getIsDeploying() == false && (getInputMode() == inputMode[0] && getCodeReady() == '')"
 		>
 			<ng-template ngFor [ngForOf]="currentInputCode | async" let-input>
 				<div class="stratagem-direction-container">

@@ -21,8 +21,8 @@ export const inputDirectionMap = new Map<string, inputDirection>([
 	['ArrowRight', inputDirection.Right],
 ]);
 
-export enum inputMode {
+export const inputMode: string[] = [
 	'Free',
-	'Code',
+	'Code List',
 	'Blind',
-}
+]

@@ -15,9 +15,4 @@ export class CodeDisplayComponent {
   public inputDirection = inputDirection;
 
   @Input() code!: stratagemCode;
-
-  ngOnInit(): void {
-    console.log(this.code);
-  }
-
 }

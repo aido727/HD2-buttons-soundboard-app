@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class StratagemInputService {
 	public maxInputs = 8;
-	public inputMode: inputMode = inputMode.Free;
+	public inputMode: string = inputMode[0];
 
 	private currentInputCode$: BehaviorSubject<inputDirection[]> = new BehaviorSubject<inputDirection[]>([]);
 	public currentInputCode = this.currentInputCode$.asObservable();
@@ -26,7 +26,7 @@ export class StratagemInputService {
 
 	public registerInput(direction: inputDirection) {
 		if (this.isInputDisabled$.getValue() == false) {
-			if (this.inputMode == inputMode.Free) {
+			if (this.inputMode == inputMode[0]) {
 				if (this.currentInputCode$.getValue().length < this.maxInputs) {
 					this.addInput(direction);
 					this.audioService.playStratagemInputBeep(this.currentInputCode$.getValue().length);
@@ -39,7 +39,7 @@ export class StratagemInputService {
 		}
 	}
 
-	public setMode(mode: inputMode) {
+	public setMode(mode: string) {
 		this.inputMode = mode;
 	}
 
@@ -70,7 +70,7 @@ export class StratagemInputService {
 		return this.isInputDisabled$.getValue();
 	}
 
-	public getInputMode(): inputMode {
+	public getInputMode(): string {
 		return this.inputMode;
 	}
 

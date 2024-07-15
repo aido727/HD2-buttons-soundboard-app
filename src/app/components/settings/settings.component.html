@@ -1,7 +1,17 @@
 <div id="settings-button">
-    <button (click)="showMenu = !showMenu"><img/></button>
+    <button class="svg-button" (click)="showMenu = !showMenu"><img/></button>
 </div>
 
 <div id="settings-menu" [@menuTrigger]="showMenu ? 'open' : 'close'">
-    <span>Menu</span>
+    <div class="header">
+        <h2>Settings</h2>
+        <button class="svg-button" (click)="showMenu = false"><img/></button>
+    </div>
+    <h3>Stratagem Mode:</h3>
+    <form [formGroup]="form">
+        <ng-container *ngFor="let mode of inputModes">
+            <input type="radio" [id]="mode" formControlName="mode" [value]="mode">
+            <label [for]="mode">{{mode}}</label><br>
+        </ng-container>
+    </form>
 </div>
