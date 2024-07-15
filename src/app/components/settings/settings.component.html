@@ -1,0 +1,7 @@
+<div id="settings-button">
+    <button (click)="showMenu = !showMenu"><img/></button>
+</div>
+
+<div id="settings-menu" [@menuTrigger]="showMenu ? 'open' : 'close'">
+    <span>Menu</span>
+</div>

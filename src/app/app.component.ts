@@ -5,12 +5,12 @@ import { SwUpdate } from '@angular/service-worker';
 import { InstallButtonComponent } from './components/install-button/install-button.component';
 import { StratagemInputComponent } from './components/views/stratagem-input/stratagem-input.component';
 import { CommonModule } from '@angular/common';
-import { StratagemInputService } from './services/stratagem-input.service';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, CommonModule, InstallButtonComponent, StratagemInputComponent],
+	imports: [RouterOutlet, CommonModule, InstallButtonComponent, StratagemInputComponent, SettingsComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
@@ -18,11 +18,9 @@ export class AppComponent implements OnInit {
 	private autoUpdateMinutes = 30;
 	public updating: boolean = false;
 
-	public stratagemInputBeepPitches = this.stratagemInputService.maxInputs;
 
 	constructor(
-		private swUpdate: SwUpdate,
-		private stratagemInputService: StratagemInputService,
+		private swUpdate: SwUpdate
 	) {}
 
 	ngOnInit() {

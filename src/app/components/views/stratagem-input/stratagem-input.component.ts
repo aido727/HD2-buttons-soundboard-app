@@ -22,6 +22,8 @@ export class StratagemInputComponent implements OnInit {
 
 	private deployDelayInSeconds: number = 1.5;
 
+	public stratagemInputBeepPitches = this.stratagemInputService.maxInputs;
+
 	constructor(private stratagemInputService: StratagemInputService) {}
 
 	ngOnInit() {
