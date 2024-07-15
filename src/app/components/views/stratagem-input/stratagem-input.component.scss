@@ -14,14 +14,12 @@
 		width: 100%;
 		max-height: 20%;
 		max-width: 95%;
-		position: relative;
 
 		img {
 			width: 100%;
 			max-height: 100%;
 			max-width: 100%;
 			object-fit: contain;
-			z-index: -10;
 		}
 
 		.stratagem-code-container {
@@ -74,12 +72,20 @@
 
 	.content-container {
 		display: flex;
-		align-items: center;
+		flex-direction: row;
 		justify-content: center;
 		height: 100%;
 		width: 100%;
-		padding: 0.5rem;
-		position: relative;
+		padding: 0.5rem 0;
+
+		app-code-list {
+			z-index: 50;
+			position: absolute;
+			overflow-x: auto;
+			height: calc(100% - 20% - 26px - 28px - 48px - 0.5rem);
+			left: 0;
+			bottom: calc(28px + 48px + 0.5rem);
+		}
 
 		.stratagem-inputs-container {
 			max-height: 100%;

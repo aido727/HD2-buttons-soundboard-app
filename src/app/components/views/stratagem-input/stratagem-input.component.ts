@@ -3,11 +3,12 @@ import { inputDirectionMap, inputDirection, inputMode } from '../../../models/st
 import { StratagemInputService } from '../../../services/stratagem-input.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { CodeListComponent } from '../../code-list/code-list.component';
 
 @Component({
 	selector: 'app-stratagem-input',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, CodeListComponent],
 	templateUrl: './stratagem-input.component.html',
 	styleUrl: './stratagem-input.component.scss',
 })
