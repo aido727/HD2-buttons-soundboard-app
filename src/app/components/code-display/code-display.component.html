@@ -1,3 +1,12 @@
 <div class="code-display-container">
-    <span>code-display works!</span>
+    <span>{{code.name}}</span>
+    <div class="code-container">
+        <ng-container *ngFor="let input of code.code">
+            <div class="stratagem-direction-container">
+                <div class="stratagem-direction" [class]="inputDirection[input]">
+                    <img />
+                </div>
+            </div>
+        </ng-container>
+    </div>
 </div>
