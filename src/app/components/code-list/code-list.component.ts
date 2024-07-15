@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CodeDisplayComponent } from '../code-display/code-display.component';
-import { stratagemCode, stratagemCodes } from '../../models/stratagem-codes';
+import { stratagemCode } from '../../models/stratagem-codes';
 import { CommonModule } from '@angular/common';
+import { StratagemInputService } from '../../services/stratagem-input.service';
+import { inputDirection } from '../../models/stratagem-inputs';
 
 @Component({
   selector: 'app-code-list',
@@ -10,11 +12,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './code-list.component.html',
   styleUrl: './code-list.component.scss'
 })
-export class CodeListComponent implements OnInit {
-  public codes: stratagemCode[] = [];
-  constructor() {}
+export class CodeListComponent {
+  public currentCode: inputDirection[] = [];
+  
+  constructor(private stratagemInputService: StratagemInputService) {}
 
-  ngOnInit() {
-    this.codes = stratagemCodes;
+  get codes(): stratagemCode[] {
+    return this.stratagemInputService.filteredCodesByInput;
   }
 }

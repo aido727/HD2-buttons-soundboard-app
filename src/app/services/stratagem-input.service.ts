@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AudioService } from './audio.service';
 import { inputDirection, inputMode } from '../models/stratagem-inputs';
 import { BehaviorSubject } from 'rxjs';
+import { stratagemCode, stratagemCodes } from '../models/stratagem-codes';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class StratagemInputService {
 	public maxInputs = 8;
-	public inputMode: string = inputMode[0];
+	public inputMode: string = inputMode[1];
 
 	private currentInputCode$: BehaviorSubject<inputDirection[]> = new BehaviorSubject<inputDirection[]>([]);
 	public currentInputCode = this.currentInputCode$.asObservable();
@@ -22,25 +23,37 @@ export class StratagemInputService {
 	private isDeploying$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	public isDeploying = this.isDeploying$.asObservable();
 
+	public filteredCodesByInput: stratagemCode[] = stratagemCodes;
+
 	constructor(private audioService: AudioService) {}
 
 	public registerInput(direction: inputDirection) {
 		if (this.isInputDisabled$.getValue() == false) {
-			if (this.inputMode == inputMode[0]) {
-				if (this.currentInputCode$.getValue().length < this.maxInputs) {
-					this.addInput(direction);
-					this.audioService.playStratagemInputBeep(this.currentInputCode$.getValue().length);
-					if (this.currentInputCode$.getValue().length >= this.maxInputs) {
-						this.forceReady();
-					}
+			if (this.currentInputCode$.getValue().length < this.maxInputs) {
+				this.addInput(direction);
+				this.audioService.playStratagemInputBeep(this.currentInputCode$.getValue().length);
+				switch(this.inputMode) {
+					case inputMode[0]: // Free
+						if (this.currentInputCode$.getValue().length >= this.maxInputs) {
+							this.forceReady();
+						}
+						break;
+					case inputMode[1]: // Code List
+					case inputMode[2]: // Blind
+						this.updateFilteredCodesByInput();
+						// check for matched code
+							// deploy ready if true
+						// else check for remaining possible codes
+							// fail out if false
+						break;
 				}
-			} else {
 			}
 		}
 	}
 
 	public setMode(mode: string) {
 		this.inputMode = mode;
+		this.reset();
 	}
 
 	public forceReady() {
@@ -82,6 +95,10 @@ export class StratagemInputService {
 		return this.isDeploying$.getValue();
 	}
 
+	private updateFilteredCodesByInput() {
+		this.filteredCodesByInput = stratagemCodes.filter((code) => code.code.slice(0, this.currentInputCode$.getValue().length).toString() == this.currentInputCode$.getValue().toString());
+	}
+
 	private addInput(direction: inputDirection) {
 		this.currentInputCode$.next(this.currentInputCode$.getValue().concat(direction));
 	}
@@ -91,5 +108,6 @@ export class StratagemInputService {
 		this.currentInputCode$.next([]);
 		this.isInputDisabled$.next(false);
 		this.isCodeReady$.next('');
+		this.filteredCodesByInput = stratagemCodes;
 	}
 }

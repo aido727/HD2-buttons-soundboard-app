@@ -15,4 +15,5 @@ export class CodeDisplayComponent {
   public inputDirection = inputDirection;
 
   @Input() code!: stratagemCode;
+  @Input() currentCode: inputDirection[] = [];
 }
