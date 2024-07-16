@@ -4,6 +4,7 @@ import { StratagemInputService } from '../../../services/stratagem-input.service
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CodeListComponent } from '../../code-list/code-list.component';
+import { stratagemCode } from '../../../models/stratagem-codes';
 
 @Component({
 	selector: 'app-stratagem-input',
@@ -17,7 +18,7 @@ export class StratagemInputComponent implements OnInit {
 	public inputMode = inputMode;
 	public currentInputCode?: Observable<inputDirection[]>;
 	public isInputDisabled?: Observable<boolean>;
-	public codeReady?: Observable<string>;
+	public codeReady?: Observable<stratagemCode | null>;
 	public isDeploying?: Observable<boolean>;
 
 	private deployDelayInSeconds: number = 1.5;
@@ -57,7 +58,7 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public codeClick() {
-		if (this.getInputMode() == inputMode[0] && this.getCodeReady() == '' && this.getIsDeploying() == false) {
+		if (this.getInputMode() == inputMode[0] && this.getCodeReady() == null && this.getIsDeploying() == false) {
 			this.stratagemInputService.forceReady();
 		} else {
 			this.stratagemInputService.cancelCode();
@@ -89,7 +90,7 @@ export class StratagemInputComponent implements OnInit {
 		return this.stratagemInputService.getInputMode();
 	}
 
-	public getCodeReady(): string {
+	public getCodeReady(): stratagemCode | null {
 		return this.stratagemInputService.getCodeReady();
 	}
 }

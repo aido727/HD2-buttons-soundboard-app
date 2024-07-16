@@ -8,9 +8,12 @@ export interface stratagemCode {
     voice: string
     colour: "red" | "blue" | "yellow"
     deployType: "drop-pod" | "pelican" | "beam-only" | "skip" // "skip" is such as re-arming Eagle-1 or mission critical stratagems
-    type: "Supply" | "Mission" | "Defensive" | "Offensive"
+    type: "" | "Supply" | "Mission" | "Defensive" | "Offensive"
     subType: "" | "Backpack" | "Support Weapon" | "Other" | "Orbital" | "Eagle"
 }
+
+export const genericStratagemCode: stratagemCode = {
+    name: "Stratagem", icon: "", code: [], sound: "", voice: "", colour: "yellow", deployType: "skip", type: "", subType: ""}
 
 export const stratagemCodes: stratagemCode[] = [
     {name: "Jump Pack", icon: "", code: [inputDirection.Down, inputDirection.Up, inputDirection.Up, inputDirection.Down, inputDirection.Up], sound: "", voice: "", colour: "blue", deployType: "drop-pod", type: "Supply", subType: "Backpack"},

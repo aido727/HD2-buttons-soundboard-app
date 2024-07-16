@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AudioService } from './audio.service';
 import { inputDirection, inputMode } from '../models/stratagem-inputs';
 import { BehaviorSubject } from 'rxjs';
-import { stratagemCode, stratagemCodes } from '../models/stratagem-codes';
+import { genericStratagemCode, stratagemCode, stratagemCodes } from '../models/stratagem-codes';
 
 @Injectable({
 	providedIn: 'root',
@@ -17,7 +17,7 @@ export class StratagemInputService {
 	private isInputDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	public isInputDisabled = this.isInputDisabled$.asObservable();
 
-	private isCodeReady$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+	private isCodeReady$: BehaviorSubject<stratagemCode | null> = new BehaviorSubject<stratagemCode | null>(null);
 	public codeReady = this.isCodeReady$.asObservable();
 
 	private isDeploying$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -42,7 +42,7 @@ export class StratagemInputService {
 					case inputMode[2]: // Blind
 						this.updateFilteredCodesByInput();
 						if(this.filteredCodesByInput.length == 1 && this.currentInputCode$.getValue().length == this.filteredCodesByInput[0].code.length) {
-							this.ready(this.filteredCodesByInput[0].name);
+							this.ready(this.filteredCodesByInput[0]);
 						}
 						else if (this.filteredCodesByInput.length == 0) {
 							this.cancelCode();
@@ -58,14 +58,14 @@ export class StratagemInputService {
 		this.reset();
 	}
 
-	private ready(stratagemName: string) {
-		this.isCodeReady$.next(stratagemName);
+	private ready(stratagem: stratagemCode | null) {
+		this.isCodeReady$.next(stratagem);
 		this.isInputDisabled$.next(true);
 		this.audioService.playStratagemInputReady();
 	}
 
 	public forceReady() {
-		this.ready('Stratagem');
+		this.ready(genericStratagemCode);
 	}
 
 	public deploy(delayInSeconds: number = 0) {
@@ -89,7 +89,7 @@ export class StratagemInputService {
 		return this.inputMode;
 	}
 
-	public getCodeReady(): string {
+	public getCodeReady(): stratagemCode | null {
 		return this.isCodeReady$.getValue();
 	}
 
@@ -113,7 +113,7 @@ export class StratagemInputService {
 		this.isDeploying$.next(false);
 		this.currentInputCode$.next([]);
 		this.isInputDisabled$.next(false);
-		this.isCodeReady$.next('');
+		this.isCodeReady$.next(null);
 		this.filteredCodesByInput = stratagemCodes;
 	}
 }
