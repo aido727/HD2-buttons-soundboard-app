@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	<div class="content-container">
-		<app-code-list *ngIf="getInputMode() == inputMode[1]"></app-code-list>
+		<app-code-list *ngIf="getInputMode() == inputMode[1] && (codeReady | async) == ''"></app-code-list>
 		<div *ngIf="(codeReady | async) != ''" class="deploy-button-container">
 			<button id="inputDeploy" class="deploy-button" (pointerdown)="deploy()" [disabled]="(isDeploying | async) == true">
 				<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady() }}</span>

@@ -41,10 +41,12 @@ export class StratagemInputService {
 					case inputMode[1]: // Code List
 					case inputMode[2]: // Blind
 						this.updateFilteredCodesByInput();
-						// check for matched code
-							// deploy ready if true
-						// else check for remaining possible codes
-							// fail out if false
+						if(this.filteredCodesByInput.length == 1 && this.currentInputCode$.getValue().length == this.filteredCodesByInput[0].code.length) {
+							this.ready(this.filteredCodesByInput[0].name);
+						}
+						else if (this.filteredCodesByInput.length == 0) {
+							this.cancelCode();
+						}							
 						break;
 				}
 			}
@@ -56,14 +58,14 @@ export class StratagemInputService {
 		this.reset();
 	}
 
-	public forceReady() {
-		this.isCodeReady$.next('Stratagem');
-		this.ready();
-	}
-
-	private ready() {
+	private ready(stratagemName: string) {
+		this.isCodeReady$.next(stratagemName);
 		this.isInputDisabled$.next(true);
 		this.audioService.playStratagemInputReady();
+	}
+
+	public forceReady() {
+		this.ready('Stratagem');
 	}
 
 	public deploy(delayInSeconds: number = 0) {
