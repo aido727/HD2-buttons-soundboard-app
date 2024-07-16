@@ -13,6 +13,14 @@
 
         .stratagem-direction-container {
             margin: 1px 3px;
+
+            .stratagem-direction {
+                opacity: 60%;
+
+                &.match {
+                    opacity: 100%;
+                }
+            }
         }
     }
 }

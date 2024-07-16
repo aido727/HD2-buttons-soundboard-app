@@ -1,9 +1,9 @@
 <div class="code-display-container">
     <span>{{code.name}}</span>
     <div class="code-container">
-        <ng-container *ngFor="let input of code.code">
+        <ng-container *ngFor="let input of code.code; let i = index">
             <div class="stratagem-direction-container">
-                <div class="stratagem-direction" [class]="inputDirection[input]">
+                <div class="stratagem-direction" [class]="inputDirection[input]" [class.match]="matchInput(input, i)">
                     <img />
                 </div>
             </div>

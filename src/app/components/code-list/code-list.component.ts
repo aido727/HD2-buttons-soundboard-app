@@ -12,12 +12,14 @@ import { inputDirection } from '../../models/stratagem-inputs';
   templateUrl: './code-list.component.html',
   styleUrl: './code-list.component.scss'
 })
-export class CodeListComponent {
-  public currentCode: inputDirection[] = [];
-  
+export class CodeListComponent { 
   constructor(private stratagemInputService: StratagemInputService) {}
 
   get codes(): stratagemCode[] {
     return this.stratagemInputService.filteredCodesByInput;
+  }
+
+  get currentCode(): inputDirection[] {
+    return this.stratagemInputService.getCurrentInputCode();
   }
 }

@@ -97,6 +97,10 @@ export class StratagemInputService {
 		return this.isDeploying$.getValue();
 	}
 
+	public getCurrentInputCode(): inputDirection[] {
+		return this.currentInputCode$.getValue();
+	}
+
 	private updateFilteredCodesByInput() {
 		this.filteredCodesByInput = stratagemCodes.filter((code) => code.code.slice(0, this.currentInputCode$.getValue().length).toString() == this.currentInputCode$.getValue().toString());
 	}

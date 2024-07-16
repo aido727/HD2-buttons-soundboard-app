@@ -16,4 +16,8 @@ export class CodeDisplayComponent {
 
   @Input() code!: stratagemCode;
   @Input() currentCode: inputDirection[] = [];
+
+  public matchInput(input: inputDirection, index: number): boolean {
+    return this.currentCode[index] == input;
+  }
 }
