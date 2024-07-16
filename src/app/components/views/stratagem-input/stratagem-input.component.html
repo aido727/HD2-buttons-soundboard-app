@@ -47,11 +47,3 @@
 		<div class="battery-end"></div>
 	</div>
 </div>
-
-<ng-container *ngFor="let stratagemInputBeepNum of [].constructor(stratagemInputBeepPitches); let i = index">
-	<audio [id]="'stratagem.input.beep.' + (i + 1)" [src]="'/audio/sounds/stratagem-input-' + (i + 1) + '.ogg'"></audio>
-</ng-container>
-<audio id="stratagem.input.fail.1" src="/audio/sounds/stratagem-input-fail-1.ogg"></audio>
-<audio id="stratagem.input.fail.2" src="/audio/sounds/stratagem-input-fail-2.ogg"></audio>
-<audio id="stratagem.input.ready" src="/audio/sounds/stratagem-input-ready-long.ogg"></audio>
-<audio id="stratagem.input.deploy" src="/audio/sounds/stratagem-input-deploy.ogg"></audio>

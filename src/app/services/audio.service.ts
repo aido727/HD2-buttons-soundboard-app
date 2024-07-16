@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { audioFiles } from '../models/audio-list';
 
 @Injectable({
 	providedIn: 'root',
@@ -6,31 +7,43 @@ import { Injectable } from '@angular/core';
 export class AudioService {
 	private lastPlayedStratagemInputFail = 2;
 
-	constructor() {}
+	constructor() {
+		this.buildAudioElements();
+	}
+
+	private buildAudioElements() {
+		audioFiles.forEach((audioFile) => {
+			const audio = document.createElement('audio');
+			audio.id = audioFile;
+			audio.src = '/audio/sounds/' + audioFile + '.ogg';
+			audio.load();
+			document.body.appendChild(audio);
+		});
+	}
 
 	public playStratagemInputBeep(pitchNum: number = 1) {
-		this.playOne('stratagem.input.beep.' + pitchNum);
+		this.playOne('stratagem-input-beep-' + pitchNum);
 	}
 
 	public playStratagemInputFail() {
 		if (this.lastPlayedStratagemInputFail != 1) {
 			this.lastPlayedStratagemInputFail = 1;
-			this.playOne('stratagem.input.fail.1');
+			this.playOne('stratagem-input-fail-1');
 		} else {
 			this.lastPlayedStratagemInputFail = 2;
-			this.playOne('stratagem.input.fail.2');
+			this.playOne('stratagem-input-fail-2');
 		}
-		this.stopOne('stratagem.input.ready');
+		this.stopOne('stratagem-input-ready-long');
 	}
 
 	public playStratagemInputReady() {
-		this.playOne('stratagem.input.ready');
+		this.playOne('stratagem-input-ready-long');
 	}
 
 	public playStratagemInputDeploy(delayInSeconds: number = 0) {
-		this.fadeOut('stratagem.input.ready', delayInSeconds);
+		this.fadeOut('stratagem-input-ready-long', delayInSeconds);
 		setTimeout(() => {
-			this.playOne('stratagem.input.deploy');
+			this.playOne('stratagem-input-deploy');
 		}, 1000 * delayInSeconds);
 	}
 

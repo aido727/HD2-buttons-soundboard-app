@@ -46,7 +46,6 @@ export class SettingsComponent implements OnInit {
   changes!:Subscription
 
   constructor(fb: FormBuilder, private stratagemInputService: StratagemInputService) {
-    console.log(this.stratagemInputService.inputMode);
     this.form = fb.group({
       mode: [this.stratagemInputService.inputMode, Validators.required]
     });

@@ -22,8 +22,7 @@ export class StratagemInputComponent implements OnInit {
 	public isDeploying?: Observable<boolean>;
 
 	private deployDelayInSeconds: number = 1.5;
-
-	public stratagemInputBeepPitches = this.stratagemInputService.maxInputs;
+	
 
 	constructor(private stratagemInputService: StratagemInputService) {}
 
