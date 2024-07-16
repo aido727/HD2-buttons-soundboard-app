@@ -20,4 +20,8 @@ export class CodeDisplayComponent {
   public matchInput(input: inputDirection, index: number): boolean {
     return this.currentCode[index] == input;
   }
+
+  public getIcon() {
+    return '/images/' + this.code.icon + '.svg';
+  }
 }

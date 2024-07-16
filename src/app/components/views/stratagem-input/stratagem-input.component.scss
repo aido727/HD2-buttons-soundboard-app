@@ -106,7 +106,7 @@
 			}
 
 			&.list-position {
-				margin-left: 25vw;
+				margin-left: 33vw;
 			}
 		}
 
@@ -138,6 +138,17 @@
 				animation-name: pulseYellow;
 				animation-duration: 1.5s;
 				animation-iteration-count: infinite;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-around;
+				
+				img {
+					border: 8px solid var(--yellow);
+					height: 192px;
+					width: 192px;
+					background-color: var(--dark-gray);
+				}
 
 				&:hover,
 				&:active,
@@ -161,6 +172,10 @@
 						border-color: var(--red);
 						box-shadow: 0 0 16px 0 var(--red);
 					}
+
+					img {
+						border-color: var(--red);
+					}
 				}
 
 				&.blue {
@@ -171,6 +186,10 @@
 						background-color: var(--blue-trans);
 						border-color: var(--blue);
 						box-shadow: 0 0 16px 0 var(--blue);
+					}
+
+					img {
+						border-color: var(--blue);
 					}
 				}
 

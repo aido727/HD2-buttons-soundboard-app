@@ -20,6 +20,7 @@
 		<app-code-list *ngIf="getInputMode() == inputMode[1] && (codeReady | async) == null"></app-code-list>
 		<div *ngIf="(codeReady | async) != null" class="deploy-button-container">
 			<button id="inputDeploy" class="deploy-button" [class]="getCodeReady()!.colour" (pointerdown)="deploy()" [disabled]="(isDeploying | async) == true">
+				<img *ngIf="getCodeReady()!.icon" [src]="getReadyIcon()"/>
 				<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady()!.name }}</span>
 			</button>
 		</div>

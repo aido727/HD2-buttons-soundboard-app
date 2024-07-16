@@ -93,4 +93,8 @@ export class StratagemInputComponent implements OnInit {
 	public getCodeReady(): stratagemCode | null {
 		return this.stratagemInputService.getCodeReady();
 	}
+
+	public getReadyIcon(): string {
+		return '/images/' + this.getCodeReady()?.icon + '.svg';
+	}
 }
