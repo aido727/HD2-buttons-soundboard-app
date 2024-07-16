@@ -94,6 +94,6 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public getReadyIcon(): string {
-		return '/images/' + this.getCodeReady()?.icon + '.svg';
+		return '/images/stratagems/' + this.getCodeReady()?.icon + '.svg';
 	}
 }

@@ -144,7 +144,7 @@
 				justify-content: space-around;
 				
 				img {
-					border: 8px solid var(--yellow);
+					border: 8px solid var(--yellow-border);
 					height: 192px;
 					width: 192px;
 					background-color: var(--dark-gray);
@@ -172,10 +172,6 @@
 						border-color: var(--red);
 						box-shadow: 0 0 16px 0 var(--red);
 					}
-
-					img {
-						border-color: var(--red);
-					}
 				}
 
 				&.blue {
@@ -187,9 +183,17 @@
 						border-color: var(--blue);
 						box-shadow: 0 0 16px 0 var(--blue);
 					}
+				}
 
-					img {
-						border-color: var(--blue);
+				img {
+					&.red {
+						border-color: var(--red-border);
+					}
+					&.blue {
+						border-color: var(--blue-border);
+					}
+					&.green {
+						border-color: var(--green-border);
 					}
 				}
 

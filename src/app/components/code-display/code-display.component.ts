@@ -22,6 +22,6 @@ export class CodeDisplayComponent {
   }
 
   public getIcon() {
-    return '/images/' + this.code.icon + '.svg';
+    return '/images/stratagems/' + this.code.icon + '.svg';
   }
 }
