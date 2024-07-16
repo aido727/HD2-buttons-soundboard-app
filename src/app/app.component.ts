@@ -6,6 +6,7 @@ import { InstallButtonComponent } from './components/install-button/install-butt
 import { StratagemInputComponent } from './components/views/stratagem-input/stratagem-input.component';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './components/settings/settings.component';
+import { AudioService } from './services/audio.service';
 
 @Component({
 	selector: 'app-root',
@@ -17,10 +18,12 @@ import { SettingsComponent } from './components/settings/settings.component';
 export class AppComponent implements OnInit {
 	private autoUpdateMinutes = 30;
 	public updating: boolean = false;
+	public audioLoaded: boolean = false;
 
 
 	constructor(
-		private swUpdate: SwUpdate
+		private swUpdate: SwUpdate,
+		private audioService: AudioService
 	) {}
 
 	ngOnInit() {
@@ -48,5 +51,8 @@ export class AppComponent implements OnInit {
 				1000 * 60 * this.autoUpdateMinutes,
 			);
 		}
+		this.audioService.buildAudioElements().then((result) => {
+			this.audioLoaded = result;
+		});
 	}
 }

@@ -7,18 +7,22 @@ import { audioFiles } from '../models/audio-list';
 export class AudioService {
 	private lastPlayedStratagemInputFail = 2;
 
-	constructor() {
-		this.buildAudioElements();
-	}
-
-	private buildAudioElements() {
+	public async buildAudioElements(): Promise<boolean> {
+		let readyFiles = 0;
 		audioFiles.forEach((audioFile) => {
 			const audio = document.createElement('audio');
 			audio.id = audioFile;
 			audio.src = '/audio/sounds/' + audioFile + '.ogg';
+			audio.addEventListener('canplaythrough', () => {
+				readyFiles++;
+			})
 			audio.load();
 			document.body.appendChild(audio);
 		});
+		while(readyFiles < audioFiles.length) {
+			await new Promise((resolve) => setTimeout(resolve, 100));
+		}
+		return true;
 	}
 
 	public playStratagemInputBeep(pitchNum: number = 1) {
