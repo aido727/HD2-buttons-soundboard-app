@@ -8,6 +8,10 @@
     display: flex;
     align-items: center;
 
+    img {
+        height: 100%;
+    }
+
     .icon {
         background-color: var(--dark-gray);
         height: 45px;

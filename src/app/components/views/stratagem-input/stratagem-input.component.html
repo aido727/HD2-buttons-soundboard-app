@@ -17,26 +17,30 @@
 		</div>
 	</div>
 	<div class="content-container">
-		<app-code-list *ngIf="getInputMode() == inputMode[1] && (codeReady | async) == null"></app-code-list>
 		<div *ngIf="(codeReady | async) != null" class="deploy-button-container">
 			<button id="inputDeploy" class="deploy-button" [class]="getCodeReady()!.colour" (pointerdown)="deploy()" [disabled]="(isDeploying | async) == true">
 				<img *ngIf="getCodeReady()!.icon" [src]="getReadyIcon()" [class]="getCodeReady()!.borderColour"/>
 				<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady()!.name }}</span>
 			</button>
 		</div>
-		<div class="stratagem-inputs-container" [class.list-position]="getInputMode() == inputMode[1]">
-			<button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirection.Up)" [disabled]="isInputDisabled | async">
-				<img />
-			</button>
-			<button id="inputLeft" class="stratagem-input left" (pointerdown)="clickInput(inputDirection.Left)" [disabled]="isInputDisabled | async">
-				<img />
-			</button>
-			<button id="inputDown" class="stratagem-input down" (pointerdown)="clickInput(inputDirection.Down)" [disabled]="isInputDisabled | async">
-				<img />
-			</button>
-			<button id="inputRight" class="stratagem-input right" (pointerdown)="clickInput(inputDirection.Right)" [disabled]="isInputDisabled | async">
-				<img />
-			</button>
+		<div *ngIf="(codeReady | async) == null" class="inner-content-container">
+			<div class="code-list-container">
+				<app-code-list *ngIf="getInputMode() == inputMode[1]"></app-code-list>
+			</div>
+			<div class="stratagem-inputs-container">
+				<button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirection.Up)" [disabled]="isInputDisabled | async">
+					<img />
+				</button>
+				<button id="inputLeft" class="stratagem-input left" (pointerdown)="clickInput(inputDirection.Left)" [disabled]="isInputDisabled | async">
+					<img />
+				</button>
+				<button id="inputDown" class="stratagem-input down" (pointerdown)="clickInput(inputDirection.Down)" [disabled]="isInputDisabled | async">
+					<img />
+				</button>
+				<button id="inputRight" class="stratagem-input right" (pointerdown)="clickInput(inputDirection.Right)" [disabled]="isInputDisabled | async">
+					<img />
+				</button>
+			</div>
 		</div>
 	</div>
 	<div class="battery-container">

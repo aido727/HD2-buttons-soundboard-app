@@ -73,45 +73,11 @@
 
 	.content-container {
 		display: flex;
-		flex-direction: row;
-		justify-content: center;
 		height: 100%;
 		width: 100%;
 		padding: 0.5rem 0;
-		position: relative;
-
-		app-code-list {
-			z-index: 50;
-			position: absolute;
-			height: 100%;
-			left: 0;
-			bottom: 0.5rem;
-		}
-
-		.stratagem-inputs-container {
-			max-height: 100%;
-			max-width: 80%;
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			grid-template-rows: 50% 50%;
-
-			#inputUp {
-				grid-column-start: 2;
-			}
-
-			#inputLeft,
-			#inputDown,
-			#inputRight {
-				grid-row-start: 2;
-			}
-
-			&.list-position {
-				margin-left: 33vw;
-			}
-		}
 
 		.deploy-button-container {
-			position: absolute;
 			height: 100%;
 			width: 100%;
 			z-index: 100;
@@ -122,8 +88,6 @@
 			.deploy-button {
 				height: 100%;
 				width: 100%;
-				max-width: calc(100% - 48px);
-				max-height: calc(100% - 24px);
 				font-size: 32pt;
 				border: 4px solid transparent;
 				background-color: var(--black-trans);
@@ -142,12 +106,12 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: space-around;
+				gap: 16px;
 				
 				img {
 					border: 8px solid var(--yellow-border);
-					height: 192px;
-					width: 192px;
 					background-color: var(--dark-gray);
+					height: 75%;
 				}
 
 				&:hover,
@@ -229,16 +193,50 @@
 			}
 		}
 
-		@media (orientation: landscape) {
-			.stratagem-inputs-container {
-				height: 100%;
-			}
-		}
+		.inner-content-container {
+			display: flex;
+			height: 100%;
+			width: 100%;
+			flex-direction: row;
+			align-items: center;
 
-		@media (orientation: portrait) {
+			.code-list-container {
+				z-index: 50;
+				height: 100%;
+				display: flex;
+				position: relative;
+			}
+
 			.stratagem-inputs-container {
-				width: 100%;
-				align-items: baseline;
+				max-height: 100%;
+				max-width: 80%;
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 50% 50%;
+				margin: auto;
+	
+				#inputUp {
+					grid-column-start: 2;
+				}
+	
+				#inputLeft,
+				#inputDown,
+				#inputRight {
+					grid-row-start: 2;
+				}
+			}
+
+			@media (orientation: landscape) {
+				.stratagem-inputs-container {
+					height: 100%;
+				}
+			}
+	
+			@media (orientation: portrait) {
+				.stratagem-inputs-container {
+					width: 100%;
+					align-items: baseline;
+				}
 			}
 		}
 	}
