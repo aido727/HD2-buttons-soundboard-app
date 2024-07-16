@@ -1,5 +1,10 @@
 h2, h3, p {
     margin: 0;
+    margin-right: 8px;
+}
+
+h3 {
+    margin-bottom: 8px
 }
 
 #settings-button {
@@ -7,8 +12,8 @@ h2, h3, p {
     top: 30px;
     left: 10px;
     z-index: 110;
-    height: 64px;
-    width: 64px;
+    height: 56px;
+    width: 56px;
 
     .svg-button img {
         width: 100%;
@@ -26,13 +31,14 @@ h2, h3, p {
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 12px;
+    height: 100%;
 
     .header {
         display: flex;
         justify-content: space-between;
         align-items: self-end;
-        padding-bottom: .5rem;
+        padding-bottom: 1rem;
     }
 
     .svg-button {
@@ -50,8 +56,18 @@ h2, h3, p {
     cursor: pointer;
     border: 0;
     background: transparent;
-    opacity: 90%;
+    opacity: 80%;
     &:hover {
         opacity: 100%;
     }
+}
+
+.under-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black-trans);
+    z-index: 100;
 }

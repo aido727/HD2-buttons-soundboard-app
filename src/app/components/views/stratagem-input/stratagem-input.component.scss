@@ -105,6 +105,10 @@
 			#inputRight {
 				grid-row-start: 2;
 			}
+
+			&.list-position {
+				margin-left: 20vw;
+			}
 		}
 
 		.deploy-button-container {

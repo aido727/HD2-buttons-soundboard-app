@@ -23,7 +23,7 @@
 				<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady() }}</span>
 			</button>
 		</div>
-		<div class="stratagem-inputs-container">
+		<div class="stratagem-inputs-container" [class.list-position]="getInputMode() == inputMode[1]">
 			<button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirection.Up)" [disabled]="isInputDisabled | async">
 				<img />
 			</button>

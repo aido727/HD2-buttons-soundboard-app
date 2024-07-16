@@ -13,21 +13,28 @@ import { Subscription } from 'rxjs';
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
   animations: [
-    trigger('menuTrigger', [
+    trigger('menuSlide', [
       transition(':enter', [
         style({ transform: 'translateX(-100%)' }),
-        animate('150ms ease-in', style({ transform: 'translateY(0%)' }))
+        animate('150ms ease-in', style({ transform: 'translateX(0%)' }))
       ]),
-
-      state('open', style({ transform: 'translateX(0%)' })),
-      state('close', style({ transform: 'translateX(-101%)' })),
-      transition('open => close', [
-        animate('150ms ease-in')
+      transition(':leave', [
+        style({ transform: 'translateX(0%)' }),
+        animate('150ms ease-in', style({ transform: 'translateX(-100%)' }))
       ]),
-      transition('close => open', [
-        animate('150ms ease-out')
-      ])
-    ])
+    ]),
+    trigger(
+      'backgroundFade', [
+        transition(':enter', [
+          style({opacity: 0}),
+          animate('150ms', style({opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({opacity: 1}),
+          animate('150ms', style({opacity: 0}))
+        ])
+      ]
+    )
   ]
 })
 export class SettingsComponent implements OnInit {
