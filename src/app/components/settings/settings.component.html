@@ -8,10 +8,17 @@
         <button class="svg-button" (click)="showMenu = false"><img/></button>
     </div>
     <h3>Stratagem<br>Input Mode:</h3>
-    <form [formGroup]="form">
+    <form [formGroup]="inputModeForm">
         <ng-container *ngFor="let mode of inputModes">
             <input type="radio" [id]="mode" formControlName="mode" [value]="mode">
             <label [for]="mode">{{mode}}</label><br>
+        </ng-container>
+    </form>
+    <h3>Hide General<br>Stratagems:</h3>
+    <form [formGroup]="hideModeForm">
+        <ng-container *ngFor="let hideMode of hideGeneralCodes">
+            <input type="radio" [id]="hideMode" formControlName="mode" [value]="hideMode">
+            <label [for]="hideMode">{{hideMode}}</label><br>
         </ng-container>
     </form>
 </div>

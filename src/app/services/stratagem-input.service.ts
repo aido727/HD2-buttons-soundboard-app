@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AudioService } from './audio.service';
-import { inputDirection, inputMode } from '../models/stratagem-inputs';
-import { BehaviorSubject } from 'rxjs';
+import { hideGeneralCodesMode, inputDirection, inputMode } from '../models/stratagem-inputs';
+import { BehaviorSubject, filter } from 'rxjs';
 import { genericStratagemCode, stratagemCode, stratagemCodes } from '../models/stratagem-codes';
 
 @Injectable({
@@ -10,6 +10,7 @@ import { genericStratagemCode, stratagemCode, stratagemCodes } from '../models/s
 export class StratagemInputService {
 	public maxInputs = 8;
 	public inputMode: string = inputMode[1];
+	public hideGeneralCodes: string = hideGeneralCodesMode[0];
 
 	private currentInputCode$: BehaviorSubject<inputDirection[]> = new BehaviorSubject<inputDirection[]>([]);
 	public currentInputCode = this.currentInputCode$.asObservable();
@@ -23,7 +24,7 @@ export class StratagemInputService {
 	private isDeploying$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	public isDeploying = this.isDeploying$.asObservable();
 
-	public filteredCodesByInput: stratagemCode[] = stratagemCodes;
+	public filteredCodesByInput: stratagemCode[] = this.filteredCodesByHideMode();
 
 	constructor(private audioService: AudioService) {}
 
@@ -58,6 +59,11 @@ export class StratagemInputService {
 		this.reset();
 	}
 
+	public setHideGeneralCodes(hideGeneralCodes: string) {
+		this.hideGeneralCodes = hideGeneralCodes;
+		this.reset();
+	}
+
 	private ready(stratagem: stratagemCode | null) {
 		this.isCodeReady$.next(stratagem);
 		this.isInputDisabled$.next(true);
@@ -85,10 +91,6 @@ export class StratagemInputService {
 		return this.isInputDisabled$.getValue();
 	}
 
-	public getInputMode(): string {
-		return this.inputMode;
-	}
-
 	public getCodeReady(): stratagemCode | null {
 		return this.isCodeReady$.getValue();
 	}
@@ -101,8 +103,18 @@ export class StratagemInputService {
 		return this.currentInputCode$.getValue();
 	}
 
+	public filteredCodesByHideMode(): stratagemCode[] {
+		switch(this.hideGeneralCodes) {
+			case hideGeneralCodesMode[1]:
+				return stratagemCodes.filter((code) => code.type != 'Mission' || (code.type == 'Mission' && code.subType == 'General'));
+			case hideGeneralCodesMode[2]:
+				return stratagemCodes.filter((code) => code.type != 'Mission');
+		};
+		return stratagemCodes;
+	}
+
 	private updateFilteredCodesByInput() {
-		this.filteredCodesByInput = stratagemCodes.filter((code) => code.code.slice(0, this.currentInputCode$.getValue().length).toString() == this.currentInputCode$.getValue().toString());
+		this.filteredCodesByInput = this.filteredCodesByInput.filter((code) => code.code.slice(0, this.currentInputCode$.getValue().length).toString() == this.currentInputCode$.getValue().toString());
 	}
 
 	private addInput(direction: inputDirection) {
@@ -114,6 +126,6 @@ export class StratagemInputService {
 		this.currentInputCode$.next([]);
 		this.isInputDisabled$.next(false);
 		this.isCodeReady$.next(null);
-		this.filteredCodesByInput = stratagemCodes;
+		this.filteredCodesByInput = this.filteredCodesByHideMode();
 	}
 }

@@ -26,3 +26,9 @@ export const inputMode: string[] = [
 	'Code List',
 	'Blind',
 ]
+
+export const hideGeneralCodesMode: string[] = [
+	'Show All',
+	'Hide Mission Specific',
+	'Hide All General',
+]

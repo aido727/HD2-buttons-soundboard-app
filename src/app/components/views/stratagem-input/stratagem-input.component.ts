@@ -86,7 +86,7 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public getInputMode(): string {
-		return this.stratagemInputService.getInputMode();
+		return this.stratagemInputService.inputMode;
 	}
 
 	public getCodeReady(): stratagemCode | null {

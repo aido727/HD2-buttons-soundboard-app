@@ -1,8 +1,8 @@
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { inputMode } from '../../models/stratagem-inputs';
+import { hideGeneralCodesMode, inputMode } from '../../models/stratagem-inputs';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { StratagemInputService } from '../../services/stratagem-input.service';
 import { Subscription } from 'rxjs';
 
@@ -37,24 +37,32 @@ import { Subscription } from 'rxjs';
     )
   ]
 })
+
 export class SettingsComponent implements OnInit {
   public showMenu: boolean = false;
   public inputModes = inputMode;
-
-  public form;
-
-  changes!:Subscription
+  public hideGeneralCodes = hideGeneralCodesMode;
+  public inputModeForm: FormGroup;
+  public hideModeForm: FormGroup;
+  private changes!:Subscription
 
   constructor(fb: FormBuilder, private stratagemInputService: StratagemInputService) {
-    this.form = fb.group({
+    this.inputModeForm = fb.group({
       mode: [this.stratagemInputService.inputMode, Validators.required]
+    });
+    this.hideModeForm = fb.group({
+      mode: [this.stratagemInputService.hideGeneralCodes, Validators.required]
     });
   }
 
   ngOnInit() {
-    this.changes=this.form.controls.mode.valueChanges
+    this.changes=this.inputModeForm.controls['mode'].valueChanges
       .subscribe((res)=>{
          this.stratagemInputService.setMode(res!);
+      });
+    this.changes=this.hideModeForm.controls['mode'].valueChanges
+      .subscribe((res)=>{
+         this.stratagemInputService.setHideGeneralCodes(res!);
       })
   }
 
