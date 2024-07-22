@@ -17,11 +17,9 @@
 		</div>
 	</div>
 	<div class="content-container">
-		<div *ngIf="(codeReady | async) != null" class="deploy-button-container">
-			<button id="inputDeploy" class="deploy-button" [class]="getCodeReady()!.colour" (pointerdown)="deploy()" [disabled]="(isDeploying | async) == true">
-				<img *ngIf="getCodeReady()!.icon" [src]="getReadyIcon()" [class]="getCodeReady()!.borderColour"/>
-				<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady()!.name }}</span>
-			</button>
+		<div id="inputDeploy" *ngIf="(codeReady | async) != null" class="deploy-button" [class]="getCodeReady()!.colour" (pointerdown)="deploy()" [class.disabled]="(isDeploying | async) == true">
+			<img *ngIf="getCodeReady()!.icon" [src]="getReadyIcon()" [class]="getCodeReady()!.borderColour"/>
+			<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady()!.name }}</span>
 		</div>
 		<div *ngIf="(codeReady | async) == null" class="inner-content-container">
 			<div class="code-list-container">
