@@ -8,13 +8,13 @@ export interface stratagemCode {
     voice: string
     colour: "red" | "blue" | "yellow"
     borderColour: "red" | "blue" | "yellow" | "green"
-    deployType: "drop-pod" | "pelican" | "beam-only" | "skip" // "skip" is such as re-arming Eagle-1 or mission critical stratagems
+    deployType: "drop-pod" | "pelican" | "beam-only" | "skip" // "skip" is such as re-arming Eagle-1 or mission critical stratagems that just activate
     type: "" | "Supply" | "Mission" | "Defensive" | "Offensive"
     subType: "" | "General" | "Backpack" | "Support Weapon" | "Other" | "Orbital" | "Eagle"
 }
 
 export const genericStratagemCode: stratagemCode = {
-    name: "Stratagem", icon: "", code: [], sound: "", voice: "", colour: "yellow", borderColour: "yellow", deployType: "skip", type: "", subType: ""}
+    name: "Stratagem", icon: "", code: [], sound: "", voice: "", colour: "yellow", borderColour: "yellow", deployType: "beam-only", type: "", subType: ""}
 
 export const stratagemCodes: stratagemCode[] = [
     {name: "Reinforce", icon: "reinforce", code: [inputDirection.Up, inputDirection.Down, inputDirection.Right, inputDirection.Left, inputDirection.Up], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "drop-pod", type: "Mission", subType: "General"},
@@ -26,12 +26,12 @@ export const stratagemCodes: stratagemCode[] = [
     {name: "Upload Data", icon: "upload-data", code: [inputDirection.Left, inputDirection.Right, inputDirection.Up, inputDirection.Up, inputDirection.Up], sound: "", voice: "", colour: "yellow", borderColour: "yellow", deployType: "skip", type: "Mission", subType: ""},
     {name: "Super Earth Flag", icon: "super-earth-flag", code: [inputDirection.Down, inputDirection.Up, inputDirection.Down, inputDirection.Up], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "beam-only", type: "Mission", subType: ""},
     {name: "SSSD Delivery", icon: "sssd", code: [inputDirection.Down, inputDirection.Down, inputDirection.Down, inputDirection.Up, inputDirection.Up], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "drop-pod", type: "Mission", subType: ""},
-    {name: "Seismic Probe", icon: "seismic-probe", code: [inputDirection.Up, inputDirection.Up, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "skip", type: "Mission", subType: ""},
-    {name: "Prospecting Drill", icon: "prospecting-drill", code: [inputDirection.Down, inputDirection.Down, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "skip", type: "Mission", subType: ""},
+    {name: "Seismic Probe", icon: "seismic-probe", code: [inputDirection.Up, inputDirection.Up, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "beam-only", type: "Mission", subType: ""},
+    {name: "Prospecting Drill", icon: "prospecting-drill", code: [inputDirection.Down, inputDirection.Down, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "beam-only", type: "Mission", subType: ""},
     {name: "Orbital Illumination Flare", icon: "orbital-illumination-flare", code: [inputDirection.Right, inputDirection.Right, inputDirection.Left, inputDirection.Left], sound: "", voice: "", colour: "yellow", borderColour: "yellow", deployType: "skip", type: "Mission", subType: ""},
-    {name: "Dark Fluid Vessel", icon: "tectonic-drill", code: [inputDirection.Up, inputDirection.Down, inputDirection.Up, inputDirection.Down, inputDirection.Up, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "beam-only", type: "Mission", subType: ""},
-    {name: "Tectonic Drill", icon: "dark-fluid-vessel", code: [inputDirection.Up, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Up, inputDirection.Up], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "drop-pod", type: "Mission", subType: ""},
-    {name: "Hive Breaker Drill", icon: "hive-breaker-drill", code: [inputDirection.Left, inputDirection.Up, inputDirection.Down, inputDirection.Right, inputDirection.Down, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "skip", type: "Mission", subType: ""},
+    {name: "Dark Fluid Vessel", icon: "tectonic-drill", code: [inputDirection.Up, inputDirection.Down, inputDirection.Up, inputDirection.Down, inputDirection.Up, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "drop-pod", type: "Mission", subType: ""},
+    {name: "Tectonic Drill", icon: "dark-fluid-vessel", code: [inputDirection.Up, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Up, inputDirection.Up], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "beam-only", type: "Mission", subType: ""},
+    {name: "Hive Breaker Drill", icon: "hive-breaker-drill", code: [inputDirection.Left, inputDirection.Up, inputDirection.Down, inputDirection.Right, inputDirection.Down, inputDirection.Down], sound: "", voice: "", colour: "blue", borderColour: "yellow", deployType: "beam-only", type: "Mission", subType: ""},
 
     {name: "Orbital Gatling Barrage", icon: "orbital-gatling", code: [inputDirection.Right, inputDirection.Down, inputDirection.Left, inputDirection.Up, inputDirection.Up], sound: "", voice: "", colour: "red", borderColour: "red", deployType: "beam-only", type: "Offensive", subType: "Orbital"},
     {name: "Orbital Airburst Strike", icon: "orbital-airburst", code: [inputDirection.Right, inputDirection.Right, inputDirection.Right], sound: "", voice: "", colour: "red", borderColour: "red", deployType: "beam-only", type: "Offensive", subType: "Orbital"},
