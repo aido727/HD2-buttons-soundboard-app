@@ -18,8 +18,8 @@ export class StratagemInputService {
 	private isInputDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	public isInputDisabled = this.isInputDisabled$.asObservable();
 
-	private isCodeReady$: BehaviorSubject<stratagemCode | null> = new BehaviorSubject<stratagemCode | null>(null);
-	public codeReady = this.isCodeReady$.asObservable();
+	private codeReady$: BehaviorSubject<stratagemCode | null> = new BehaviorSubject<stratagemCode | null>(null);
+	public codeReady = this.codeReady$.asObservable();
 
 	private isDeploying$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	public isDeploying = this.isDeploying$.asObservable();
@@ -65,7 +65,7 @@ export class StratagemInputService {
 	}
 
 	private ready(stratagem: stratagemCode | null) {
-		this.isCodeReady$.next(stratagem);
+		this.codeReady$.next(stratagem);
 		this.isInputDisabled$.next(true);
 		this.audioService.playStratagemInputReady();
 	}
@@ -76,7 +76,7 @@ export class StratagemInputService {
 
 	public deploy(delayInSeconds: number = 0) {
 		this.isDeploying$.next(true);
-		this.audioService.playStratagemInputDeploy(delayInSeconds);
+		this.audioService.playStratagemInputDeploy(this.codeReady$.getValue()!, delayInSeconds);
 		setTimeout(() => {
 			this.reset();
 		}, 1000 * delayInSeconds);
@@ -92,7 +92,7 @@ export class StratagemInputService {
 	}
 
 	public getCodeReady(): stratagemCode | null {
-		return this.isCodeReady$.getValue();
+		return this.codeReady$.getValue();
 	}
 
 	public getIsDeploying(): boolean {
@@ -125,7 +125,7 @@ export class StratagemInputService {
 		this.isDeploying$.next(false);
 		this.currentInputCode$.next([]);
 		this.isInputDisabled$.next(false);
-		this.isCodeReady$.next(null);
+		this.codeReady$.next(null);
 		this.filteredCodesByInput = this.filteredCodesByHideMode();
 	}
 }

@@ -11,4 +11,6 @@ export const audioFiles: string[] = [
     'stratagem-input-fail-2',
     'stratagem-input-ready-long',
     'stratagem-input-deploy',
+    'stratagem-deploy-droppod',
+    'stratagem-deploy-pelican',
 ]

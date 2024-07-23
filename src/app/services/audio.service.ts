@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { audioFiles } from '../models/audio-list';
+import { stratagemCode } from '../models/stratagem-codes';
 
 @Injectable({
 	providedIn: 'root',
@@ -44,10 +45,28 @@ export class AudioService {
 		this.playOne('stratagem-input-ready-long');
 	}
 
-	public playStratagemInputDeploy(delayInSeconds: number = 0) {
+	public playStratagemInputDeploy(stratagem: stratagemCode, delayInSeconds: number = 0) {
 		this.fadeOut('stratagem-input-ready-long', delayInSeconds);
+		this.playOneRandomVoice(stratagem.voice);
 		setTimeout(() => {
-			this.playOne('stratagem-input-deploy');
+			let deployAudioLength = 0;
+			let additionalDeployAudioLength = 1; // 1 to counter the -1 in execution
+			if(stratagem.deployType != "skip")
+			{
+				deployAudioLength = (document.getElementById('stratagem-input-deploy') as HTMLAudioElement).duration;
+				this.playOne('stratagem-input-deploy');
+				switch(stratagem.deployType) {
+					case "drop-pod":
+						additionalDeployAudioLength = (document.getElementById('stratagem-deploy-droppod') as HTMLAudioElement).duration;
+						setTimeout(() => { this.playOne('stratagem-deploy-droppod'); }, 1000 * (deployAudioLength - 1));
+						break;
+					case "pelican":
+						additionalDeployAudioLength = (document.getElementById('stratagem-deploy-pelican') as HTMLAudioElement).duration;
+						setTimeout(() => { this.playOne('stratagem-deploy-pelican'); }, 1000 * (deployAudioLength - 1));
+						break;
+				}
+			}
+			setTimeout(() => { this.playOneRandom(stratagem.sound); }, 1000 * ((deployAudioLength - 1) + (additionalDeployAudioLength - 1)));
 		}, 1000 * delayInSeconds);
 	}
 
@@ -56,6 +75,21 @@ export class AudioService {
 		if (audio) {
 			audio.currentTime = 0;
 			audio.play();
+		}
+	}
+
+	private playOneRandom(elementIds: string[]) {
+		if(elementIds.length > 0) {
+			this.playOne(elementIds[Math.floor(Math.random() * elementIds.length)]);
+		}
+	}
+
+	private playOneRandomVoice(voices: string[][]) {
+		if(voices.length > 0) {
+			const voice = voices[Math.floor(Math.random() * voices.length)];
+			if(voice.length > 0) {
+				this.playOne(voice[Math.floor(Math.random() * voice.length)]);
+			}
 		}
 	}
 
