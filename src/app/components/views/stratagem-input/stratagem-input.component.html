@@ -22,8 +22,8 @@
 			<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady()!.name }}</span>
 		</div>
 		<div *ngIf="(codeReady | async) == null" class="inner-content-container">
-			<div class="code-list-container">
-				<app-code-list *ngIf="getInputMode() == inputMode[1]"></app-code-list>
+			<div *ngIf="getInputMode() == inputMode[1]" class="code-list-container">
+				<app-code-list></app-code-list>
 			</div>
 			<div class="stratagem-inputs-container">
 				<button id="inputUp" class="stratagem-input up" (pointerdown)="clickInput(inputDirection.Up)" [disabled]="isInputDisabled | async">
