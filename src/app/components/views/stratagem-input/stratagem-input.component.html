@@ -1,5 +1,5 @@
 <div id="stratagem-input-view">
-	<div class="skull-header">
+	<div *ngIf="(codeReady | async) == null" class="skull-header">
 		<img src="/images/skull-header.png" />
 		<div
 			class="stratagem-code-container"

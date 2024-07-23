@@ -1,4 +1,4 @@
-<div id="settings-button">
+<div id="settings-button" *ngIf="(codeReady | async) == null">
     <button class="svg-button" (click)="showMenu = !showMenu"><img/></button>
 </div>
 

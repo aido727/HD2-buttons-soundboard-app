@@ -4,7 +4,8 @@ import { hideGeneralCodesMode, inputMode } from '../../models/stratagem-inputs';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { StratagemInputService } from '../../services/stratagem-input.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { stratagemCode } from '../../models/stratagem-codes';
 
 @Component({
   selector: 'app-settings',
@@ -44,6 +45,7 @@ export class SettingsComponent implements OnInit {
   public hideGeneralCodes = hideGeneralCodesMode;
   public inputModeForm: FormGroup;
   public hideModeForm: FormGroup;
+  public codeReady?: Observable<stratagemCode | null>;
   private changes!:Subscription
 
   constructor(fb: FormBuilder, private stratagemInputService: StratagemInputService) {
@@ -56,6 +58,7 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.codeReady = this.stratagemInputService.codeReady;
     this.changes=this.inputModeForm.controls['mode'].valueChanges
       .subscribe((res)=>{
          this.stratagemInputService.setMode(res!);
