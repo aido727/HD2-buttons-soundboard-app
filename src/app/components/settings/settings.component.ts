@@ -45,7 +45,6 @@ export class SettingsComponent implements OnInit {
   public hideGeneralCodes = hideGeneralCodesMode;
   public inputModeForm: FormGroup;
   public hideModeForm: FormGroup;
-  public codeReady?: Observable<stratagemCode | null>;
   private changes!:Subscription
 
   constructor(fb: FormBuilder, private stratagemInputService: StratagemInputService) {
@@ -58,7 +57,6 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.codeReady = this.stratagemInputService.codeReady;
     this.changes=this.inputModeForm.controls['mode'].valueChanges
       .subscribe((res)=>{
          this.stratagemInputService.setMode(res!);
