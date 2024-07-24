@@ -14,4 +14,4 @@ Stratagem Icons: https://github.com/nvigneux/Helldivers-2-Stratagems-icons-svg
 [The Helldivers Archive (Discord channel)](https://discord.com/invite/helldiversarchive) for:
 * The original reference of the Hellpad System via extracted texture and upscaled replication in Photoshop.
 * The skull banner header image (from the upscaled replication above!)
-* The stratagem directional input button beep (original pitch), ready, deploy and looping sound recordings.
+* The stratagem directional input button beep (original pitch), ready, and looping sound recordings.

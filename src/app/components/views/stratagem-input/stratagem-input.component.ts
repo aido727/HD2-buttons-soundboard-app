@@ -21,9 +21,6 @@ export class StratagemInputComponent implements OnInit {
 	public codeReady?: Observable<stratagemCode | null>;
 	public isDeploying?: Observable<boolean>;
 
-	private deployDelayInSeconds: number = 1.5;
-	
-
 	constructor(private stratagemInputService: StratagemInputService) {}
 
 	ngOnInit() {
@@ -67,7 +64,7 @@ export class StratagemInputComponent implements OnInit {
 	public deploy() {
 		if (this.getIsDeploying() == false) {
 			document.getElementById('inputDeploy')?.classList.add('active');
-			this.stratagemInputService.deploy(this.deployDelayInSeconds);
+			this.stratagemInputService.deploy();
 		}
 	}
 

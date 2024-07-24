@@ -45,29 +45,28 @@ export class AudioService {
 		this.playOne('stratagem-input-ready-long');
 	}
 
-	public playStratagemInputDeploy(stratagem: stratagemCode, delayInSeconds: number = 0) {
-		this.fadeOut('stratagem-input-ready-long', delayInSeconds);
+	public playStratagemInputDeploy(stratagem: stratagemCode) {
+		this.fadeOut('stratagem-input-ready-long', 1.5);
 		this.playOneRandomVoice(stratagem.voice);
-		setTimeout(() => {
-			let deployAudioLength = 0;
-			let additionalDeployAudioLength = 1; // 1 to counter the -1 in execution
-			if(stratagem.deployType != "skip")
-			{
-				deployAudioLength = (document.getElementById('stratagem-input-deploy') as HTMLAudioElement).duration;
-				this.playOne('stratagem-input-deploy');
-				switch(stratagem.deployType) {
-					case "drop-pod":
-						additionalDeployAudioLength = (document.getElementById('stratagem-deploy-droppod') as HTMLAudioElement).duration;
-						setTimeout(() => { this.playOne('stratagem-deploy-droppod'); }, 1000 * (deployAudioLength - 1));
-						break;
-					case "pelican":
-						additionalDeployAudioLength = (document.getElementById('stratagem-deploy-pelican') as HTMLAudioElement).duration;
-						setTimeout(() => { this.playOne('stratagem-deploy-pelican'); }, 1000 * (deployAudioLength - 1));
-						break;
-				}
+		let deployAudioLength = 0;
+		let additionalDeployAudioLength = 1; // 1 to counter the -1 in execution
+		if(stratagem.deployType != "skip")
+		{
+			deployAudioLength = (document.getElementById('stratagem-input-deploy') as HTMLAudioElement).duration;
+			console.log(deployAudioLength);
+			this.playOne('stratagem-input-deploy');
+			switch(stratagem.deployType) {
+				case "drop-pod":
+					additionalDeployAudioLength = (document.getElementById('stratagem-deploy-droppod') as HTMLAudioElement).duration;
+					setTimeout(() => { this.playOne('stratagem-deploy-droppod'); }, 1000 * (deployAudioLength - 2));
+					break;
+				case "pelican":
+					additionalDeployAudioLength = (document.getElementById('stratagem-deploy-pelican') as HTMLAudioElement).duration;
+					setTimeout(() => { this.playOne('stratagem-deploy-pelican'); }, 1000 * (deployAudioLength - 2));
+					break;
 			}
-			setTimeout(() => { this.playOneRandom(stratagem.sound); }, 1000 * ((deployAudioLength - 1) + (additionalDeployAudioLength - 1)));
-		}, 1000 * delayInSeconds);
+		}
+		setTimeout(() => { this.playOneRandom(stratagem.sound); }, 1000 * ((deployAudioLength - 2) + (additionalDeployAudioLength - 1)));
 	}
 
 	private playOne(elementId: string) {
@@ -98,7 +97,7 @@ export class AudioService {
 		if (audio) {
 			const targetVolume = 0;
 			const tick = 50; // milliseconds
-			const volumeDecrease = timeInSeconds / tick;
+			const volumeDecrease = audio.volume / (timeInSeconds * 1000 / tick);
 
 			this.decreaseVolume(targetVolume, audio, volumeDecrease, tick);
 		}

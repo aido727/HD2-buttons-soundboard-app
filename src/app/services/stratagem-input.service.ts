@@ -26,6 +26,8 @@ export class StratagemInputService {
 
 	public filteredCodesByInput: stratagemCode[] = this.filteredCodesByHideMode();
 
+	private deployButtonDelayInSeconds: number = 5;
+
 	constructor(private audioService: AudioService) {}
 
 	public registerInput(direction: inputDirection) {
@@ -74,12 +76,12 @@ export class StratagemInputService {
 		this.ready(genericStratagemCode);
 	}
 
-	public deploy(delayInSeconds: number = 0) {
+	public deploy() {
 		this.isDeploying$.next(true);
-		this.audioService.playStratagemInputDeploy(this.codeReady$.getValue()!, delayInSeconds);
+		this.audioService.playStratagemInputDeploy(this.codeReady$.getValue()!);
 		setTimeout(() => {
 			this.reset();
-		}, 1000 * delayInSeconds);
+		}, 1000 * this.deployButtonDelayInSeconds);
 	}
 
 	public cancelCode() {
