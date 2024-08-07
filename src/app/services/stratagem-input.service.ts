@@ -26,7 +26,7 @@ export class StratagemInputService {
 
 	public filteredCodesByInput: stratagemCode[] = this.filteredCodesByHideMode();
 
-	private deployButtonDelayInSeconds: number = 5;
+	private deployButtonDelayInSeconds: number = 8.5;
 
 	constructor(private audioService: AudioService) {}
 
