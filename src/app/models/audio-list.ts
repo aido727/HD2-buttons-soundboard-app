@@ -1,4 +1,4 @@
-export const audioFiles: string[] = [
+export const audioFilesSounds: string[] = [
     'stratagem-input-beep-1',
     'stratagem-input-beep-2',
     'stratagem-input-beep-3',
@@ -43,4 +43,19 @@ export const audioFiles: string[] = [
     'stratagem-orbital-120mm',
     'stratagem-orbital-380mm',
     'stratagem-mission-sos',
+]
+
+export const audioFilesVoices: string[] = [
+    'ship-supportweapon-1',
+    'ship-supportweapon-2',
+    'ship-supportweapon-3',
+    'ship-supportweapon-4',
+    'ship-supportweapon-5',
+    'ship-supportweapon-6',
+    'ship-equipmentpackage-1',
+    'ship-equipmentpackage-2',
+    'ship-equipmentpackage-3',
+    'ship-equipmentpackage-4',
+    'ship-equipmentpackage-5',
+    'ship-equipmentpackage-6',
 ]

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { audioFiles } from '../models/audio-list';
+import { audioFilesSounds, audioFilesVoices } from '../models/audio-list';
 import { stratagemCode } from '../models/stratagem-codes';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class AudioService {
 
 	public async buildAudioElements(): Promise<boolean> {
 		let readyFiles = 0;
-		audioFiles.forEach((audioFile) => {
+		audioFilesSounds.forEach((audioFile) => {
 			const audio = document.createElement('audio');
 			audio.id = audioFile;
 			audio.src = '/audio/sounds/' + audioFile + '.ogg';
@@ -20,7 +20,17 @@ export class AudioService {
 			audio.load();
 			document.body.appendChild(audio);
 		});
-		while(readyFiles < audioFiles.length) {
+		audioFilesVoices.forEach((audioFile) => {
+			const audio = document.createElement('audio');
+			audio.id = audioFile;
+			audio.src = '/audio/voices/' + audioFile + '.ogg';
+			audio.addEventListener('canplaythrough', () => {
+				readyFiles++;
+			})
+			audio.load();
+			document.body.appendChild(audio);
+		});
+		while(readyFiles < audioFilesSounds.length + audioFilesVoices.length) {
 			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
 		return true;
@@ -47,7 +57,7 @@ export class AudioService {
 
 	public playStratagemInputDeploy(stratagem: stratagemCode) {
 		this.fadeOut('stratagem-input-ready-long', 1.5);
-		this.playOneRandomVoice(stratagem.voice);
+		setTimeout(() => { this.playOneRandom(stratagem.voice); }, 1000 * 1);
 		let deployAudioLength = 0;
 		let additionalDeployAudioLength = 0;
 		if(stratagem.deployType != "skip")
@@ -87,15 +97,6 @@ export class AudioService {
 	private playOneRandom(elementIds: string[]) {
 		if(elementIds.length > 0) {
 			this.playOne(elementIds[Math.floor(Math.random() * elementIds.length)]);
-		}
-	}
-
-	private playOneRandomVoice(voices: string[][]) {
-		if(voices.length > 0) {
-			const voice = voices[Math.floor(Math.random() * voices.length)];
-			if(voice.length > 0) {
-				this.playOne(voice[Math.floor(Math.random() * voice.length)]);
-			}
 		}
 	}
 
