@@ -55,6 +55,9 @@ export class AudioService {
 			deployAudioLength = (document.getElementById('stratagem-input-deploy') as HTMLAudioElement).duration;
 			this.playOne('stratagem-input-deploy');
 			switch(stratagem.deployType) {
+				case "beam-only":
+					additionalDeployAudioLength = 0.75;
+					break;
 				case "drop-pod-nolid":
 					additionalDeployAudioLength = (document.getElementById('stratagem-deploy-droppod-nolid') as HTMLAudioElement).duration - 0.25;
 					setTimeout(() => { this.playOne('stratagem-deploy-droppod-nolid'); }, 1000 * (deployAudioLength - 2));

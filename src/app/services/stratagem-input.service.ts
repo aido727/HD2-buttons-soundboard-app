@@ -10,7 +10,7 @@ import { genericStratagemCode, stratagemCode, stratagemCodes } from '../models/s
 export class StratagemInputService {
 	public maxInputs = 8;
 	public inputMode: string = inputMode[1];
-	public hideGeneralCodes: string = hideGeneralCodesMode[0];
+	public hideGeneralCodes: string = hideGeneralCodesMode[1];
 
 	private currentInputCode$: BehaviorSubject<inputDirection[]> = new BehaviorSubject<inputDirection[]>([]);
 	public currentInputCode = this.currentInputCode$.asObservable();
