@@ -83,7 +83,15 @@ export class AudioService {
 			}
 		}
 		
-		setTimeout(() => { this.playOneRandom(stratagem.sound); }, 1000 * ((deployAudioLength - 2) + (additionalDeployAudioLength)));
+		setTimeout(() => {
+			this.playOneRandom(stratagem.sound);
+			if(stratagem.postSound.length > 0)
+			{
+				setTimeout(() => {
+					this.playOneRandom(stratagem.postSound);
+				}, 1000 * 5.5); // this is a hardcode for eagle hits, nothing else uses this currently
+			}
+		}, 1000 * ((deployAudioLength - 2) + (additionalDeployAudioLength)));
 	}
 
 	private playOne(elementId: string) {

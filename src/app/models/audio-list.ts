@@ -43,6 +43,8 @@ export const audioFilesSounds: string[] = [
     'stratagem-orbital-120mm',
     'stratagem-orbital-380mm',
     'stratagem-mission-sos',
+    'stratagem-mission-flag',
+    'stratagem-hellbomb-explosion',
 ]
 
 export const audioFilesVoices: string[] = [
@@ -91,4 +93,14 @@ export const audioFilesVoices: string[] = [
     'rearm-leaving_combat_zone',
     'rearm-returning_to_destoyer_for_resupply',
     'rearm-withdrawing_to_rearm',
+    'eagle-hit-and_stay_down',
+    'eagle-hit-now_thats_what_i_call_liberty',
+    'eagle-hit-another_one_bites_the_dust',
+    'eagle-hit-boom',
+    'eagle-hit-enemy_down_baby',
+    'eagle-hit-got_em',
+    'eagle-hit-liberty_dispensed',
+    'eagle-hit-nailed_em',
+    'eagle-hit-never_misses',
+    'eagle-hit-right_on_target',
 ]

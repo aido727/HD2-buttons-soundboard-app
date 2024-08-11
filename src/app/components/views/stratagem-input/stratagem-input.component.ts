@@ -54,10 +54,13 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public codeClick() {
-		if (this.getInputMode() == inputMode[0] && this.getCodeReady() == null && this.getIsDeploying() == false) {
-			this.stratagemInputService.forceReady();
-		} else {
-			this.stratagemInputService.cancelCode();
+		if(this.getIsDeploying() == false)
+		{
+			if (this.getInputMode() == inputMode[0] && this.getCodeReady() == null) {
+				this.stratagemInputService.forceReady();
+			} else {
+				this.stratagemInputService.cancelCode();
+			}
 		}
 	}
 

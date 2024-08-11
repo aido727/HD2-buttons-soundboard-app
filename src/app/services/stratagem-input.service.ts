@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AudioService } from './audio.service';
 import { hideGeneralCodesMode, inputDirection, inputMode } from '../models/stratagem-inputs';
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { genericStratagemCode, stratagemCode, stratagemCodes } from '../models/stratagem-codes';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { genericStratagemCode, stratagemCode, stratagemCodes } from '../models/s
 export class StratagemInputService {
 	public maxInputs = 8;
 	public inputMode: string = inputMode[1];
-	public hideGeneralCodes: string = hideGeneralCodesMode[1];
+	public hideGeneralCodes: string = hideGeneralCodesMode[0];
 
 	private currentInputCode$: BehaviorSubject<inputDirection[]> = new BehaviorSubject<inputDirection[]>([]);
 	public currentInputCode = this.currentInputCode$.asObservable();
