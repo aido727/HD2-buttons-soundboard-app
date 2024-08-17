@@ -14,6 +14,22 @@ export interface stratagemCode {
 	subType: '' | 'General' | 'Backpack' | 'Support Weapon' | 'Other' | 'Orbital' | 'Eagle';
 }
 
+export const sosVoices: string[] = [
+	'sos-beacon-female-1-1',
+	'sos-beacon-female-1-2',
+	'sos-beacon-female-2-1',
+	'sos-beacon-female-2-2',
+	'sos-beacon-male-1-1',
+	'sos-beacon-male-1-2',
+	'sos-beacon-male-2-1',
+	'sos-beacon-male-2-2',
+];
+
+export const objectiveStratagemAvailableVoices: string[] = [
+	'ship-objective-stratagem-available-1',
+	'ship-objective-stratagem-available-2',
+]
+
 export const orbitalBarrageVoices: string[] = [
 	'ship-orbital-barrage-1',
 	'ship-orbital-barrage-2',
@@ -128,14 +144,12 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Mission',
 		subType: 'General',
 	},
-	/*manual effect needed? - but possible otherwise... voice to do*/ {
+	{
 		name: 'SOS Beacon',
 		icon: 'sos',
 		code: [inputDirection.Up, inputDirection.Down, inputDirection.Right, inputDirection.Up],
 		sound: ['stratagem-mission-sos'],
-		voice: [
-			/*required*/
-		],
+		voice: sosVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
@@ -223,12 +237,12 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Mission',
 		subType: '',
 	},
-	/*voice to do???*/ {
+	{
 		name: 'SSSD Delivery',
 		icon: 'sssd',
 		code: [inputDirection.Down, inputDirection.Down, inputDirection.Down, inputDirection.Up, inputDirection.Up],
 		sound: [],
-		voice: [],
+		voice: objectiveStratagemAvailableVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
@@ -236,38 +250,38 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Mission',
 		subType: '',
 	},
-	/*voice to do???*/ {
+	{
 		name: 'Seismic Probe',
 		icon: 'seismic-probe',
 		code: [inputDirection.Up, inputDirection.Up, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Down],
-		sound: [],
-		voice: [],
+		sound: ['stratagem-mission-prospecting-drill'],
+		voice: objectiveStratagemAvailableVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
-		deployType: 'beam-only',
+		deployType: 'skip',
 		type: 'Mission',
 		subType: '',
 	},
-	/*voice to do???*/ {
+	{
 		name: 'Prospecting Drill',
 		icon: 'prospecting-drill',
 		code: [inputDirection.Down, inputDirection.Down, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Down],
-		sound: [],
-		voice: [],
+		sound: ['stratagem-mission-prospecting-drill'],
+		voice: objectiveStratagemAvailableVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
-		deployType: 'beam-only',
+		deployType: 'skip',
 		type: 'Mission',
 		subType: '',
 	},
-	/*voice to do???*/ {
+	{
 		name: 'Orbital Illumination Flare',
 		icon: 'orbital-illumination-flare',
 		code: [inputDirection.Right, inputDirection.Right, inputDirection.Left, inputDirection.Left],
 		sound: [],
-		voice: [],
+		voice: objectiveStratagemAvailableVoices,
 		postSound: [],
 		colour: 'yellow',
 		borderColour: 'yellow',
@@ -275,12 +289,12 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Mission',
 		subType: '',
 	},
-	/*voice to do???*/ {
+	{
 		name: 'Dark Fluid Vessel',
 		icon: 'tectonic-drill',
 		code: [inputDirection.Up, inputDirection.Down, inputDirection.Up, inputDirection.Down, inputDirection.Up, inputDirection.Down],
 		sound: [],
-		voice: [],
+		voice: objectiveStratagemAvailableVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
@@ -288,29 +302,29 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Mission',
 		subType: '',
 	},
-	/*voice to do???*/ {
+	{
 		name: 'Tectonic Drill',
 		icon: 'dark-fluid-vessel',
 		code: [inputDirection.Up, inputDirection.Left, inputDirection.Right, inputDirection.Down, inputDirection.Up, inputDirection.Up],
-		sound: [],
-		voice: [],
+		sound: ['stratagem-mission-prospecting-drill'],
+		voice: objectiveStratagemAvailableVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
-		deployType: 'beam-only',
+		deployType: 'skip',
 		type: 'Mission',
 		subType: '',
 	},
-	/*voice to do???*/ {
+	{
 		name: 'Hive Breaker Drill',
 		icon: 'hive-breaker-drill',
 		code: [inputDirection.Left, inputDirection.Up, inputDirection.Down, inputDirection.Right, inputDirection.Down, inputDirection.Down],
-		sound: [],
-		voice: [],
+		sound: ['stratagem-mission-prospecting-drill'],
+		voice: objectiveStratagemAvailableVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
-		deployType: 'beam-only',
+		deployType: 'skip',
 		type: 'Mission',
 		subType: '',
 	},
