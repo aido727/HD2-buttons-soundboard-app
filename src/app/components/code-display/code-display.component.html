@@ -1,17 +1,17 @@
 <div class="code-display-container">
-    <div class="icon" [class]="code.borderColour">
-        <img [src]="getIcon()"/>
-    </div>
-    <div>
-        <span>{{code.name}}</span>
-        <div class="code-container">
-            <ng-container *ngFor="let input of code.code; let i = index">
-                <div class="stratagem-direction-container">
-                    <div class="stratagem-direction" [class]="inputDirection[input]" [class.match]="matchInput(input, i)">
-                        <img />
-                    </div>
-                </div>
-            </ng-container>
-        </div>
-    </div>
+	<div class="icon" [class]="code.borderColour">
+		<img [src]="getIcon()" />
+	</div>
+	<div>
+		<span>{{ code.name }}</span>
+		<div class="code-container">
+			<ng-container *ngFor="let input of code.code; let i = index">
+				<div class="stratagem-direction-container">
+					<div class="stratagem-direction" [class]="inputDirection[input]" [class.match]="matchInput(input, i)">
+						<img />
+					</div>
+				</div>
+			</ng-container>
+		</div>
+	</div>
 </div>

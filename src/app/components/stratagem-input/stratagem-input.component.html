@@ -5,7 +5,7 @@
 			class="stratagem-code-container"
 			(pointerdown)="codeClick()"
 			[class.cancel]="getIsDeploying() == false && (getInputMode() != inputMode[0] || getCodeReady() != null)"
-			[class.ready]="getIsDeploying() == false && (getInputMode() == inputMode[0] && getCodeReady() == null)"
+			[class.ready]="getIsDeploying() == false && getInputMode() == inputMode[0] && getCodeReady() == null"
 		>
 			<ng-template ngFor [ngForOf]="currentInputCode | async" let-input>
 				<div class="stratagem-direction-container">
@@ -19,8 +19,8 @@
 	<div class="content-container">
 		<div class="input-deploy-container" *ngIf="(codeReady | async) != null">
 			<div id="inputDeploy" class="deploy-button" [class]="getCodeReady()!.colour" (pointerdown)="deploy()" [class.disabled]="(isDeploying | async) == true">
-				<img *ngIf="getCodeReady()!.icon" [src]="getReadyIcon()" [class]="getCodeReady()!.borderColour"/>
-				<span>Deploy{{ (isDeploying | async) == true ? 'ing' : '' }} {{ getCodeReady()!.name }}</span>
+				<img *ngIf="getCodeReady()!.icon" [src]="getReadyIcon()" [class]="getCodeReady()!.borderColour" />
+				<span>Deploy{{ (isDeploying | async) == true ? "ing" : "" }} {{ getCodeReady()!.name }}</span>
 			</div>
 		</div>
 		<div *ngIf="(codeReady | async) == null" class="inner-content-container">

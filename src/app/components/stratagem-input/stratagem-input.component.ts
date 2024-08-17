@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { inputDirectionMap, inputDirection, inputMode } from '../../../models/stratagem-inputs';
-import { StratagemInputService } from '../../../services/stratagem-input.service';
+import { inputDirectionMap, inputDirection, inputMode } from '../../models/stratagem-inputs';
+import { StratagemInputService } from '../../services/stratagem-input.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CodeListComponent } from '../../code-list/code-list.component';
-import { stratagemCode } from '../../../models/stratagem-codes';
+import { CodeListComponent } from '../code-list/code-list.component';
+import { stratagemCode } from '../../models/stratagem-codes';
 
 @Component({
 	selector: 'app-stratagem-input',
@@ -54,8 +54,7 @@ export class StratagemInputComponent implements OnInit {
 	}
 
 	public codeClick() {
-		if(this.getIsDeploying() == false)
-		{
+		if (this.getIsDeploying() == false) {
 			if (this.getInputMode() == inputMode[0] && this.getCodeReady() == null) {
 				this.stratagemInputService.forceReady();
 			} else {

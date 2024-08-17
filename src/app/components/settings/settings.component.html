@@ -1,30 +1,28 @@
 <div id="settings-button">
-    <button class="svg-button" (click)="showMenu = !showMenu"><img/></button>
-</div>
-
-<div id="stop-all-button">
-    <button class="svg-button" (click)="stopAllSounds()"><img/></button>
+	<button class="svg-button" (click)="showMenu = !showMenu"><img /></button>
 </div>
 
 <div id="settings-menu" *ngIf="showMenu" [@menuSlide]>
-    <div class="header">
-        <h2>Settings</h2>
-        <button class="svg-button" (click)="showMenu = false"><img/></button>
-    </div>
-    <h3>Stratagem<br>Input Mode:</h3>
-    <form [formGroup]="inputModeForm">
-        <ng-container *ngFor="let mode of inputModes">
-            <input type="radio" [id]="mode" formControlName="mode" [value]="mode">
-            <label [for]="mode">{{mode}}</label><br>
-        </ng-container>
-    </form>
-    <h3>Hide General<br>Stratagems:</h3>
-    <form [formGroup]="hideModeForm">
-        <ng-container *ngFor="let hideMode of hideGeneralCodes">
-            <input type="radio" [id]="hideMode" formControlName="mode" [value]="hideMode">
-            <label [for]="hideMode">{{hideMode}}</label><br>
-        </ng-container>
-    </form>
+	<div class="header">
+		<h2>Settings</h2>
+		<button class="svg-button" (click)="showMenu = false"><img /></button>
+	</div>
+	<h3>Stratagem<br />Input Mode:</h3>
+	<form [formGroup]="inputModeForm">
+		<ng-container *ngFor="let mode of inputModes">
+			<input type="radio" [id]="mode" formControlName="mode" [value]="mode" />
+			<label [for]="mode">{{ mode }}</label
+			><br />
+		</ng-container>
+	</form>
+	<h3>Hide General<br />Stratagems:</h3>
+	<form [formGroup]="hideModeForm">
+		<ng-container *ngFor="let hideMode of hideGeneralCodes">
+			<input type="radio" [id]="hideMode" formControlName="mode" [value]="hideMode" />
+			<label [for]="hideMode">{{ hideMode }}</label
+			><br />
+		</ng-container>
+	</form>
 </div>
 
 <div *ngIf="showMenu" [@backgroundFade] class="under-menu" (click)="showMenu = false"></div>

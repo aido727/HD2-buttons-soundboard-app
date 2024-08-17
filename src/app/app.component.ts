@@ -3,15 +3,16 @@ import { RouterOutlet } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 
 import { InstallButtonComponent } from './components/install-button/install-button.component';
-import { StratagemInputComponent } from './components/views/stratagem-input/stratagem-input.component';
+import { StratagemInputComponent } from './components/stratagem-input/stratagem-input.component';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AudioService } from './services/audio.service';
+import { SoundboardComponent } from './components/soundboard/soundboard.component';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, CommonModule, InstallButtonComponent, StratagemInputComponent, SettingsComponent],
+	imports: [RouterOutlet, CommonModule, InstallButtonComponent, StratagemInputComponent, SettingsComponent, SoundboardComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
@@ -20,10 +21,9 @@ export class AppComponent implements OnInit {
 	public updating: boolean = false;
 	public audioLoaded: boolean = false;
 
-
 	constructor(
 		private swUpdate: SwUpdate,
-		private audioService: AudioService
+		private audioService: AudioService,
 	) {}
 
 	ngOnInit() {

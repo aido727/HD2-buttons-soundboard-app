@@ -1,9 +1,9 @@
 #code-list-container {
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100% - 4px);
-    background-color: var(--black-trans);
-    overflow-x: auto;
-    position: absolute;
-    padding: 2px 8px;
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100% - 4px);
+	background-color: var(--black-trans);
+	overflow-x: auto;
+	position: absolute;
+	padding: 2px 8px;
 }

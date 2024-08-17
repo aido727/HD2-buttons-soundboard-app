@@ -1,9 +1,9 @@
 .install-button-container {
 	position: absolute;
-	top: 0;
+	bottom: 0;
 	right: 0;
-	background-color: var(--black-trans);
-	z-index: 100;
+	background-color: var(--black);
+	z-index: 300;
 
 	.install-button-edge {
 		width: 8px;

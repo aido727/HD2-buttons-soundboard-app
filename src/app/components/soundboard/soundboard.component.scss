@@ -1,0 +1,104 @@
+#soundboard-button {
+	position: absolute;
+	top: 30px;
+	right: 10px;
+	z-index: 210;
+	height: 56px;
+	width: 56px;
+
+	.svg-button img {
+		width: 100%;
+		height: 100%;
+		content: url("/images/music.svg");
+	}
+
+	.svg-button.isOpen img {
+		content: url("/images/sound.svg");
+	}
+}
+
+#stop-all-button {
+	position: absolute;
+	top: 30px;
+	right: 70px;
+	z-index: 210;
+	height: 56px;
+	width: 56px;
+
+	.svg-button img {
+		width: 100%;
+		height: 100%;
+		content: url("/images/stop-circle.svg");
+	}
+}
+
+.svg-button {
+	cursor: pointer;
+	border: 0;
+	background: transparent;
+	opacity: 35%;
+	&:hover {
+		opacity: 100%;
+	}
+}
+
+#soundboard-container {
+	z-index: 200;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background-color: var(--black-trans-dark);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#soundboard-panel {
+	height: calc(100vh - 60px);
+	width: calc(100vw - 60px);
+	background-color: var(--dark-gray);
+
+	--s: 10px; /* the size on the corner */
+	--t: 2px; /* the thickness of the border */
+	--g: 0px; /* the gap between the border and image */
+
+	padding: calc(var(--g) + var(--t));
+	outline: var(--t) solid var(--white); /* the color here */
+	outline-offset: calc(-1 * var(--t));
+	mask:
+		conic-gradient(at var(--s) var(--s), #0000 75%, #000 0) 0 0 / calc(100% - var(--s)) calc(100% - var(--s)),
+		linear-gradient(#000 0 0) content-box;
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		padding: 26px;
+		font-size: 24pt;
+
+		.section {
+			&:not(:last-of-type) {
+				margin-bottom: 24px;
+			}
+
+			.title {
+				text-transform: uppercase;
+			}
+
+			.buttons {
+				margin-top: 8px;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 12px;
+
+				button {
+					width: 27.5vw;
+				}
+
+				button:not(:hover):not(:active) {
+					border: 4px solid var(--light-gray-trans);
+				}
+			}
+		}
+	}
+}

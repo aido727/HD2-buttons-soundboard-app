@@ -108,28 +108,28 @@
 				z-index: 100;
 				position: fixed;
 				width: calc(100vw - 48px - 24px - 8px);
-				
+
 				img {
 					border: 8px solid var(--yellow-border);
 					background-color: var(--dark-gray);
 					height: calc(100% - 16px);
 				}
-	
+
 				span {
 					width: 100%;
 				}
-	
+
 				&.active {
 					animation: none;
 					background-color: var(--yellow-trans);
 					border-color: var(--yellow);
 					box-shadow: 0 0 16px 0 var(--yellow);
 				}
-	
+
 				&.active:not(.red, .blue) {
 					border-color: var(--white);
 				}
-	
+
 				&.red {
 					animation-name: pulseRed;
 					&.active {
@@ -139,7 +139,7 @@
 						box-shadow: 0 0 16px 0 var(--red);
 					}
 				}
-	
+
 				&.blue {
 					animation-name: pulseBlue;
 					&.active {
@@ -149,7 +149,7 @@
 						box-shadow: 0 0 16px 0 var(--blue);
 					}
 				}
-	
+
 				img {
 					&.red {
 						border-color: var(--red-border);
@@ -161,7 +161,7 @@
 						border-color: var(--green-border);
 					}
 				}
-	
+
 				@keyframes pulseYellow {
 					25%,
 					75% {
@@ -171,7 +171,7 @@
 						background-color: var(--yellow-trans);
 					}
 				}
-	
+
 				@keyframes pulseRed {
 					25%,
 					75% {
@@ -181,7 +181,7 @@
 						background-color: var(--red-trans);
 					}
 				}
-	
+
 				@keyframes pulseBlue {
 					25%,
 					75% {
@@ -216,11 +216,11 @@
 				grid-template-columns: 1fr 1fr 1fr;
 				grid-template-rows: 50% 50%;
 				margin: auto;
-	
+
 				#inputUp {
 					grid-column-start: 2;
 				}
-	
+
 				#inputLeft,
 				#inputDown,
 				#inputRight {
@@ -233,7 +233,7 @@
 					height: 100%;
 				}
 			}
-	
+
 			@media (orientation: portrait) {
 				.stratagem-inputs-container {
 					width: 100%;

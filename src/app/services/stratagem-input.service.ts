@@ -35,7 +35,7 @@ export class StratagemInputService {
 			if (this.currentInputCode$.getValue().length < this.maxInputs) {
 				this.addInput(direction);
 				this.audioService.playStratagemInputBeep(this.currentInputCode$.getValue().length);
-				switch(this.inputMode) {
+				switch (this.inputMode) {
 					case inputMode[0]: // Free
 						if (this.currentInputCode$.getValue().length >= this.maxInputs) {
 							this.forceReady();
@@ -44,12 +44,11 @@ export class StratagemInputService {
 					case inputMode[1]: // Code List
 					case inputMode[2]: // Blind
 						this.updateFilteredCodesByInput();
-						if(this.filteredCodesByInput.length == 1 && this.currentInputCode$.getValue().length == this.filteredCodesByInput[0].code.length) {
+						if (this.filteredCodesByInput.length == 1 && this.currentInputCode$.getValue().length == this.filteredCodesByInput[0].code.length) {
 							this.ready(this.filteredCodesByInput[0]);
-						}
-						else if (this.filteredCodesByInput.length == 0) {
+						} else if (this.filteredCodesByInput.length == 0) {
 							this.cancelCode();
-						}							
+						}
 						break;
 				}
 			}
@@ -106,17 +105,19 @@ export class StratagemInputService {
 	}
 
 	public filteredCodesByHideMode(): stratagemCode[] {
-		switch(this.hideGeneralCodes) {
+		switch (this.hideGeneralCodes) {
 			case hideGeneralCodesMode[1]:
 				return stratagemCodes.filter((code) => code.type != 'Mission' || (code.type == 'Mission' && code.subType == 'General'));
 			case hideGeneralCodesMode[2]:
 				return stratagemCodes.filter((code) => code.type != 'Mission');
-		};
+		}
 		return stratagemCodes;
 	}
 
 	private updateFilteredCodesByInput() {
-		this.filteredCodesByInput = this.filteredCodesByInput.filter((code) => code.code.slice(0, this.currentInputCode$.getValue().length).toString() == this.currentInputCode$.getValue().toString());
+		this.filteredCodesByInput = this.filteredCodesByInput.filter(
+			(code) => code.code.slice(0, this.currentInputCode$.getValue().length).toString() == this.currentInputCode$.getValue().toString(),
+		);
 	}
 
 	private addInput(direction: inputDirection) {

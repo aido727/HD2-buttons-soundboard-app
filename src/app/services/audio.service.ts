@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { audioFilesSounds, audioFilesVoices } from '../models/audio-list';
+import { audioFilesMusic, audioFilesOther, audioFilesSounds, audioFilesStings, audioFilesVoices } from '../models/audio-list';
 import { stratagemCode } from '../models/stratagem-codes';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { stratagemCode } from '../models/stratagem-codes';
 })
 export class AudioService {
 	private lastPlayedStratagemInputFail = 2;
+	private activelyStoppingAudio: boolean = false;
 
 	public async buildAudioElements(): Promise<boolean> {
 		let readyFiles = 0;
@@ -16,7 +17,7 @@ export class AudioService {
 			audio.src = '/audio/sounds/' + audioFile + '.ogg';
 			audio.addEventListener('canplaythrough', () => {
 				readyFiles++;
-			})
+			});
 			audio.load();
 			document.body.appendChild(audio);
 		});
@@ -26,22 +27,62 @@ export class AudioService {
 			audio.src = '/audio/voices/' + audioFile + '.ogg';
 			audio.addEventListener('canplaythrough', () => {
 				readyFiles++;
-			})
+			});
 			audio.load();
 			document.body.appendChild(audio);
 		});
-		while(readyFiles < audioFilesSounds.length + audioFilesVoices.length) {
+		audioFilesStings.forEach((audioFile) => {
+			const audio = document.createElement('audio');
+			audio.id = audioFile;
+			audio.src = '/audio/stings/' + audioFile + '.ogg';
+			audio.addEventListener('canplaythrough', () => {
+				readyFiles++;
+			});
+			audio.load();
+			document.body.appendChild(audio);
+		});
+		audioFilesMusic.forEach((audioFile) => {
+			const audio = document.createElement('audio');
+			audio.id = audioFile;
+			audio.src = '/audio/music/' + audioFile + '.ogg';
+			audio.addEventListener('canplaythrough', () => {
+				readyFiles++;
+			});
+			audio.load();
+			document.body.appendChild(audio);
+		});
+		audioFilesOther.forEach((audioFile) => {
+			const audio = document.createElement('audio');
+			audio.id = audioFile;
+			audio.src = '/audio/other/' + audioFile + '.ogg';
+			audio.addEventListener('canplaythrough', () => {
+				readyFiles++;
+			});
+			audio.load();
+			document.body.appendChild(audio);
+		});
+		while (readyFiles < audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length) {
 			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
 		return true;
 	}
 
 	public stopAllSounds() {
+		this.activelyStoppingAudio = true;
 		audioFilesSounds.forEach((soundFile) => {
-			this.fadeOut(soundFile, 1);
+			this.fadeOut(soundFile, 0.5);
 		});
 		audioFilesVoices.forEach((voiceFile) => {
-			this.fadeOut(voiceFile, 1);
+			this.fadeOut(voiceFile, 0.5);
+		});
+		audioFilesStings.forEach((voiceFile) => {
+			this.fadeOut(voiceFile, 0.5);
+		});
+		audioFilesMusic.forEach((voiceFile) => {
+			this.fadeOut(voiceFile, 0.5);
+		});
+		audioFilesOther.forEach((voiceFile) => {
+			this.fadeOut(voiceFile, 0.5);
 		});
 	}
 
@@ -65,45 +106,79 @@ export class AudioService {
 	}
 
 	public playStratagemInputDeploy(stratagem: stratagemCode) {
+		this.activelyStoppingAudio = false;
 		this.fadeOut('stratagem-input-ready-long', 1.5);
-		setTimeout(() => { this.playOneRandom(stratagem.voice); }, 1000 * 1);
+		setTimeout(() => {
+			if (!this.activelyStoppingAudio) {
+				this.playOneRandom(stratagem.voice);
+			}
+		}, 1000 * 1);
 		let deployAudioLength = 0;
 		let additionalDeployAudioLength = 0;
-		if(stratagem.deployType != "skip")
-		{
+		if (stratagem.deployType != 'skip') {
 			deployAudioLength = (document.getElementById('stratagem-input-deploy') as HTMLAudioElement).duration;
-			this.playOne('stratagem-input-deploy');
-			switch(stratagem.deployType) {
-				case "beam-only":
+			if (!this.activelyStoppingAudio) {
+				this.playOne('stratagem-input-deploy');
+			}
+			switch (stratagem.deployType) {
+				case 'beam-only':
 					additionalDeployAudioLength = 0.75;
 					break;
-				case "drop-pod-nolid":
+				case 'drop-pod-nolid':
 					additionalDeployAudioLength = (document.getElementById('stratagem-deploy-droppod-nolid') as HTMLAudioElement).duration - 0.25;
-					setTimeout(() => { this.playOne('stratagem-deploy-droppod-nolid'); }, 1000 * (deployAudioLength - 2));
+					setTimeout(
+						() => {
+							if (!this.activelyStoppingAudio) {
+								this.playOne('stratagem-deploy-droppod-nolid');
+							}
+						},
+						1000 * (deployAudioLength - 2),
+					);
 					break;
-				case "drop-pod":
+				case 'drop-pod':
 					additionalDeployAudioLength = (document.getElementById('stratagem-deploy-droppod') as HTMLAudioElement).duration - 2.5;
-					setTimeout(() => { this.playOne('stratagem-deploy-droppod'); }, 1000 * (deployAudioLength - 2));
+					setTimeout(
+						() => {
+							if (!this.activelyStoppingAudio) {
+								this.playOne('stratagem-deploy-droppod');
+							}
+						},
+						1000 * (deployAudioLength - 2),
+					);
 					break;
-				case "pelican":
+				case 'pelican':
 					additionalDeployAudioLength = (document.getElementById('stratagem-deploy-pelican') as HTMLAudioElement).duration - 3.25;
-					setTimeout(() => { this.playOne('stratagem-deploy-pelican'); }, 1000 * (deployAudioLength - 2));
+					setTimeout(
+						() => {
+							if (!this.activelyStoppingAudio) {
+								this.playOne('stratagem-deploy-pelican');
+							}
+						},
+						1000 * (deployAudioLength - 2),
+					);
 					break;
 			}
 		}
-		
-		setTimeout(() => {
-			this.playOneRandom(stratagem.sound);
-			if(stratagem.postSound.length > 0)
-			{
-				setTimeout(() => {
-					this.playOneRandom(stratagem.postSound);
-				}, 1000 * 5); // this is a hardcode for eagle hits, nothing else uses this currently
-			}
-		}, 1000 * ((deployAudioLength - 2) + (additionalDeployAudioLength)));
+
+		setTimeout(
+			() => {
+				if (!this.activelyStoppingAudio) {
+					this.playOneRandom(stratagem.sound);
+				}
+				if (stratagem.postSound.length > 0) {
+					setTimeout(() => {
+						if (!this.activelyStoppingAudio) {
+							this.playOneRandom(stratagem.postSound);
+						}
+					}, 1000 * 5); // this is a hardcode for eagle hits, nothing else uses this currently
+				}
+			},
+			1000 * (deployAudioLength - 2 + additionalDeployAudioLength),
+		);
 	}
 
-	private playOne(elementId: string) {
+	public playOne(elementId: string) {
+		this.activelyStoppingAudio = false;
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
 		if (audio) {
 			audio.currentTime = 0;
@@ -111,18 +186,18 @@ export class AudioService {
 		}
 	}
 
-	private playOneRandom(elementIds: string[]) {
-		if(elementIds.length > 0) {
+	public playOneRandom(elementIds: string[]) {
+		if (elementIds.length > 0) {
 			this.playOne(elementIds[Math.floor(Math.random() * elementIds.length)]);
 		}
 	}
 
 	private fadeOut(elementId: string, timeInSeconds: number) {
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
-		if (audio) {
+		if (audio && audio.currentTime != 0) {
 			const targetVolume = 0;
 			const tick = 50; // milliseconds
-			const volumeDecrease = audio.volume / (timeInSeconds * 1000 / tick);
+			const volumeDecrease = audio.volume / ((timeInSeconds * 1000) / tick);
 
 			this.decreaseVolume(targetVolume, audio, volumeDecrease, tick);
 		}
@@ -141,7 +216,7 @@ export class AudioService {
 		}
 	}
 
-	private stopOne(elementId: string) {
+	public stopOne(elementId: string) {
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
 		if (audio) {
 			audio.pause();

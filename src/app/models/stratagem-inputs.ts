@@ -21,14 +21,6 @@ export const inputDirectionMap = new Map<string, inputDirection>([
 	['ArrowRight', inputDirection.Right],
 ]);
 
-export const inputMode: string[] = [
-	'Free',
-	'Code List',
-	'Blind',
-]
+export const inputMode: string[] = ['Free', 'Code List', 'Blind'];
 
-export const hideGeneralCodesMode: string[] = [
-	'Show All',
-	'Hide Mission Specific',
-	'Hide All General',
-]
+export const hideGeneralCodesMode: string[] = ['Show All', 'Hide Mission Specific', 'Hide All General'];

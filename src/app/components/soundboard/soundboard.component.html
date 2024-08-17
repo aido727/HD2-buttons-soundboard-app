@@ -1,0 +1,32 @@
+<div id="soundboard-button">
+	<button class="svg-button" [class.isOpen]="isOpen" (click)="isOpen = !isOpen"><img /></button>
+</div>
+
+<div id="stop-all-button">
+	<button class="svg-button" (click)="stopAllSounds()"><img /></button>
+</div>
+
+<div *ngIf="isOpen" id="soundboard-container">
+	<div id="soundboard-panel">
+		<div class="content">
+			<div class="section">
+				<span class="title">Stings</span>
+				<div class="buttons">
+					<button *ngFor="let audio of audioStings" class="equip-button" (click)="playSound(audio.file)">{{ audio.name }}</button>
+				</div>
+			</div>
+			<div class="section">
+				<span class="title">Music</span>
+				<div class="buttons">
+					<button *ngFor="let audio of audioMusic" class="equip-button" (click)="playSound(audio.file)">{{ audio.name }}</button>
+				</div>
+			</div>
+			<div class="section">
+				<span class="title">Other</span>
+				<div class="buttons">
+					<button *ngFor="let audio of audioOther" class="equip-button" (click)="playSound(audio.file)">{{ audio.name }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
