@@ -17,7 +17,7 @@
 	</div>
 </div>
 
-<div id="audio-loader" [class.hidden]="audioLoaded">
+<div id="audio-loader" [class.hidden]="updating || audioLoaded">
 	<div class="modal-box">
 		<div class="content">
 			<span class="title">Loading Audio Files</span>

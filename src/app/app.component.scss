@@ -29,13 +29,20 @@
 	z-index: -10;
 }
 
+#update-loader {
+	z-index: 1010;
+}
+
+#audio-loader {
+	z-index: 1000;
+}
+
 #update-loader,
 #audio-loader {
 	position: absolute;
 	top: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 1000;
 	display: flex;
 	justify-content: center;
 	align-items: center;
