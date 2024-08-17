@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { audioFilesMusic, audioFilesOther, audioFilesSounds, audioFilesStings, audioFilesVoices } from '../models/audio-list';
 import { stratagemCode } from '../models/stratagem-codes';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -8,6 +9,8 @@ import { stratagemCode } from '../models/stratagem-codes';
 export class AudioService {
 	private lastPlayedStratagemInputFail = 2;
 	private activelyStoppingAudio: boolean = false;
+	private audioLoadedPercent$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+	public audioLoadedPercent = this.audioLoadedPercent$.asObservable();
 
 	public async buildAudioElements(): Promise<boolean> {
 		let readyFiles = 0;
@@ -62,8 +65,12 @@ export class AudioService {
 			document.body.appendChild(audio);
 		});
 		while (readyFiles < audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length) {
+			this.audioLoadedPercent$.next(
+				Math.round((readyFiles / (audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length)) * 100),
+			);
 			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
+		this.audioLoadedPercent$.next(100);
 		return true;
 	}
 

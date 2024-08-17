@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AudioService } from './services/audio.service';
 import { SoundboardComponent } from './components/soundboard/soundboard.component';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
 	private autoUpdateMinutes = 30;
 	public updating: boolean = false;
 	public audioLoaded: boolean = false;
+	public audioPercentLoaded?: Observable<number>;
 
 	constructor(
 		private swUpdate: SwUpdate,
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.audioPercentLoaded = this.audioService.audioLoadedPercent;
 		if (this.swUpdate.isEnabled) {
 			// handle if the service worker detects the app has reached an unrecoverable state that requires a reload
 			this.swUpdate.unrecoverable.subscribe(() => {
