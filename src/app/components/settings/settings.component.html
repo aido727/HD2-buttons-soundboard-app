@@ -2,6 +2,10 @@
     <button class="svg-button" (click)="showMenu = !showMenu"><img/></button>
 </div>
 
+<div id="stop-all-button">
+    <button class="svg-button" (click)="stopAllSounds()"><img/></button>
+</div>
+
 <div id="settings-menu" *ngIf="showMenu" [@menuSlide]>
     <div class="header">
         <h2>Settings</h2>

@@ -36,6 +36,15 @@ export class AudioService {
 		return true;
 	}
 
+	public stopAllSounds() {
+		audioFilesSounds.forEach((soundFile) => {
+			this.fadeOut(soundFile, 1);
+		});
+		audioFilesVoices.forEach((voiceFile) => {
+			this.fadeOut(voiceFile, 1);
+		});
+	}
+
 	public playStratagemInputBeep(pitchNum: number = 1) {
 		this.playOne('stratagem-input-beep-' + pitchNum);
 	}

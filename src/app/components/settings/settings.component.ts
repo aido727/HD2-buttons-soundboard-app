@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { StratagemInputService } from '../../services/stratagem-input.service';
 import { Observable, Subscription } from 'rxjs';
 import { stratagemCode } from '../../models/stratagem-codes';
+import { AudioService } from '../../services/audio.service';
 
 @Component({
   selector: 'app-settings',
@@ -45,9 +46,10 @@ export class SettingsComponent implements OnInit {
   public hideGeneralCodes = hideGeneralCodesMode;
   public inputModeForm: FormGroup;
   public hideModeForm: FormGroup;
-  private changes!:Subscription
+  private inputChanges!:Subscription
+  private hideChanges!:Subscription
 
-  constructor(fb: FormBuilder, private stratagemInputService: StratagemInputService) {
+  constructor(fb: FormBuilder, private stratagemInputService: StratagemInputService, private audioService: AudioService) {
     this.inputModeForm = fb.group({
       mode: [this.stratagemInputService.inputMode, Validators.required]
     });
@@ -57,18 +59,24 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.changes=this.inputModeForm.controls['mode'].valueChanges
+    this.inputChanges=this.inputModeForm.controls['mode'].valueChanges
       .subscribe((res)=>{
          this.stratagemInputService.setMode(res!);
       });
-    this.changes=this.hideModeForm.controls['mode'].valueChanges
+    this.hideChanges=this.hideModeForm.controls['mode'].valueChanges
       .subscribe((res)=>{
          this.stratagemInputService.setHideGeneralCodes(res!);
       })
   }
 
+  public stopAllSounds()
+  {
+    this.audioService.stopAllSounds();
+  }
+
   ngOnDestroy()
   {
-    this.changes.unsubscribe();
+    this.inputChanges.unsubscribe();
+    this.hideChanges.unsubscribe();
   }
 }

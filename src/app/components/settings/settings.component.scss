@@ -26,6 +26,21 @@ form {
     }
 }
 
+#stop-all-button {
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    z-index: 110;
+    height: 56px;
+    width: 56px;
+
+    .svg-button img {
+        width: 100%;
+        height: 100%;
+        content: url("/images/stop-circle.svg");
+    }
+}
+
 #settings-menu {
     position: absolute;
     top: 0;
