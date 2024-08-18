@@ -29,6 +29,8 @@ export const objectiveStratagemAvailableVoices: string[] = ['ship-objective-stra
 
 export const seafSounds: string[] = ['seaf-explosive', 'seaf=mininuke', 'seaf-highyield', 'seaf-static', 'seaf-smoke', 'seaf-napalm'];
 
+export const hellbombVoice: string[] = ['ship-mission-hellbomb-1', /* 'ship-mission-hellbomb-2',*/ 'ship-mission-hellbomb-3' /* 'ship-mission-hellbomb-4'*/];
+
 export const orbitalBarrageVoices: string[] = [
 	'ship-orbital-barrage-1',
 	'ship-orbital-barrage-2',
@@ -55,7 +57,7 @@ export const orbitalNonLethalVoice: string[] = [
 	'ship-orbital-nonlethal-6',
 ];
 export const orbitalSmokeVoice: string[] = ['ship-orbital-smoke-1', 'ship-orbital-smoke-2', 'ship-orbital-smoke-3', 'ship-orbital-smoke-4'];
-export const orbitalLaserVoice: string[] = ['ship-orbital-laser-1', 'ship-orbital-laser-2', 'ship-orbital-laser-3' /*, 'ship-orbital-laser-4'*/];
+export const orbitalLaserVoice: string[] = ['ship-orbital-laser-1', 'ship-orbital-laser-2', 'ship-orbital-laser-3' /* 'ship-orbital-laser-4'*/];
 export const eagleDeployVoices: string[] = [
 	'eagle-administoring_freedom',
 	'eagle-attack_underway',
@@ -195,18 +197,16 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Mission',
 		subType: '',
 	},
-	/*manual effect needed? - voice to do*/ {
+	{
 		name: 'Hellbomb',
 		icon: 'hellbomb',
 		code: [inputDirection.Down, inputDirection.Up, inputDirection.Left, inputDirection.Down, inputDirection.Up, inputDirection.Right, inputDirection.Down, inputDirection.Up],
-		sound: ['stratagem-hellbomb-explosion'],
-		voice: [
-			/*required*/
-		],
+		sound: ['stratagem-mission-hellbomb'],
+		voice: hellbombVoice,
 		postSound: [],
 		colour: 'red',
 		borderColour: 'yellow',
-		deployType: 'drop-pod',
+		deployType: 'drop-pod-nolid',
 		type: 'Mission',
 		subType: '',
 	},
@@ -214,7 +214,7 @@ export const stratagemCodes: stratagemCode[] = [
 		name: 'Upload Data',
 		icon: 'upload-data',
 		code: [inputDirection.Left, inputDirection.Right, inputDirection.Up, inputDirection.Up, inputDirection.Up],
-		sound: [],
+		sound: ['stratagem-mission-upload'],
 		voice: [],
 		postSound: [],
 		colour: 'yellow',

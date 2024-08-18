@@ -44,7 +44,7 @@ export const audioFilesSounds: string[] = [
 	'stratagem-orbital-380mm',
 	'stratagem-mission-sos',
 	'stratagem-mission-flag',
-	'stratagem-hellbomb-explosion',
+	'stratagem-mission-hellbomb',
 	'stratagem-mission-prospecting-drill',
 	'seaf-explosive',
 	'seaf-mininuke',
@@ -52,6 +52,7 @@ export const audioFilesSounds: string[] = [
 	'seaf-static',
 	'seaf-smoke',
 	'seaf-napalm',
+	'stratagem-mission-upload',
 ];
 
 export const audioFilesVoices: string[] = [
@@ -139,7 +140,7 @@ export const audioFilesVoices: string[] = [
 	'ship-orbital-laser-1',
 	'ship-orbital-laser-2',
 	'ship-orbital-laser-3',
-	//'ship-orbital-laser-4', this fucker didn't want to record...
+	//'ship-orbital-laser-4', it wouldn't say this line
 	'sos-beacon-female-1-1',
 	'sos-beacon-female-1-2',
 	'sos-beacon-female-2-1',
@@ -150,6 +151,10 @@ export const audioFilesVoices: string[] = [
 	'sos-beacon-male-2-2',
 	'ship-objective-stratagem-available-1',
 	'ship-objective-stratagem-available-2',
+	'ship-mission-hellbomb-1',
+	// 'ship-mission-hellbomb-2', it wouldn't say this line
+	'ship-mission-hellbomb-3',
+	// 'ship-mission-hellbomb-4', it wouldn't say this line
 ];
 
 export const audioFilesStings: string[] = [];
