@@ -188,7 +188,9 @@ export class AudioService {
 		this.activelyStoppingAudio = false;
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
 		if (audio) {
+			audio.pause();
 			audio.currentTime = 0;
+			audio.volume = 1;
 			audio.play();
 		}
 	}

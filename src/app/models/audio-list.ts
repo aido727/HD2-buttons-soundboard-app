@@ -46,6 +46,12 @@ export const audioFilesSounds: string[] = [
 	'stratagem-mission-flag',
 	'stratagem-hellbomb-explosion',
 	'stratagem-mission-prospecting-drill',
+	'seaf-explosive',
+	'seaf-mininuke',
+	'seaf-highyield',
+	'seaf-static',
+	'seaf-smoke',
+	'seaf-napalm',
 ];
 
 export const audioFilesVoices: string[] = [

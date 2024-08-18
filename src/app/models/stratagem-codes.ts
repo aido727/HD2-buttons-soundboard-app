@@ -25,10 +25,9 @@ export const sosVoices: string[] = [
 	'sos-beacon-male-2-2',
 ];
 
-export const objectiveStratagemAvailableVoices: string[] = [
-	'ship-objective-stratagem-available-1',
-	'ship-objective-stratagem-available-2',
-]
+export const objectiveStratagemAvailableVoices: string[] = ['ship-objective-stratagem-available-1', 'ship-objective-stratagem-available-2'];
+
+export const seafSounds: string[] = ['seaf-explosive', 'seaf=mininuke', 'seaf-highyield', 'seaf-static', 'seaf-smoke', 'seaf-napalm'];
 
 export const orbitalBarrageVoices: string[] = [
 	'ship-orbital-barrage-1',
@@ -183,11 +182,11 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Mission',
 		subType: 'General',
 	},
-	/*voice & audio to do*/ {
+	{
 		name: 'SEAF Artillery',
 		icon: 'seaf-atrillery',
 		code: [inputDirection.Right, inputDirection.Up, inputDirection.Up, inputDirection.Down],
-		sound: [],
+		sound: seafSounds,
 		voice: [],
 		postSound: [],
 		colour: 'blue',
