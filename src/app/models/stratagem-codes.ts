@@ -25,6 +25,8 @@ export const sosVoices: string[] = [
 	'sos-beacon-male-2-2',
 ];
 
+export const walkerVoices: string[] = ['walker-female-1-1', 'walker-female-1-2', 'walker-female-2-1', 'walker-female-2-2', 'walker-male-1-1', 'walker-male-1-2', 'walker-male-2-1', 'walker-male-2-2'];
+
 export const objectiveStratagemAvailableVoices: string[] = ['ship-objective-stratagem-available-1', 'ship-objective-stratagem-available-2'];
 
 export const seafSounds: string[] = ['seaf-explosive', 'seaf=mininuke', 'seaf-highyield', 'seaf-static', 'seaf-smoke', 'seaf-napalm'];
@@ -564,14 +566,12 @@ export const stratagemCodes: stratagemCode[] = [
 		subType: 'Eagle',
 	},
 
-	/*manual effect needed? - voice to do*/ {
+	{
 		name: 'Patriot Exosuit',
 		icon: 'patriot-exosuit',
 		code: [inputDirection.Left, inputDirection.Down, inputDirection.Right, inputDirection.Up, inputDirection.Left, inputDirection.Down, inputDirection.Down],
 		sound: [],
-		voice: [
-			/*required*/
-		],
+		voice: walkerVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'blue',
@@ -579,14 +579,12 @@ export const stratagemCodes: stratagemCode[] = [
 		type: 'Supply',
 		subType: 'Other',
 	},
-	/*manual effect needed? - voice to do*/ {
+	{
 		name: 'Emancipator Exosuit',
 		icon: 'emancipator-exosuit',
 		code: [inputDirection.Left, inputDirection.Down, inputDirection.Right, inputDirection.Up, inputDirection.Left, inputDirection.Down, inputDirection.Up],
 		sound: [],
-		voice: [
-			/*required*/
-		],
+		voice: walkerVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'blue',

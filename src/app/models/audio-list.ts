@@ -155,6 +155,14 @@ export const audioFilesVoices: string[] = [
 	// 'ship-mission-hellbomb-2', it wouldn't say this line
 	'ship-mission-hellbomb-3',
 	// 'ship-mission-hellbomb-4', it wouldn't say this line
+	'walker-female-1-1',
+	'walker-female-1-2',
+	'walker-female-2-1',
+	'walker-female-2-2',
+	'walker-male-1-1',
+	'walker-male-1-2',
+	'walker-male-2-1',
+	'walker-male-2-2',
 ];
 
 export const audioFilesStings: string[] = [];
