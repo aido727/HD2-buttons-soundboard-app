@@ -9,10 +9,23 @@ export interface stratagemCode {
 	postSound: string[];
 	colour: 'red' | 'blue' | 'yellow';
 	borderColour: 'red' | 'blue' | 'yellow' | 'green';
-	deployType: 'drop-pod' | 'drop-pod-nolid' | 'pelican' | 'beam-only' | 'skip'; // "skip" is such as re-arming Eagle-1 or mission critical stratagems that just activate
+	deployType: 'drop-pod' | 'drop-pod-nolid' | 'pelican' | 'beam-only' | 'skip'; // "skip" is for things such as re-arming Eagle-1 or mission critical stratagems that just activate
 	type: '' | 'Supply' | 'Mission' | 'Defensive' | 'Offensive';
 	subType: '' | 'General' | 'Backpack' | 'Support Weapon' | 'Other' | 'Orbital' | 'Eagle';
 }
+
+// export const reinforcementsVoices: string[] = [
+// 	'reinforcements-female-1-1',
+// 	// 'reinforcements-female-1-2',
+// 	// 'reinforcements-female-2-1',
+// 	// 'reinforcements-female-2-2',
+// 	'reinforcements-male-1-1',
+// 	// 'reinforcements-male-1-2',
+// 	// 'reinforcements-male-2-1',
+// 	// 'reinforcements-male-2-2',
+// ]
+
+export const reinforcementConfirmVoices: string[] = ['ship-reinforcements-1', 'ship-reinforcements-2'];
 
 export const sosVoices: string[] = [
 	'sos-beacon-female-1-1',
@@ -25,7 +38,16 @@ export const sosVoices: string[] = [
 	'sos-beacon-male-2-2',
 ];
 
-export const walkerVoices: string[] = ['walker-female-1-1', 'walker-female-1-2', 'walker-female-2-1', 'walker-female-2-2', 'walker-male-1-1', 'walker-male-1-2', 'walker-male-2-1', 'walker-male-2-2'];
+export const walkerVoices: string[] = [
+	'walker-female-1-1',
+	'walker-female-1-2',
+	'walker-female-2-1',
+	'walker-female-2-2',
+	'walker-male-1-1',
+	'walker-male-1-2',
+	'walker-male-2-1',
+	'walker-male-2-2',
+];
 
 export const objectiveStratagemAvailableVoices: string[] = ['ship-objective-stratagem-available-1', 'ship-objective-stratagem-available-2'];
 
@@ -77,7 +99,7 @@ export const eagleRearmVoices: string[] = [
 	'rearm-returning_to_destoyer_for_resupply',
 	'rearm-withdrawing_to_rearm',
 ];
-export const eagleHit: string[] = [
+export const eagleHitVocies: string[] = [
 	'eagle-hit-and_stay_down',
 	'eagle-hit-now_thats_what_i_call_liberty',
 	'eagle-hit-another_one_bites_the_dust',
@@ -132,14 +154,12 @@ export const genericStratagemCode: stratagemCode = {
 };
 
 export const stratagemCodes: stratagemCode[] = [
-	/*manual effect needed? - voice to do*/ {
+	{
 		name: 'Reinforce',
 		icon: 'reinforce',
 		code: [inputDirection.Up, inputDirection.Down, inputDirection.Right, inputDirection.Left, inputDirection.Up],
 		sound: [],
-		voice: [
-			/*required*/
-		],
+		voice: reinforcementConfirmVoices,
 		postSound: [],
 		colour: 'blue',
 		borderColour: 'yellow',
@@ -480,7 +500,7 @@ export const stratagemCodes: stratagemCode[] = [
 		code: [inputDirection.Up, inputDirection.Right, inputDirection.Right],
 		sound: ['stratagem-eagle-strafingrun'],
 		voice: eagleDeployVoices,
-		postSound: eagleHit,
+		postSound: eagleHitVocies,
 		colour: 'red',
 		borderColour: 'red',
 		deployType: 'beam-only',
@@ -493,7 +513,7 @@ export const stratagemCodes: stratagemCode[] = [
 		code: [inputDirection.Up, inputDirection.Right, inputDirection.Down, inputDirection.Right],
 		sound: ['stratagem-eagle-airstrike'],
 		voice: eagleDeployVoices,
-		postSound: eagleHit,
+		postSound: eagleHitVocies,
 		colour: 'red',
 		borderColour: 'red',
 		deployType: 'beam-only',
@@ -506,7 +526,7 @@ export const stratagemCodes: stratagemCode[] = [
 		code: [inputDirection.Up, inputDirection.Right, inputDirection.Down, inputDirection.Down, inputDirection.Right],
 		sound: ['stratagem-eagle-clusterbomb'],
 		voice: eagleDeployVoices,
-		postSound: eagleHit,
+		postSound: eagleHitVocies,
 		colour: 'red',
 		borderColour: 'red',
 		deployType: 'beam-only',
@@ -519,7 +539,7 @@ export const stratagemCodes: stratagemCode[] = [
 		code: [inputDirection.Up, inputDirection.Right, inputDirection.Down, inputDirection.Up],
 		sound: ['stratagem-eagle-napalm'],
 		voice: eagleDeployVoices,
-		postSound: eagleHit,
+		postSound: eagleHitVocies,
 		colour: 'red',
 		borderColour: 'red',
 		deployType: 'beam-only',
@@ -545,7 +565,7 @@ export const stratagemCodes: stratagemCode[] = [
 		code: [inputDirection.Up, inputDirection.Right, inputDirection.Up, inputDirection.Left],
 		sound: ['stratagem-eagle-rocketpods'],
 		voice: eagleDeployVoices,
-		postSound: eagleHit,
+		postSound: eagleHitVocies,
 		colour: 'red',
 		borderColour: 'red',
 		deployType: 'beam-only',
@@ -558,7 +578,7 @@ export const stratagemCodes: stratagemCode[] = [
 		code: [inputDirection.Up, inputDirection.Right, inputDirection.Down, inputDirection.Down, inputDirection.Down],
 		sound: ['stratagem-eagle-500kg'],
 		voice: eagleDeployVoices,
-		postSound: eagleHit,
+		postSound: eagleHitVocies,
 		colour: 'red',
 		borderColour: 'red',
 		deployType: 'beam-only',

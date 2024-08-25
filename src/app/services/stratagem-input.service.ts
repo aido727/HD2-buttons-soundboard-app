@@ -34,9 +34,9 @@ export class StratagemInputService {
 		if (this.isInputDisabled$.getValue() == false) {
 			if (this.currentInputCode$.getValue().length < this.maxInputs) {
 				this.addInput(direction);
-				this.audioService.playStratagemInputBeep(this.currentInputCode$.getValue().length);
 				switch (this.inputMode) {
 					case inputMode[0]: // Free
+						this.audioService.playStratagemInputBeep(this.currentInputCode$.getValue().length);
 						if (this.currentInputCode$.getValue().length >= this.maxInputs) {
 							this.forceReady();
 						}
@@ -44,10 +44,13 @@ export class StratagemInputService {
 					case inputMode[1]: // Code List
 					case inputMode[2]: // Blind
 						this.updateFilteredCodesByInput();
-						if (this.filteredCodesByInput.length == 1 && this.currentInputCode$.getValue().length == this.filteredCodesByInput[0].code.length) {
-							this.ready(this.filteredCodesByInput[0]);
-						} else if (this.filteredCodesByInput.length == 0) {
+						if (this.filteredCodesByInput.length == 0) {
 							this.cancelCode();
+						} else {
+							this.audioService.playStratagemInputBeep(this.currentInputCode$.getValue().length);
+							if (this.filteredCodesByInput.length == 1 && this.currentInputCode$.getValue().length == this.filteredCodesByInput[0].code.length) {
+								this.ready(this.filteredCodesByInput[0]);
+							}
 						}
 						break;
 				}

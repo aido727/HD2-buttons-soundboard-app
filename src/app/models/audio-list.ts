@@ -163,6 +163,10 @@ export const audioFilesVoices: string[] = [
 	'walker-male-1-2',
 	'walker-male-2-1',
 	'walker-male-2-2',
+	'ship-reinforcements-1',
+	'ship-reinforcements-2',
+	// 'reinforcements-female-1-1', not using
+	// 'reinforcements-male-1-1', not using
 ];
 
 export const audioFilesStings: string[] = [];
