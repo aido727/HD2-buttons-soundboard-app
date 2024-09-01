@@ -12,19 +12,19 @@
 			<div class="section">
 				<span class="title">Stings</span>
 				<div class="buttons">
-					<button *ngFor="let audio of audioStings" class="equip-button" (click)="playSound(audio.file)">{{ audio.name }}</button>
+					<button *ngFor="let audio of audioStings" class="equip-button" [attr.id]="audio.file + '-button'" (click)="playSound(audio.file)">{{ audio.name }}</button>
 				</div>
 			</div>
 			<div class="section">
 				<span class="title">Music</span>
 				<div class="buttons">
-					<button *ngFor="let audio of audioMusic" class="equip-button" (click)="playSound(audio.file)">{{ audio.name }}</button>
+					<button *ngFor="let audio of audioMusic" class="equip-button" [attr.id]="audio.file + '-button'" (click)="playSound(audio.file)">{{ audio.name }}</button>
 				</div>
 			</div>
 			<div class="section">
 				<span class="title">Other</span>
 				<div class="buttons">
-					<button *ngFor="let audio of audioOther" class="equip-button" (click)="playSound(audio.file)">{{ audio.name }}</button>
+					<button *ngFor="let audio of audioOther" class="equip-button" [attr.id]="audio.file + '-button'" (click)="playSound(audio.file)">{{ audio.name }}</button>
 				</div>
 			</div>
 		</div>

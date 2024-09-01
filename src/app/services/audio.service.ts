@@ -12,6 +12,8 @@ export class AudioService {
 	private audioLoadedPercent$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 	public audioLoadedPercent = this.audioLoadedPercent$.asObservable();
 
+	public stopFadeTime = 0.5;
+
 	public async buildAudioElements(): Promise<boolean> {
 		let readyFiles = 0;
 		audioFilesSounds.forEach((audioFile) => {
@@ -77,19 +79,19 @@ export class AudioService {
 	public stopAllSounds() {
 		this.activelyStoppingAudio = true;
 		audioFilesSounds.forEach((soundFile) => {
-			this.fadeOut(soundFile, 0.5);
+			this.fadeOut(soundFile, this.stopFadeTime);
 		});
-		audioFilesVoices.forEach((voiceFile) => {
-			this.fadeOut(voiceFile, 0.5);
+		audioFilesVoices.forEach((soundFile) => {
+			this.fadeOut(soundFile, this.stopFadeTime);
 		});
-		audioFilesStings.forEach((voiceFile) => {
-			this.fadeOut(voiceFile, 0.5);
+		audioFilesStings.forEach((soundFile) => {
+			this.fadeOut(soundFile, this.stopFadeTime);
 		});
-		audioFilesMusic.forEach((voiceFile) => {
-			this.fadeOut(voiceFile, 0.5);
+		audioFilesMusic.forEach((soundFile) => {
+			this.fadeOut(soundFile, this.stopFadeTime);
 		});
-		audioFilesOther.forEach((voiceFile) => {
-			this.fadeOut(voiceFile, 0.5);
+		audioFilesOther.forEach((soundFile) => {
+			this.fadeOut(soundFile, this.stopFadeTime);
 		});
 	}
 

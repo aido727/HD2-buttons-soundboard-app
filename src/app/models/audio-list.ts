@@ -169,7 +169,7 @@ export const audioFilesVoices: string[] = [
 	// 'reinforcements-male-1-1', not using
 ];
 
-export const audioFilesStings: string[] = [];
+export const audioFilesStings: string[] = ['the-helldiver-wakes'];
 
 export const audioFilesMusic: string[] = [];
 

@@ -93,10 +93,14 @@
 
 				button {
 					width: 27.5vw;
-				}
 
-				button:not(:hover):not(:active) {
-					border: 4px solid var(--light-gray-trans);
+					&:not(:hover):not(:active) {
+						border: 4px solid var(--light-gray-trans);
+					}
+
+					&.active {
+						border: 4px solid var(--white) !important;
+					}
 				}
 			}
 		}

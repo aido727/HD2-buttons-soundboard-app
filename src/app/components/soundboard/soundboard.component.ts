@@ -12,7 +12,7 @@ import { AudioService } from '../../services/audio.service';
 export class SoundboardComponent {
 	public isOpen: boolean = false;
 
-	public audioStings: { file: string; name: string }[] = [];
+	public audioStings: { file: string; name: string }[] = [{ file: 'the-helldiver-wakes', name: 'The Helldiver Wakes' }];
 
 	public audioMusic: { file: string; name: string }[] = [];
 	public audioOther: { file: string; name: string }[] = [{ file: 'PA_Jingle', name: 'PA Jingle' }];
@@ -24,6 +24,20 @@ export class SoundboardComponent {
 	}
 
 	public playSound(file: string) {
-		this.audioService.playOne(file);
+		this.stopAllSounds();
+		var button = document.getElementById(file + '-button') as HTMLButtonElement;
+		var audio = document.getElementById(file) as HTMLAudioElement;
+		button.classList.add('active');
+		setTimeout(() => {
+			this.audioService.playOne(file);
+		})
+		
+		audio.onended = () => {
+			button.classList.remove('active');
+		}
+
+		audio.onpause = () => {
+			button.classList.remove('active');
+		}
 	}
 }
