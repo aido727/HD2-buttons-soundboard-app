@@ -20,11 +20,11 @@ export class SoundboardComponent {
 	constructor(private audioService: AudioService) {}
 
 	public stopAllSounds() {
-		this.audioService.stopAllSounds();
+		this.audioService.fadeOutAllSounds();
 	}
 
 	public playSound(file: string) {
-		this.stopAllSounds();
+		this.audioService.stopAllSounds();
 		var button = document.getElementById(file + '-button') as HTMLButtonElement;
 		var audio = document.getElementById(file) as HTMLAudioElement;
 		button.classList.add('active');

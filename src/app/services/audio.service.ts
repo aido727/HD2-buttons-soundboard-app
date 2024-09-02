@@ -79,6 +79,25 @@ export class AudioService {
 	public stopAllSounds() {
 		this.activelyStoppingAudio = true;
 		audioFilesSounds.forEach((soundFile) => {
+			this.stopOne(soundFile);
+		});
+		audioFilesVoices.forEach((soundFile) => {
+			this.stopOne(soundFile);
+		});
+		audioFilesStings.forEach((soundFile) => {
+			this.stopOne(soundFile);
+		});
+		audioFilesMusic.forEach((soundFile) => {
+			this.stopOne(soundFile);
+		});
+		audioFilesOther.forEach((soundFile) => {
+			this.stopOne(soundFile);
+		});
+	}
+
+	public fadeOutAllSounds() {
+		this.activelyStoppingAudio = true;
+		audioFilesSounds.forEach((soundFile) => {
 			this.fadeOut(soundFile, this.stopFadeTime);
 		});
 		audioFilesVoices.forEach((soundFile) => {
