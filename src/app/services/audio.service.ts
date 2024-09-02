@@ -95,24 +95,24 @@ export class AudioService {
 		});
 	}
 
-	public fadeOutAllSounds() {
-		this.activelyStoppingAudio = true;
-		audioFilesSounds.forEach((soundFile) => {
-			this.fadeOut(soundFile, this.stopFadeTime);
-		});
-		audioFilesVoices.forEach((soundFile) => {
-			this.fadeOut(soundFile, this.stopFadeTime);
-		});
-		audioFilesStings.forEach((soundFile) => {
-			this.fadeOut(soundFile, this.stopFadeTime);
-		});
-		audioFilesMusic.forEach((soundFile) => {
-			this.fadeOut(soundFile, this.stopFadeTime);
-		});
-		audioFilesOther.forEach((soundFile) => {
-			this.fadeOut(soundFile, this.stopFadeTime);
-		});
-	}
+	// public fadeOutAllSounds() {
+	// 	this.activelyStoppingAudio = true;
+	// 	audioFilesSounds.forEach((soundFile) => {
+	// 		this.fadeOut(soundFile, this.stopFadeTime);
+	// 	});
+	// 	audioFilesVoices.forEach((soundFile) => {
+	// 		this.fadeOut(soundFile, this.stopFadeTime);
+	// 	});
+	// 	audioFilesStings.forEach((soundFile) => {
+	// 		this.fadeOut(soundFile, this.stopFadeTime);
+	// 	});
+	// 	audioFilesMusic.forEach((soundFile) => {
+	// 		this.fadeOut(soundFile, this.stopFadeTime);
+	// 	});
+	// 	audioFilesOther.forEach((soundFile) => {
+	// 		this.fadeOut(soundFile, this.stopFadeTime);
+	// 	});
+	// }
 
 	public playStratagemInputBeep(pitchNum: number = 1) {
 		this.playOne('stratagem-input-beep-' + pitchNum);

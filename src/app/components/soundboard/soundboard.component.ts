@@ -20,7 +20,7 @@ export class SoundboardComponent {
 	constructor(private audioService: AudioService) {}
 
 	public stopAllSounds() {
-		this.audioService.fadeOutAllSounds();
+		this.audioService.stopAllSounds();
 	}
 
 	public playSound(file: string) {
