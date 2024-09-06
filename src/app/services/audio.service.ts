@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { audioFilesMusic, audioFilesOther, audioFilesSounds, audioFilesStings, audioFilesVoices } from '../models/audio-list';
+import { audioFilesMusic, audioFilesOther, audioFilesSounds, audioFilesStings, audioFilesStratagemHero, audioFilesVoices } from '../models/audio-list';
 import { stratagemCode } from '../models/stratagem-codes';
 import { BehaviorSubject } from 'rxjs';
 
@@ -66,9 +66,22 @@ export class AudioService {
 			audio.load();
 			document.body.appendChild(audio);
 		});
-		while (readyFiles < audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length) {
+		audioFilesStratagemHero.forEach((audioFile) => {
+			const audio = document.createElement('audio');
+			audio.id = audioFile;
+			audio.src = '/audio/stratagem-hero/' + audioFile + '.ogg';
+			audio.addEventListener('canplaythrough', () => {
+				readyFiles++;
+			});
+			audio.load();
+			document.body.appendChild(audio);
+		});
+
+		const totalFileCount = audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length;
+
+		while (readyFiles < totalFileCount) {
 			this.audioLoadedPercent$.next(
-				Math.round((readyFiles / (audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length)) * 100),
+				Math.round((readyFiles / (totalFileCount)) * 100),
 			);
 			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
@@ -93,26 +106,10 @@ export class AudioService {
 		audioFilesOther.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
+		audioFilesStratagemHero.forEach((soundFile) => {
+			this.stopOne(soundFile);
+		});
 	}
-
-	// public fadeOutAllSounds() {
-	// 	this.activelyStoppingAudio = true;
-	// 	audioFilesSounds.forEach((soundFile) => {
-	// 		this.fadeOut(soundFile, this.stopFadeTime);
-	// 	});
-	// 	audioFilesVoices.forEach((soundFile) => {
-	// 		this.fadeOut(soundFile, this.stopFadeTime);
-	// 	});
-	// 	audioFilesStings.forEach((soundFile) => {
-	// 		this.fadeOut(soundFile, this.stopFadeTime);
-	// 	});
-	// 	audioFilesMusic.forEach((soundFile) => {
-	// 		this.fadeOut(soundFile, this.stopFadeTime);
-	// 	});
-	// 	audioFilesOther.forEach((soundFile) => {
-	// 		this.fadeOut(soundFile, this.stopFadeTime);
-	// 	});
-	// }
 
 	public playStratagemInputBeep(pitchNum: number = 1) {
 		this.playOne('stratagem-input-beep-' + pitchNum);

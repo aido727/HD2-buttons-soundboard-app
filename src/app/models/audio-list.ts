@@ -171,6 +171,8 @@ export const audioFilesVoices: string[] = [
 
 export const audioFilesStings: string[] = ['the-helldiver-wakes', 'objective-complete-stinger-small', 'objective-complete-stinger-medium', 'objective-complete-stinger-large'];
 
-export const audioFilesMusic: string[] = [];
+export const audioFilesMusic: string[] = ['superearth-anthem'];
 
-export const audioFilesOther: string[] = ['PA_Jingle', 'ship-enemy-artillery-1', 'ship-enemy-artillery-2', 'ship-enemy-artillery-3'];
+export const audioFilesOther: string[] = ['PA_Jingle', 'ship-enemy-artillery-1', 'ship-enemy-artillery-2', 'ship-enemy-artillery-3', 'Intro', 'advert-general-brash', 'advert-managed-democracy'];
+
+export const audioFilesStratagemHero: string[] = ['Loop', 'Round_complete_1', 'Round_complete_2', 'Round_complete_3', 'Round_complete_4', 'Round_failed']

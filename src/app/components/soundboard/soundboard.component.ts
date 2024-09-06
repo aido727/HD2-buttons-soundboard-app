@@ -19,12 +19,26 @@ export class SoundboardComponent {
 		{ file: 'objective-complete-stinger-large', name: 'Objective Complete 3' },
 	];
 
-	public audioMusic: { file: string; name: string }[] = [];
+	public audioMusic: { file: string; name: string }[] = [
+		{ file: 'superearth-anthem', name: 'Super Earth Anthem' },
+	];
 	public audioOther: { file: string; name: string }[] = [
+		{ file: 'Intro', name: 'Intro Video' },
 		{ file: 'PA_Jingle', name: 'PA Jingle' },
+		{ file: 'advert-general-brash', name: 'Advert - General Brash' },
+		{ file: 'advert-managed-democracy', name: 'Advert - Managed Democracy' },
 		{ file: 'ship-enemy-artillery-1', name: 'Enemy Artillery 1' },
 		{ file: 'ship-enemy-artillery-2', name: 'Enemy Artillery 2' },
 		{ file: 'ship-enemy-artillery-3', name: 'Enemy Artillery 3' },
+	];
+
+	public audioStratagemHero: { file: string; name: string }[] = [
+		{ file: 'Loop', name: 'Loop' },
+		{ file: 'Round_complete_1', name: 'Round complete 1' },
+		{ file: 'Round_complete_2', name: 'Round complete 2' },
+		{ file: 'Round_complete_3', name: 'Round complete 3' },
+		{ file: 'Round_complete_4', name: 'Round complete 4' },
+		{ file: 'Round_failed', name: 'Round Failed' },
 	];
 
 	constructor(private audioService: AudioService) {}
