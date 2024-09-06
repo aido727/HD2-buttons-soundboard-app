@@ -21,6 +21,18 @@ export class SoundboardComponent {
 
 	public audioMusic: { file: string; name: string }[] = [
 		{ file: 'superearth-anthem', name: 'Super Earth Anthem' },
+		{ file: 'prep-landing-zone-full', name: 'Prep - Landing Zone - Full' },
+		{ file: 'prep-landing-zone-loop', name: 'Prep - Landing Zone - Loop' },
+		{ file: 'prep-equipment-full', name: 'Prep - Equipment - Full' },
+		{ file: 'prep-equipment-loop', name: 'Prep - Equipment - Loop' },
+		{ file: 'planetfall', name: 'Planet Fall' },
+		{ file: 'extraction-just-combat', name: 'Extraction - Combat - Full' },
+		{ file: 'extraction-combat-loop', name: 'Extraction - Combat - Loop' },
+		{ file: 'extraction-just-passive', name: 'Extraction - Passive - Full' },
+		{ file: 'extraction-passive-loop', name: 'Extraction - Passive - Loop' },
+		{ file: 'extraction-shuttle-close-loop', name: 'Extraction - Shuttle Close Loop' },
+		{ file: 'extraction-successful', name: 'Extraction - Successful' },
+
 	];
 	public audioOther: { file: string; name: string }[] = [
 		{ file: 'Intro', name: 'Intro Video' },

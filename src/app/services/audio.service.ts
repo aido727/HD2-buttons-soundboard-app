@@ -53,6 +53,11 @@ export class AudioService {
 			audio.addEventListener('canplaythrough', () => {
 				readyFiles++;
 			});
+			if(audioFile.includes('loop') || audioFile.includes('Loop'))
+			{
+				console.log(audioFile);
+				audio.loop = true;
+			}
 			audio.load();
 			document.body.appendChild(audio);
 		});
@@ -73,6 +78,11 @@ export class AudioService {
 			audio.addEventListener('canplaythrough', () => {
 				readyFiles++;
 			});
+			if(audioFile.includes('loop') || audioFile.includes('Loop'))
+			{
+				console.log(audioFile);
+				audio.loop = true;
+			}
 			audio.load();
 			document.body.appendChild(audio);
 		});
