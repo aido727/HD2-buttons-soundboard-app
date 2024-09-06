@@ -186,6 +186,8 @@ export const audioFilesMusic: string[] = [
 	'extraction-successful',
 	'terminid-combat',
 	'automaton-combat',
+	'full-launch-sequence-with-voice-and-sound',
+	'ship-hellpod-launch-initiated-full',
 ];
 
 export const audioFilesOther: string[] = [
@@ -197,6 +199,9 @@ export const audioFilesOther: string[] = [
 	'advert-general-brash',
 	'advert-managed-democracy',
 	'automaton-march-loop',
+	'ship-mission-coords-locked',
+	'ship-hellpods-primed',
+	'ship-hellpod-launch-initiated',
 ];
 
 export const audioFilesStratagemHero: string[] = ['Loop', 'Round_complete_1', 'Round_complete_2', 'Round_complete_3', 'Round_complete_4', 'Round_failed'];
