@@ -53,8 +53,7 @@ export class AudioService {
 			audio.addEventListener('canplaythrough', () => {
 				readyFiles++;
 			});
-			if(audioFile.includes('loop') || audioFile.includes('Loop'))
-			{
+			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
 				console.log(audioFile);
 				audio.loop = true;
 			}
@@ -68,6 +67,10 @@ export class AudioService {
 			audio.addEventListener('canplaythrough', () => {
 				readyFiles++;
 			});
+			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
+				console.log(audioFile);
+				audio.loop = true;
+			}
 			audio.load();
 			document.body.appendChild(audio);
 		});
@@ -78,8 +81,7 @@ export class AudioService {
 			audio.addEventListener('canplaythrough', () => {
 				readyFiles++;
 			});
-			if(audioFile.includes('loop') || audioFile.includes('Loop'))
-			{
+			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
 				console.log(audioFile);
 				audio.loop = true;
 			}
@@ -87,12 +89,11 @@ export class AudioService {
 			document.body.appendChild(audio);
 		});
 
-		const totalFileCount = audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length;
+		const totalFileCount =
+			audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length;
 
 		while (readyFiles < totalFileCount) {
-			this.audioLoadedPercent$.next(
-				Math.round((readyFiles / (totalFileCount)) * 100),
-			);
+			this.audioLoadedPercent$.next(Math.round((readyFiles / totalFileCount) * 100));
 			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
 		this.audioLoadedPercent$.next(100);

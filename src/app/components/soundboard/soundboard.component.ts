@@ -32,13 +32,15 @@ export class SoundboardComponent {
 		{ file: 'extraction-passive-loop', name: 'Extraction - Passive - Loop' },
 		{ file: 'extraction-shuttle-close-loop', name: 'Extraction - Shuttle Close Loop' },
 		{ file: 'extraction-successful', name: 'Extraction - Successful' },
-
+		{ file: 'terminid-combat', name: 'Terminid Combat' },
+		{ file: 'automaton-combat', name: 'Automaton Combat' },
 	];
 	public audioOther: { file: string; name: string }[] = [
 		{ file: 'Intro', name: 'Intro Video' },
 		{ file: 'PA_Jingle', name: 'PA Jingle' },
 		{ file: 'advert-general-brash', name: 'Advert - General Brash' },
 		{ file: 'advert-managed-democracy', name: 'Advert - Managed Democracy' },
+		{ file: 'automaton-march-loop', name: 'Automaton March - Loop' },
 		{ file: 'ship-enemy-artillery-1', name: 'Enemy Artillery 1' },
 		{ file: 'ship-enemy-artillery-2', name: 'Enemy Artillery 2' },
 		{ file: 'ship-enemy-artillery-3', name: 'Enemy Artillery 3' },
@@ -63,9 +65,9 @@ export class SoundboardComponent {
 		this.audioService.stopAllSounds();
 		var button = document.getElementById(file + '-button') as HTMLButtonElement;
 		var audio = document.getElementById(file) as HTMLAudioElement;
-		button.classList.add('active');
 		setTimeout(() => {
 			this.audioService.playOne(file);
+			button.classList.add('active');
 		});
 
 		audio.onended = () => {

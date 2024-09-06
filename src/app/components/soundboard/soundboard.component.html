@@ -30,7 +30,9 @@
 			<div class="section">
 				<span class="title">Stratagem Hero</span>
 				<div class="buttons">
-					<button *ngFor="let audio of audioStratagemHero" class="equip-button" [attr.id]="audio.file + '-button'" (click)="playSound(audio.file)">{{ audio.name }}</button>
+					<button *ngFor="let audio of audioStratagemHero" class="equip-button" [attr.id]="audio.file + '-button'" (click)="playSound(audio.file)">
+						{{ audio.name }}
+					</button>
 				</div>
 			</div>
 		</div>
