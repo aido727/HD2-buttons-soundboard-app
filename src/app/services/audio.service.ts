@@ -209,6 +209,7 @@ export class AudioService {
 		this.activelyStoppingAudio = false;
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
 		if (audio) {
+			// reset before play - better performance than having everything reset at others times
 			audio.pause();
 			audio.currentTime = 0;
 			audio.volume = 1;
@@ -242,7 +243,7 @@ export class AudioService {
 				this.decreaseVolume(targetVolume, audio, volumeDecrease, tick);
 			}, tick);
 		} else {
-			this.stopOne(audio.id);
+			audio.pause();
 		}
 	}
 
@@ -250,9 +251,6 @@ export class AudioService {
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
 		if (audio) {
 			audio.pause();
-			// reset everything
-			audio.currentTime = 0;
-			audio.volume = 1;
 		}
 	}
 }

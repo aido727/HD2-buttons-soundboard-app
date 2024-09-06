@@ -12,10 +12,20 @@ import { AudioService } from '../../services/audio.service';
 export class SoundboardComponent {
 	public isOpen: boolean = false;
 
-	public audioStings: { file: string; name: string }[] = [{ file: 'the-helldiver-wakes', name: 'The Helldiver Wakes' }, { file: 'objective-complete-stinger-small', name: 'Objective Complete 1' }, { file: 'objective-complete-stinger-medium', name: 'Objective Complete 2' }, { file: 'objective-complete-stinger-large', name: 'Objective Complete 3' }];
+	public audioStings: { file: string; name: string }[] = [
+		{ file: 'the-helldiver-wakes', name: 'The Helldiver Wakes' },
+		{ file: 'objective-complete-stinger-small', name: 'Objective Complete 1' },
+		{ file: 'objective-complete-stinger-medium', name: 'Objective Complete 2' },
+		{ file: 'objective-complete-stinger-large', name: 'Objective Complete 3' },
+	];
 
 	public audioMusic: { file: string; name: string }[] = [];
-	public audioOther: { file: string; name: string }[] = [{ file: 'PA_Jingle', name: 'PA Jingle' }, { file: 'ship-enemy-artillery-1', name: 'Enemy Artillery 1' }, { file: 'ship-enemy-artillery-2', name: 'Enemy Artillery 2' }, { file: 'ship-enemy-artillery-3', name: 'Enemy Artillery 3' }];
+	public audioOther: { file: string; name: string }[] = [
+		{ file: 'PA_Jingle', name: 'PA Jingle' },
+		{ file: 'ship-enemy-artillery-1', name: 'Enemy Artillery 1' },
+		{ file: 'ship-enemy-artillery-2', name: 'Enemy Artillery 2' },
+		{ file: 'ship-enemy-artillery-3', name: 'Enemy Artillery 3' },
+	];
 
 	constructor(private audioService: AudioService) {}
 
@@ -30,14 +40,14 @@ export class SoundboardComponent {
 		button.classList.add('active');
 		setTimeout(() => {
 			this.audioService.playOne(file);
-		})
-		
+		});
+
 		audio.onended = () => {
 			button.classList.remove('active');
-		}
+		};
 
 		audio.onpause = () => {
 			button.classList.remove('active');
-		}
+		};
 	}
 }

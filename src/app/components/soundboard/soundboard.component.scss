@@ -57,6 +57,7 @@
 	height: calc(100vh - 60px);
 	width: calc(100vw - 60px);
 	background-color: var(--dark-gray);
+	overflow-y: auto;
 
 	--s: 10px; /* the size on the corner */
 	--t: 2px; /* the thickness of the border */
@@ -72,8 +73,8 @@
 	.content {
 		display: flex;
 		flex-direction: column;
-		padding: 26px;
-		font-size: 24pt;
+		padding: 20px;
+		font-size: 20pt;
 
 		.section {
 			&:not(:last-of-type) {
@@ -92,6 +93,7 @@
 				gap: 12px;
 
 				button {
+					font-size: 18px;
 					width: 27.5vw;
 
 					&:not(:hover):not(:active) {
