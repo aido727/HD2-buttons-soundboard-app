@@ -1,5 +1,5 @@
 <div id="soundboard-button">
-	<button class="svg-button" [class.isOpen]="isOpen" (click)="isOpen = !isOpen"><img /></button>
+	<button class="svg-button" [class.isOpen]="isOpen" (click)="toggleIsOpen()"><img /></button>
 </div>
 
 <div id="stop-all-button">
@@ -34,6 +34,14 @@
 						{{ audio.name }}
 					</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div id="audio-loader-soundboard" [class.hidden]="audioLoaded">
+		<div class="modal-box">
+			<div class="content">
+				<span class="title">Loading Audio Files</span>
+				<span>Please wait democratically... {{ audioPercentLoaded | async }}%</span>
 			</div>
 		</div>
 	</div>

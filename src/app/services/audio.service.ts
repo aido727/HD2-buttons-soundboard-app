@@ -14,7 +14,7 @@ export class AudioService {
 
 	public stopFadeTime = 0.5;
 
-	public async buildAudioElements(): Promise<boolean> {
+	public async buildAudioElementsForStratagems(): Promise<boolean> {
 		let readyFiles = 0;
 		audioFilesSounds.forEach((audioFile) => {
 			const audio = document.createElement('audio');
@@ -36,6 +36,19 @@ export class AudioService {
 			audio.load();
 			document.body.appendChild(audio);
 		});
+
+		const totalFileCount = audioFilesSounds.length + audioFilesVoices.length;
+
+		while (readyFiles < totalFileCount) {
+			this.audioLoadedPercent$.next(Math.round((readyFiles / totalFileCount) * 100));
+			await new Promise((resolve) => setTimeout(resolve, 100));
+		}
+		this.audioLoadedPercent$.next(100);
+		return true;
+	}
+
+	public async buildAudioElementsForSoundboard(): Promise<boolean> {
+		let readyFiles = 0;
 		audioFilesStings.forEach((audioFile) => {
 			const audio = document.createElement('audio');
 			audio.id = audioFile;
@@ -54,7 +67,6 @@ export class AudioService {
 				readyFiles++;
 			});
 			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
-				console.log(audioFile);
 				audio.loop = true;
 			}
 			audio.load();
@@ -68,7 +80,6 @@ export class AudioService {
 				readyFiles++;
 			});
 			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
-				console.log(audioFile);
 				audio.loop = true;
 			}
 			audio.load();
@@ -82,15 +93,13 @@ export class AudioService {
 				readyFiles++;
 			});
 			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
-				console.log(audioFile);
 				audio.loop = true;
 			}
 			audio.load();
 			document.body.appendChild(audio);
 		});
 
-		const totalFileCount =
-			audioFilesSounds.length + audioFilesVoices.length + audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length;
+		const totalFileCount = audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length;
 
 		while (readyFiles < totalFileCount) {
 			this.audioLoadedPercent$.next(Math.round((readyFiles / totalFileCount) * 100));

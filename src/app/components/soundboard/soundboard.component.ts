@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-soundboard',
@@ -11,6 +12,8 @@ import { AudioService } from '../../services/audio.service';
 })
 export class SoundboardComponent {
 	public isOpen: boolean = false;
+	public audioLoaded: boolean = false;
+	public audioPercentLoaded?: Observable<number>;
 
 	public audioStings: { file: string; name: string }[] = [
 		{ file: 'the-helldiver-wakes', name: 'The Helldiver Wakes' },
@@ -56,6 +59,16 @@ export class SoundboardComponent {
 	];
 
 	constructor(private audioService: AudioService) {}
+
+	public toggleIsOpen() {
+		this.isOpen = !this.isOpen;
+		if (this.isOpen && !this.audioLoaded) {
+			this.audioPercentLoaded = this.audioService.audioLoadedPercent;
+			this.audioService.buildAudioElementsForSoundboard().then(() => {
+				this.audioLoaded = true;
+			});
+		}
+	}
 
 	public stopAllSounds() {
 		this.audioService.stopAllSounds();

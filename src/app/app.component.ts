@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
 				1000 * 60 * this.autoUpdateMinutes,
 			);
 		}
-		this.audioService.buildAudioElements().then((result) => {
+		this.audioService.buildAudioElementsForStratagems().then((result) => {
 			this.audioLoaded = result;
 		});
 	}
