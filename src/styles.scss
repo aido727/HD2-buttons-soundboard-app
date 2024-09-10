@@ -233,7 +233,9 @@ body {
 
 #update-loader,
 #audio-loader,
-#audio-loader-soundboard {
+#audio-loader-soundboard,
+#help-modal {
+	z-index: 120;
 	position: absolute;
 	top: 0;
 	width: 100vw;

@@ -25,8 +25,9 @@ import { Subscription } from 'rxjs';
 })
 export class SettingsComponent implements OnInit, OnDestroy {
 	public showMenu: boolean = false;
+	public showHelp: boolean = false;
 	public inputModes = inputMode;
-	public hideGeneralCodes = hideGeneralCodesMode;
+	public hideMissionCodes = hideGeneralCodesMode;
 	public inputModeForm: FormGroup;
 	public hideModeForm: FormGroup;
 	private inputChanges!: Subscription;
@@ -51,6 +52,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
 		this.hideChanges = this.hideModeForm.controls['mode'].valueChanges.subscribe((res) => {
 			this.stratagemInputService.setHideGeneralCodes(res!);
 		});
+	}
+
+	hideMenu() {
+		this.showMenu = false;
+		this.showHelp = false;
 	}
 
 	ngOnDestroy() {

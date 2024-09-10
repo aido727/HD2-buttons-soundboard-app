@@ -1,13 +1,13 @@
 <div id="settings-button">
-	<button class="svg-button" (click)="showMenu = !showMenu"><img /></button>
+	<button class="svg-button" (click)="showMenu = true"><img /></button>
 </div>
 
 <div id="settings-menu" *ngIf="showMenu" [@menuSlide]>
 	<div class="header">
 		<h2>Settings</h2>
-		<button class="svg-button" (click)="showMenu = false"><img /></button>
+		<button class="svg-button" (click)="hideMenu()"><img /></button>
 	</div>
-	<h3>Stratagem<br />Input Mode:</h3>
+	<h3>Stratagem Input Mode:</h3>
 	<form [formGroup]="inputModeForm">
 		<ng-container *ngFor="let mode of inputModes">
 			<input type="radio" [id]="mode" formControlName="mode" [value]="mode" />
@@ -15,14 +15,41 @@
 			><br />
 		</ng-container>
 	</form>
-	<h3>Hide General<br />Stratagems:</h3>
+	<h3>Hide Mission Stratagems:</h3>
 	<form [formGroup]="hideModeForm">
-		<ng-container *ngFor="let hideMode of hideGeneralCodes">
+		<ng-container *ngFor="let hideMode of hideMissionCodes">
 			<input type="radio" [id]="hideMode" formControlName="mode" [value]="hideMode" />
 			<label [for]="hideMode">{{ hideMode }}</label
 			><br />
 		</ng-container>
 	</form>
+	<button class="equip-button" (click)="showHelp = true">Help</button>
+	<button class="equip-button">Author/Contact</button>
 </div>
 
-<div *ngIf="showMenu" [@backgroundFade] class="under-menu" (click)="showMenu = false"></div>
+<div *ngIf="showMenu" [@backgroundFade] class="under-menu" (click)="hideMenu()"></div>
+
+<div *ngIf="showMenu && showHelp" id="help-modal">
+	<div class="modal-box">
+		<div class="content">
+			<span class="title">Help</span>
+			<button class="svg-button" (click)="showHelp = false"><img /></button>
+			<span>
+				Stratagem Input Mode:
+				<ul>
+					<li>Free: Any code can be used and generic sounds will play.</li>
+					<li>Code List (Default): Codes must match to an actual stratagem code.</li>
+					<li>Blind: Like Code List but the list itself is hidden.</li>
+				</ul>
+				Hide Mission Stratagems:
+				<ul>
+					<li>Show All (Default): Shows all yellow stratagems in the list.</li>
+					<li>Hide Subobjective Specific: Only shows yellow stratagems that are available in every mission.</li>
+					<li>Hide All: Hides all yellow stratagems in the list.</li>
+				</ul>
+				Stop All button (with visual)
+				Soundboard button (with visual) - press again to close and return to stratagem inputs.
+			</span>
+		</div>
+	</div>
+</div>

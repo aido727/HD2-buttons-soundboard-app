@@ -13,6 +13,10 @@ form {
 	margin-bottom: 24px;
 }
 
+form:last-of-type {
+	margin-bottom: 12px;
+}
+
 #settings-button {
 	position: absolute;
 	top: 30px;
@@ -32,7 +36,7 @@ form {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 120;
+	z-index: 230;
 	background-color: var(--dark-gray);
 	text-transform: uppercase;
 	display: flex;
@@ -75,5 +79,43 @@ form {
 	width: 100vw;
 	height: 100vh;
 	background-color: var(--black-trans);
-	z-index: 100;
+	z-index: 220;
+}
+
+button {
+	height: 52px;
+
+	&:not(:last-of-type) {
+		margin-bottom: 8px;
+	}
+}
+
+#help-modal {
+	z-index: 240;
+	
+	.modal-box {
+		height: calc(100vh - 60px);
+		width: calc(100vw - 60px);
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+			font-size: 20pt;
+			overflow-y: auto;
+			height: 100%;
+		}
+	}
+
+	.svg-button {
+		right: 48px;
+		position: fixed;
+		height: 32px;
+		width: 32px;
+		img {
+			width: 100%;
+			height: 100%;
+			content: url("/images/close-cross.svg");
+		}
+	}
 }
