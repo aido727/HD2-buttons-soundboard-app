@@ -104,6 +104,7 @@ button {
 			font-size: 20pt;
 			overflow-y: auto;
 			height: 100%;
+			color: var(--white);
 		}
 	}
 
@@ -118,4 +119,43 @@ button {
 			content: url("/images/close-cross.svg");
 		}
 	}
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 20px;
+	margin-bottom: 24px;
+	color: var(--light-gray);
+
+	th {
+		color: var(--white);
+		font-weight: normal;
+
+		div {
+			width: 100%;
+			&.stop-all-icon {
+				height: 36px;
+				content: url("/images/stop-circle.svg");
+			}
+			
+			&.soundboard-icon {
+				height: 36px;
+				content: url("/images/music.svg");
+			}
+			
+			&.stratagem-icon {
+				height: 36px;
+				content: url("/images/sound.svg");
+			}
+		}
+	}
+	
+	th, td {
+		padding: 4px;
+	}
+}
+
+table, td, th {
+	border: 1px solid var(--gray);
 }
