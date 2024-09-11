@@ -36,7 +36,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
 	constructor(
 		fb: FormBuilder,
-		private stratagemInputService: StratagemInputService
+		private stratagemInputService: StratagemInputService,
 	) {
 		this.inputModeForm = fb.group({
 			mode: [this.stratagemInputService.inputMode, Validators.required],
@@ -62,15 +62,15 @@ export class SettingsComponent implements OnInit, OnDestroy {
 	}
 
 	goToSteam() {
-		window.open("https://steamcommunity.com/id/aido727/", "_blank");		
+		window.open('https://steamcommunity.com/id/aido727/', '_blank');
 	}
 
 	goToDiscord() {
-		window.open("https://discord.com/users/196625630891081729/", "_blank");		
+		window.open('https://discord.com/users/196625630891081729/', '_blank');
 	}
 
 	goToEmail() {
-		window.open("mailto:aido727@gmail.com", "_blank");
+		window.open('mailto:aido727@gmail.com', '_blank');
 	}
 
 	ngOnDestroy() {

@@ -48,7 +48,7 @@ form:last-of-type {
 		display: flex;
 		justify-content: space-between;
 		align-items: self-end;
-		padding-bottom: 1rem;
+		padding-bottom: 12px;
 	}
 
 	.svg-button {
@@ -62,7 +62,7 @@ form:last-of-type {
 	}
 
 	button {
-		height: 52px;
+		height: 50px;
 		&:not(:last-of-type) {
 			margin-bottom: 8px;
 		}
@@ -89,9 +89,10 @@ form:last-of-type {
 	z-index: 220;
 }
 
-#help-modal, #contact-modal {
+#help-modal,
+#contact-modal {
 	z-index: 240;
-	
+
 	.modal-box {
 		height: calc(100vh - 60px);
 		width: calc(100vw - 60px);
@@ -102,7 +103,7 @@ form:last-of-type {
 			padding: 20px;
 			font-size: 20pt;
 			overflow-y: auto;
-			height: 100%;
+			height: calc(100% - 20px);
 			color: var(--white);
 		}
 	}
@@ -123,38 +124,41 @@ form:last-of-type {
 		width: 100%;
 		border-collapse: collapse;
 		font-size: 20px;
-		margin-bottom: 24px;
+		margin-bottom: 20px;
 		color: var(--light-gray);
-	
+
 		th {
 			color: var(--white);
 			font-weight: normal;
-	
+
 			div {
 				width: 100%;
 				&.stop-all-icon {
 					height: 36px;
 					content: url("/images/stop-circle.svg");
 				}
-				
+
 				&.soundboard-icon {
 					height: 36px;
 					content: url("/images/music.svg");
 				}
-				
+
 				&.stratagem-icon {
 					height: 36px;
 					content: url("/images/sound.svg");
 				}
 			}
 		}
-		
-		th, td {
+
+		th,
+		td {
 			padding: 4px;
 		}
 	}
-	
-	table, td, th {
+
+	table,
+	td,
+	th {
 		border: 1px solid var(--gray);
 	}
 }
@@ -183,7 +187,7 @@ form:last-of-type {
 			align-items: center;
 			padding-left: 0;
 			text-transform: unset;
-	
+
 			img {
 				height: 56px;
 				width: 56px;
@@ -193,7 +197,7 @@ form:last-of-type {
 				&.steam-icon {
 					content: url("/images/steam-icon.svg");
 				}
-	
+
 				&.email-icon {
 					content: url("/images/gmail-icon.svg");
 				}
