@@ -24,7 +24,7 @@
 		</ng-container>
 	</form>
 	<button class="equip-button" (click)="showHelp = true">Help</button>
-	<button class="equip-button">Author/Contact</button>
+	<button class="equip-button" (click)="showContact = true">Author/Contact</button>
 </div>
 
 <div *ngIf="showMenu" [@backgroundFade] class="under-menu" (click)="hideMenu()"></div>
@@ -90,6 +90,32 @@
 					</tr>
 				</table>
 			</span>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="showMenu && showContact" id="contact-modal">
+	<div class="modal-box">
+		<div class="content">
+			<span class="title">Author/Contact</span>
+			<button class="svg-button" (click)="showContact = false"><img /></button>
+			<div class="name">
+				<img src="images/flak_avatar.png"/> FlaK_MoNKeY / Aidan
+			</div>
+			<div class="buttons">
+				<button class="equip-button" (click)="goToSteam()">
+					<img class="steam-icon"/>
+					STEAM LINK
+				</button>
+				<button class="equip-button" (click)="goToDiscord()">
+					<img src="images/discord-icon.png"/>
+					DISCORD: flak_monkey
+				</button>
+				<button class="equip-button" (click)="goToEmail()">
+					<img class="email-icon"/>
+					aido727&#64;gmail.com
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

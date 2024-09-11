@@ -26,6 +26,7 @@ import { Subscription } from 'rxjs';
 export class SettingsComponent implements OnInit, OnDestroy {
 	public showMenu: boolean = false;
 	public showHelp: boolean = false;
+	public showContact: boolean = false;
 	public inputModes = inputMode;
 	public hideMissionCodes = hideGeneralCodesMode;
 	public inputModeForm: FormGroup;
@@ -35,7 +36,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
 	constructor(
 		fb: FormBuilder,
-		private stratagemInputService: StratagemInputService,
+		private stratagemInputService: StratagemInputService
 	) {
 		this.inputModeForm = fb.group({
 			mode: [this.stratagemInputService.inputMode, Validators.required],
@@ -57,6 +58,19 @@ export class SettingsComponent implements OnInit, OnDestroy {
 	hideMenu() {
 		this.showMenu = false;
 		this.showHelp = false;
+		this.showContact = false;
+	}
+
+	goToSteam() {
+		window.open("https://steamcommunity.com/id/aido727/", "_blank");		
+	}
+
+	goToDiscord() {
+		window.open("https://discord.com/users/196625630891081729/", "_blank");		
+	}
+
+	goToEmail() {
+		window.open("mailto:aido727@gmail.com", "_blank");
 	}
 
 	ngOnDestroy() {
