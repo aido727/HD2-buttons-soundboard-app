@@ -1,15 +1,17 @@
-import { trigger, transition, style, animate, state } from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { hideGeneralCodesMode, inputMode } from '../../models/stratagem-inputs';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StratagemInputService } from '../../services/stratagem-input.service';
 import { Subscription } from 'rxjs';
+import { HelpModalComponent } from '../help-modal/help-modal.component';
+import { ContactModalComponent } from '../contact-modal/contact-modal.component';
 
 @Component({
 	selector: 'app-settings',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule],
+	imports: [CommonModule, ReactiveFormsModule, HelpModalComponent, ContactModalComponent],
 	templateUrl: './settings.component.html',
 	styleUrl: './settings.component.scss',
 	animations: [
@@ -59,18 +61,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
 		this.showMenu = false;
 		this.showHelp = false;
 		this.showContact = false;
-	}
-
-	goToSteam() {
-		window.open('https://steamcommunity.com/id/aido727/', '_blank');
-	}
-
-	goToDiscord() {
-		window.open('https://discord.com/users/196625630891081729/', '_blank');
-	}
-
-	goToEmail() {
-		window.open('mailto:aido727@gmail.com', '_blank');
 	}
 
 	ngOnDestroy() {

@@ -1,0 +1,78 @@
+#contact-modal {
+    z-index: 240;
+
+	.modal-box {
+		height: calc(100vh - 60px);
+		width: calc(100vw - 60px);
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+			font-size: 20pt;
+			overflow-y: auto;
+			height: calc(100% - 20px);
+			color: var(--white);
+		}
+	}
+    
+	.svg-button {
+        cursor: pointer;
+        border: 0;
+        background: transparent;
+        opacity: 35%;
+        &:hover {
+            opacity: 100%;
+        }
+		right: 48px;
+		position: fixed;
+		height: 32px;
+		width: 32px;
+		img {
+			width: 100%;
+			height: 100%;
+			content: url("/images/close-cross.svg");
+		}
+	}
+
+	.name {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-bottom: 8px;
+
+		img {
+			height: 80px;
+			width: 80px;
+			padding-right: 8px;
+		}
+	}
+	.buttons {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 8px;
+
+		button {
+			height: unset;
+			display: flex;
+			align-items: center;
+			padding-left: 0;
+			text-transform: unset;
+
+			img {
+				height: 56px;
+				width: 56px;
+				padding: 8px;
+				padding-right: 16px;
+
+				&.steam-icon {
+					content: url("/images/steam-icon.svg");
+				}
+
+				&.email-icon {
+					content: url("/images/gmail-icon.svg");
+				}
+			}
+		}
+	}
+}
