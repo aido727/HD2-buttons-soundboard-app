@@ -1,5 +1,5 @@
 #help-modal {
-    z-index: 240;
+	z-index: 240;
 
 	.modal-box {
 		height: calc(100vh - 60px);
@@ -17,13 +17,13 @@
 	}
 
 	.svg-button {
-        cursor: pointer;
-        border: 0;
-        background: transparent;
-        opacity: 35%;
-        &:hover {
-            opacity: 100%;
-        }
+		cursor: pointer;
+		border: 0;
+		background: transparent;
+		opacity: 35%;
+		&:hover {
+			opacity: 100%;
+		}
 		right: 48px;
 		position: fixed;
 		height: 32px;
@@ -35,7 +35,7 @@
 		}
 	}
 
-    table {
+	table {
 		width: 100%;
 		border-collapse: collapse;
 		font-size: 20px;

@@ -42,6 +42,7 @@ export const audioFilesSounds: string[] = [
 	'stratagem-orbital-walkingbarrage',
 	'stratagem-orbital-120mm',
 	'stratagem-orbital-380mm',
+	'stratagem-orbital-napalmbarrage',
 	'stratagem-mission-sos',
 	'stratagem-mission-flag',
 	'stratagem-mission-hellbomb',

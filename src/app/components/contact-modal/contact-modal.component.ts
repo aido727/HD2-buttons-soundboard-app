@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-contact-modal',
-  standalone: true,
-  imports: [],
-  templateUrl: './contact-modal.component.html',
-  styleUrl: './contact-modal.component.scss'
+	selector: 'app-contact-modal',
+	standalone: true,
+	imports: [],
+	templateUrl: './contact-modal.component.html',
+	styleUrl: './contact-modal.component.scss',
 })
 export class ContactModalComponent {
-  @Output() closeContact = new EventEmitter();
+	@Output() closeContact = new EventEmitter();
 
 	goToSteam() {
 		window.open('https://steamcommunity.com/id/aido727/', '_blank');

@@ -432,7 +432,7 @@ export const stratagemCodes: stratagemCode[] = [
 		name: 'Orbital Napalm Barrage',
 		icon: 'orbital-napalm',
 		code: [inputDirection.Right, inputDirection.Right, inputDirection.Down, inputDirection.Left, inputDirection.Right, inputDirection.Up],
-		sound: [],
+		sound: ['stratagem-orbital-napalmbarrage'],
 		voice: orbitalBarrageVoices,
 		postSound: [],
 		colour: 'red',
