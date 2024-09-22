@@ -90,10 +90,12 @@ export class SoundboardComponent {
 
 		audio.onended = () => {
 			button.classList.remove('active');
+			button.blur();
 		};
 
 		audio.onpause = () => {
 			button.classList.remove('active');
+			button.blur();
 		};
 	}
 }
