@@ -23,25 +23,24 @@ export class SoundboardComponent {
 	];
 
 	public audioMusic: { file: string; name: string }[] = [
-		{ file: 'superearth-anthem', name: 'Super Earth Anthem' },
-		{ file: 'prep-landing-zone-full', name: 'Prep - Landing Zone - Full' },
+		{ file: 'prep-landing-zone-full', name: 'Prep - Landing Zone - Full (3:15)' },
 		{ file: 'prep-landing-zone-loop', name: 'Prep - Landing Zone - Loop' },
-		{ file: 'prep-equipment-full', name: 'Prep - Equipment - Full' },
+		{ file: 'prep-equipment-full', name: 'Prep - Equipment - Full (3:15)' },
 		{ file: 'prep-equipment-loop', name: 'Prep - Equipment - Loop' },
 		{ file: 'planetfall', name: 'Planet Fall' },
 		{ file: 'ship-hellpod-launch-initiated-full', name: 'Planet Fall - With SFX and Voice' },
-		{ file: 'full-launch-sequence-with-voice-and-sound', name: 'Planet Fall - Full Audio Sequence' },
-		{ file: 'extraction-just-combat', name: 'Extraction - Combat - Full' },
+		{ file: 'full-launch-sequence-with-voice-and-sound', name: 'Planet Fall - Full Audio Sequence (1:01)' },
+		{ file: 'extraction-just-combat', name: 'Extraction - Combat - Full (6:40)' },
 		{ file: 'extraction-combat-loop', name: 'Extraction - Combat - Loop' },
-		{ file: 'extraction-just-passive', name: 'Extraction - Passive - Full' },
+		{ file: 'extraction-just-passive', name: 'Extraction - Passive - Full (6:43)' },
 		{ file: 'extraction-passive-loop', name: 'Extraction - Passive - Loop' },
 		{ file: 'extraction-shuttle-close-loop', name: 'Extraction - Shuttle Close Loop' },
 		{ file: 'extraction-successful', name: 'Extraction - Successful' },
-		{ file: 'terminid-combat', name: 'Terminid Combat' },
-		{ file: 'automaton-combat', name: 'Automaton Combat' },
+		{ file: 'terminid-combat', name: 'Terminid Combat (6:28)' },
+		{ file: 'automaton-combat', name: 'Automaton Combat (13:28)' },
 	];
 	public audioOther: { file: string; name: string }[] = [
-		{ file: 'Intro', name: 'Intro Video' },
+		{ file: 'Intro', name: 'Intro Video (1:40)' },
 		{ file: 'PA_Jingle', name: 'PA Jingle' },
 		{ file: 'advert-general-brash', name: 'Advert - General Brash' },
 		{ file: 'advert-managed-democracy', name: 'Advert - Managed Democracy' },
@@ -65,18 +64,18 @@ export class SoundboardComponent {
 	];
 
 	public audioSoundtrack: { file: string; name: string }[] = [
-		{ file: '1_Ode_to_Liberty', name: '1. Ode to Liberty' },
-		{ file: '2_Welcome_to_the_Fight', name: '2. Welcome to the Fight' },
-		{ file: '3_The_Super_Destroyer', name: '3. The Super Destroyer' },
-		{ file: '4_Hellpods_Primed', name: '4. Hellpods Primed' },
-		{ file: '5_A_Cup_Of_Liber-Tea', name: '5. A Cup Of Liber-Tea' },
-		{ file: '6_The_Terminid_Horde', name: '6. The Terminid Horde' },
-		{ file: '7_The_Right_Side_of_History', name: '7. The Right Side of History' },
-		{ file: '8_Mission_Review', name: '8. Mission Review' },
-		{ file: '9_The_Automaton_Legion', name: '9. The Automaton Legion' },
-		{ file: '10_No_Diver_Left_Behind', name: '10. No Diver Left Behind' },
-		{ file: '11_March_of_the_Helldivers', name: '11. March of the Helldivers' },
-		{ file: '12_Super_Earth_National_Anthem', name: '12. Super Earth National Anthem' },		
+		{ file: '1_Ode_to_Liberty', name: '1. Ode to Liberty (2:17)' },
+		{ file: '2_Welcome_to_the_Fight', name: '2. Welcome to the Fight (2:36)' },
+		{ file: '3_The_Super_Destroyer', name: '3. The Super Destroyer (3:39)' },
+		{ file: '4_Hellpods_Primed', name: '4. Hellpods Primed (3:32)' },
+		{ file: '5_A_Cup_Of_Liber-Tea', name: '5. A Cup Of Liber-Tea (3:37)' },
+		{ file: '6_The_Terminid_Horde', name: '6. The Terminid Horde (5:26)' },
+		{ file: '7_The_Right_Side_of_History', name: '7. The Right Side of History (1:39)' },
+		{ file: '8_Mission_Review', name: '8. Mission Review (2:30)' },
+		{ file: '9_The_Automaton_Legion', name: '9. The Automaton Legion (7:03)' },
+		{ file: '10_No_Diver_Left_Behind', name: '10. No Diver Left Behind (2:59)' },
+		{ file: '11_March_of_the_Helldivers', name: '11. March of the Helldivers (2:19)' },
+		{ file: '12_Super_Earth_National_Anthem', name: '12. Super Earth National Anthem (2:23)' },		
 	];
 
 	constructor(private audioService: AudioService) {}

@@ -173,7 +173,6 @@ export const audioFilesVoices: string[] = [
 export const audioFilesStings: string[] = ['the-helldiver-wakes', 'objective-complete-stinger-small', 'objective-complete-stinger-medium', 'objective-complete-stinger-large'];
 
 export const audioFilesMusic: string[] = [
-	'superearth-anthem',
 	'prep-landing-zone-full',
 	'prep-landing-zone-loop',
 	'prep-equipment-full',
