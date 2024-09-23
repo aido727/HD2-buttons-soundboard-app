@@ -205,4 +205,4 @@ export const audioFilesOther: string[] = [
 	'ship-hellpod-launch-initiated',
 ];
 
-export const audioFilesStratagemHero: string[] = ['Loop', 'Round_complete_1', 'Round_complete_2', 'Round_complete_3', 'Round_complete_4', 'Round_failed'];
+export const audioFilesStratagemHero: string[] = ['Get_ready', 'Loop', 'Round_complete_1', 'Round_complete_2', 'Round_complete_3', 'Round_complete_4', 'Round_failed'];

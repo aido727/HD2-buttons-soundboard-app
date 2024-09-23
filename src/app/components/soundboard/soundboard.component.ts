@@ -55,6 +55,7 @@ export class SoundboardComponent {
 	];
 
 	public audioStratagemHero: { file: string; name: string }[] = [
+		{ file: 'Get_ready', name: 'Get Ready' },
 		{ file: 'Loop', name: 'Loop' },
 		{ file: 'Round_complete_1', name: 'Round complete 1' },
 		{ file: 'Round_complete_2', name: 'Round complete 2' },
