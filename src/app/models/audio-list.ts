@@ -170,7 +170,7 @@ export const audioFilesVoices: string[] = [
 	// 'reinforcements-male-1-1', not using
 ];
 
-export const audioFilesStings: string[] = ['the-helldiver-wakes', 'objective-complete-stinger-small', 'objective-complete-stinger-medium', 'objective-complete-stinger-large'];
+export const audioFilesStings: string[] = ['the-helldiver-wakes', 'PA_Jingle', 'objective-complete-stinger-small', 'objective-complete-stinger-medium', 'objective-complete-stinger-large'];
 
 export const audioFilesMusic: string[] = [
 	'prep-landing-zone-full',
@@ -191,7 +191,6 @@ export const audioFilesMusic: string[] = [
 ];
 
 export const audioFilesOther: string[] = [
-	'PA_Jingle',
 	'ship-enemy-artillery-1',
 	'ship-enemy-artillery-2',
 	'ship-enemy-artillery-3',

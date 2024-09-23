@@ -84,7 +84,7 @@ export class AudioService {
 			audio.addEventListener(
 				'timeupdate',
 				function () {
-					var buffer = 0.44;
+					var buffer = 0.4;
 					if (this.currentTime > this.duration - buffer) {
 						this.currentTime = 0;
 						this.play();
@@ -97,7 +97,7 @@ export class AudioService {
 		document.body.appendChild(audio);
 	}
 
-	public stopAllSounds() {
+	public stopAllSounds(exceptMusic: boolean = false) {
 		this.activelyStoppingAudio = true;
 		audioFilesSounds.forEach((soundFile) => {
 			this.stopOne(soundFile);
@@ -108,9 +108,11 @@ export class AudioService {
 		audioFilesStings.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
-		audioFilesMusic.forEach((soundFile) => {
-			this.stopOne(soundFile);
-		});
+		if(!exceptMusic) {
+			audioFilesMusic.forEach((soundFile) => {
+				this.stopOne(soundFile);
+			});
+		}
 		audioFilesOther.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
@@ -119,6 +121,15 @@ export class AudioService {
 		});
 		audioFilesSoundtrack.forEach((soundFile) => {
 			this.stopOne(soundFile);
+		});
+	}
+
+	public fadeAllMusic() {
+		this.stopAllSounds(true);
+		this.activelyStoppingAudio = true;
+		const fadeTime = 0.5;
+		audioFilesMusic.forEach((soundFile) => {
+			this.fadeOut(soundFile, fadeTime);
 		});
 	}
 
@@ -233,7 +244,7 @@ export class AudioService {
 
 	private fadeOut(elementId: string, timeInSeconds: number) {
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
-		if (audio && audio.currentTime != 0) {
+		if (audio && audio.currentTime != 0 && !audio.paused) {
 			const targetVolume = 0;
 			const tick = 50; // milliseconds
 			const volumeDecrease = audio.volume / ((timeInSeconds * 1000) / tick);
@@ -257,7 +268,7 @@ export class AudioService {
 
 	public stopOne(elementId: string) {
 		const audio = document.getElementById(elementId) as HTMLAudioElement;
-		if (audio) {
+		if (audio && !audio.paused) {
 			audio.pause();
 		}
 	}

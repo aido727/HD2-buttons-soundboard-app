@@ -17,6 +17,7 @@ export class SoundboardComponent {
 
 	public audioStings: { file: string; name: string }[] = [
 		{ file: 'the-helldiver-wakes', name: 'The Helldiver Wakes' },
+		{ file: 'PA_Jingle', name: 'PA Jingle' },
 		{ file: 'objective-complete-stinger-small', name: 'Objective Complete 1' },
 		{ file: 'objective-complete-stinger-medium', name: 'Objective Complete 2' },
 		{ file: 'objective-complete-stinger-large', name: 'Objective Complete 3' },
@@ -41,7 +42,6 @@ export class SoundboardComponent {
 	];
 	public audioOther: { file: string; name: string }[] = [
 		{ file: 'Intro', name: 'Intro Video (1:40)' },
-		{ file: 'PA_Jingle', name: 'PA Jingle' },
 		{ file: 'advert-general-brash', name: 'Advert - General Brash' },
 		{ file: 'advert-managed-democracy', name: 'Advert - Managed Democracy' },
 		{ file: 'automaton-march-loop', name: 'Automaton March - Loop' },
@@ -82,6 +82,7 @@ export class SoundboardComponent {
 
 	public toggleIsOpen() {
 		this.isOpen = !this.isOpen;
+		this.audioService.stopAllSounds();
 		if (this.isOpen && !this.audioLoaded) {
 			this.audioPercentLoaded = this.audioService.audioLoadedPercent;
 			this.audioService.buildAudioElementsForSoundboard().then(() => {
@@ -95,7 +96,7 @@ export class SoundboardComponent {
 	}
 
 	public playSound(file: string) {
-		this.audioService.stopAllSounds();
+		this.audioService.fadeAllMusic();
 		var button = document.getElementById(file + '-button') as HTMLButtonElement;
 		var audio = document.getElementById(file) as HTMLAudioElement;
 		setTimeout(() => {
