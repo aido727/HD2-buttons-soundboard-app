@@ -21,4 +21,8 @@ export class ContactModalComponent {
 	goToEmail() {
 		window.open('mailto:aido727@gmail.com', '_blank');
 	}
+
+	goToKofi() {
+		window.open('https://ko-fi.com/aido727/', '_blank');
+	}
 }
