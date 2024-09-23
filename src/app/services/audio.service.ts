@@ -14,33 +14,24 @@ export class AudioService {
 
 	public stopFadeTime = 0.5;
 
+	private readyFilesStratagem = 0;
+	private readyFilesSoundboard = 0;
+
 	public async buildAudioElementsForStratagems(): Promise<boolean> {
-		let readyFiles = 0;
-		audioFilesSounds.forEach((audioFile) => {
-			const audio = document.createElement('audio');
-			audio.id = audioFile;
-			audio.src = '/audio/sounds/' + audioFile + '.ogg';
-			audio.addEventListener('canplaythrough', () => {
-				readyFiles++;
-			});
-			audio.load();
-			document.body.appendChild(audio);
-		});
-		audioFilesVoices.forEach((audioFile) => {
-			const audio = document.createElement('audio');
-			audio.id = audioFile;
-			audio.src = '/audio/voices/' + audioFile + '.ogg';
-			audio.addEventListener('canplaythrough', () => {
-				readyFiles++;
-			});
-			audio.load();
-			document.body.appendChild(audio);
-		});
+		this.readyFilesStratagem = 0;
+		this.audioLoadedPercent$.next(0);
 
 		const totalFileCount = audioFilesSounds.length + audioFilesVoices.length;
 
-		while (readyFiles < totalFileCount) {
-			this.audioLoadedPercent$.next(Math.round((readyFiles / totalFileCount) * 100));
+		audioFilesSounds.forEach((audioFile) => {
+			this.loadAudio(audioFile, 'sounds', 'stratagem');
+		});
+		audioFilesVoices.forEach((audioFile) => {
+			this.loadAudio(audioFile, 'voices', 'stratagem');
+		});
+
+		while (this.readyFilesStratagem < totalFileCount) {
+			this.audioLoadedPercent$.next(Math.round((this.readyFilesStratagem / totalFileCount) * 100));
 			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
 		this.audioLoadedPercent$.next(100);
@@ -48,65 +39,59 @@ export class AudioService {
 	}
 
 	public async buildAudioElementsForSoundboard(): Promise<boolean> {
-		let readyFiles = 0;
-		audioFilesStings.forEach((audioFile) => {
-			const audio = document.createElement('audio');
-			audio.id = audioFile;
-			audio.src = '/audio/stings/' + audioFile + '.ogg';
-			audio.addEventListener('canplaythrough', () => {
-				readyFiles++;
-			});
-			audio.load();
-			document.body.appendChild(audio);
-		});
-		audioFilesMusic.forEach((audioFile) => {
-			const audio = document.createElement('audio');
-			audio.id = audioFile;
-			audio.src = '/audio/music/' + audioFile + '.ogg';
-			audio.addEventListener('canplaythrough', () => {
-				readyFiles++;
-			});
-			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
-				audio.loop = true;
-			}
-			audio.load();
-			document.body.appendChild(audio);
-		});
-		audioFilesOther.forEach((audioFile) => {
-			const audio = document.createElement('audio');
-			audio.id = audioFile;
-			audio.src = '/audio/other/' + audioFile + '.ogg';
-			audio.addEventListener('canplaythrough', () => {
-				readyFiles++;
-			});
-			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
-				audio.loop = true;
-			}
-			audio.load();
-			document.body.appendChild(audio);
-		});
-		audioFilesStratagemHero.forEach((audioFile) => {
-			const audio = document.createElement('audio');
-			audio.id = audioFile;
-			audio.src = '/audio/stratagem-hero/' + audioFile + '.ogg';
-			audio.addEventListener('canplaythrough', () => {
-				readyFiles++;
-			});
-			if (audioFile.includes('loop') || audioFile.includes('Loop')) {
-				audio.loop = true;
-			}
-			audio.load();
-			document.body.appendChild(audio);
-		});
+		this.readyFilesSoundboard = 0;
+		this.audioLoadedPercent$.next(0);
 
 		const totalFileCount = audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length;
 
-		while (readyFiles < totalFileCount) {
-			this.audioLoadedPercent$.next(Math.round((readyFiles / totalFileCount) * 100));
+		audioFilesStings.forEach((audioFile) => {
+			this.loadAudio(audioFile, 'stings', 'soundboard');
+		});
+		audioFilesMusic.forEach((audioFile) => {
+			this.loadAudio(audioFile, 'music', 'soundboard');
+		});
+		audioFilesOther.forEach((audioFile) => {
+			this.loadAudio(audioFile, 'other', 'soundboard');
+		});
+		audioFilesStratagemHero.forEach((audioFile) => {
+			this.loadAudio(audioFile, 'stratagem-hero', 'soundboard');
+		});
+
+		while (this.readyFilesSoundboard < totalFileCount) {
+			this.audioLoadedPercent$.next(Math.round((this.readyFilesSoundboard / totalFileCount) * 100));
 			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
 		this.audioLoadedPercent$.next(100);
 		return true;
+	}
+
+	private loadAudio(audioFile: string, folder: string, readyCount: 'stratagem' | 'soundboard') {
+		const audio = document.createElement('audio');
+		audio.id = audioFile;
+		audio.src = '/audio/' + folder + '/' + audioFile + '.ogg';
+		audio.addEventListener('canplaythrough', () => {
+			if (readyCount === 'stratagem') {
+				this.readyFilesStratagem++;
+			}
+			if (readyCount === 'soundboard') {
+				this.readyFilesSoundboard++;
+			}
+		});
+		if (audioFile.includes('loop') || audioFile.includes('Loop')) {
+			audio.addEventListener(
+				'timeupdate',
+				function () {
+					var buffer = 0.44;
+					if (this.currentTime > this.duration - buffer) {
+						this.currentTime = 0;
+						this.play();
+					}
+				},
+				false,
+			);
+		}
+		audio.load();
+		document.body.appendChild(audio);
 	}
 
 	public stopAllSounds() {
