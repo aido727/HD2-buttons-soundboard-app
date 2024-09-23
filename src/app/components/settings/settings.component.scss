@@ -1,20 +1,11 @@
-h2,
-h3,
-p {
-	margin: 0;
-	margin-right: 8px;
-}
-
-h3 {
-	margin-bottom: 8px;
-}
-
-form {
-	margin-bottom: 18px;
-}
-
-form:last-of-type {
-	margin-bottom: 12px;
+.svg-button {
+	cursor: pointer;
+	border: 0;
+	background: transparent;
+	opacity: 35%;
+	&:hover {
+		opacity: 100%;
+	}
 }
 
 #settings-button {
@@ -49,33 +40,52 @@ form:last-of-type {
 		justify-content: space-between;
 		align-items: self-end;
 		padding-bottom: 12px;
-	}
 
-	.svg-button {
-		height: 32px;
-		width: 32px;
-		img {
-			width: 100%;
-			height: 100%;
-			content: url("/images/close-cross.svg");
+		.svg-button {
+			height: 32px;
+			width: 32px;
+			img {
+				width: 100%;
+				height: 100%;
+				content: url("/images/close-cross.svg");
+			}
 		}
 	}
 
-	button {
-		height: 50px;
-		&:not(:last-of-type) {
-			margin-bottom: 6px;
+	.contents {
+		overflow-y: auto;
+		padding-bottom: 24px;
+
+		.buttons {
+			display: flex;
+			flex-direction: column;
+
+			button {
+				height: 50px;
+				&:not(:last-of-type) {
+					margin-bottom: 6px;
+				}
+			}
 		}
 	}
-}
 
-.svg-button {
-	cursor: pointer;
-	border: 0;
-	background: transparent;
-	opacity: 35%;
-	&:hover {
-		opacity: 100%;
+	h2,
+	h3,
+	p {
+		margin: 0;
+		margin-right: 4px;
+	}
+
+	h3 {
+		margin-bottom: 4px;
+	}
+
+	form {
+		margin-bottom: 16px;
+	}
+
+	form:last-of-type {
+		margin-bottom: 12px;
 	}
 }
 
