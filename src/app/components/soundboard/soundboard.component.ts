@@ -64,6 +64,21 @@ export class SoundboardComponent {
 		{ file: 'Round_failed', name: 'Round Failed' },
 	];
 
+	public audioSoundtrack: { file: string; name: string }[] = [
+		{ file: '1_Ode_to_Liberty', name: '1. Ode to Liberty' },
+		{ file: '2_Welcome_to_the_Fight', name: '2. Welcome to the Fight' },
+		{ file: '3_The_Super_Destroyer', name: '3. The Super Destroyer' },
+		{ file: '4_Hellpods_Primed', name: '4. Hellpods Primed' },
+		{ file: '5_A_Cup_Of_Liber-Tea', name: '5. A Cup Of Liber-Tea' },
+		{ file: '6_The_Terminid_Horde', name: '6. The Terminid Horde' },
+		{ file: '7_The_Right_Side_of_History', name: '7. The Right Side of History' },
+		{ file: '8_Mission_Review', name: '8. Mission Review' },
+		{ file: '9_The_Automaton_Legion', name: '9. The Automaton Legion' },
+		{ file: '10_No_Diver_Left_Behind', name: '10. No Diver Left Behind' },
+		{ file: '11_March_of_the_Helldivers', name: '11. March of the Helldivers' },
+		{ file: '12_Super_Earth_National_Anthem', name: '12. Super Earth National Anthem' },		
+	];
+
 	constructor(private audioService: AudioService) {}
 
 	public toggleIsOpen() {

@@ -206,3 +206,18 @@ export const audioFilesOther: string[] = [
 ];
 
 export const audioFilesStratagemHero: string[] = ['Get_ready', 'Loop', 'Round_complete_1', 'Round_complete_2', 'Round_complete_3', 'Round_complete_4', 'Round_failed'];
+
+export const audioFilesSoundtrack: string[] = [
+	'1_Ode_to_Liberty',
+	'2_Welcome_to_the_Fight',
+	'3_The_Super_Destroyer',
+	'4_Hellpods_Primed',
+	'5_A_Cup_Of_Liber-Tea',
+	'6_The_Terminid_Horde',
+	'7_The_Right_Side_of_History',
+	'8_Mission_Review',
+	'9_The_Automaton_Legion',
+	'10_No_Diver_Left_Behind',
+	'11_March_of_the_Helldivers',
+	'12_Super_Earth_National_Anthem',
+];

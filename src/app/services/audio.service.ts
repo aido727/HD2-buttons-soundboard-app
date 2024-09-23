@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { audioFilesMusic, audioFilesOther, audioFilesSounds, audioFilesStings, audioFilesStratagemHero, audioFilesVoices } from '../models/audio-list';
+import { audioFilesMusic, audioFilesOther, audioFilesSounds, audioFilesSoundtrack, audioFilesStings, audioFilesStratagemHero, audioFilesVoices } from '../models/audio-list';
 import { stratagemCode } from '../models/stratagem-codes';
 import { BehaviorSubject } from 'rxjs';
 
@@ -42,7 +42,7 @@ export class AudioService {
 		this.readyFilesSoundboard = 0;
 		this.audioLoadedPercent$.next(0);
 
-		const totalFileCount = audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length;
+		const totalFileCount = audioFilesStings.length + audioFilesMusic.length + audioFilesOther.length + audioFilesStratagemHero.length + audioFilesSoundtrack.length;
 
 		audioFilesStings.forEach((audioFile) => {
 			this.loadAudio(audioFile, 'stings', 'soundboard');
@@ -55,6 +55,9 @@ export class AudioService {
 		});
 		audioFilesStratagemHero.forEach((audioFile) => {
 			this.loadAudio(audioFile, 'stratagem-hero', 'soundboard');
+		});
+		audioFilesSoundtrack.forEach((audioFile) => {
+			this.loadAudio(audioFile, 'soundtrack', 'soundboard');
 		});
 
 		while (this.readyFilesSoundboard < totalFileCount) {
@@ -112,6 +115,9 @@ export class AudioService {
 			this.stopOne(soundFile);
 		});
 		audioFilesStratagemHero.forEach((soundFile) => {
+			this.stopOne(soundFile);
+		});
+		audioFilesSoundtrack.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
 	}

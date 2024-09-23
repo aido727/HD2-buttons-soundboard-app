@@ -35,6 +35,14 @@
 					</button>
 				</div>
 			</div>
+			<div class="section">
+				<span class="title">Soundtrack</span>
+				<div class="buttons">
+					<button *ngFor="let audio of audioSoundtrack" class="equip-button" [attr.id]="audio.file + '-button'" (click)="playSound(audio.file)">
+						{{ audio.name }}
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div id="audio-loader-soundboard" [class.hidden]="audioLoaded">
