@@ -84,7 +84,7 @@ export class AudioService {
 			audio.addEventListener(
 				'timeupdate',
 				function () {
-					var buffer = 0.4;
+					var buffer = 0.44;
 					if (this.currentTime > this.duration - buffer) {
 						this.currentTime = 0;
 						this.play();
