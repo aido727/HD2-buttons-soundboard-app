@@ -96,7 +96,7 @@ export class SoundboardComponent {
 	}
 
 	public playSound(file: string) {
-		this.audioService.fadeAllMusic();
+		this.audioService.stopAllSounds();
 		var button = document.getElementById(file + '-button') as HTMLButtonElement;
 		var audio = document.getElementById(file) as HTMLAudioElement;
 		setTimeout(() => {

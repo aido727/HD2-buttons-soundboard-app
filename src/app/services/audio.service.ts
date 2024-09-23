@@ -84,7 +84,7 @@ export class AudioService {
 			audio.addEventListener(
 				'timeupdate',
 				function () {
-					var buffer = 0.4;
+					var buffer = 0.3;
 					if (this.currentTime > this.duration - buffer) {
 						this.currentTime = 0;
 						this.play();
@@ -97,7 +97,7 @@ export class AudioService {
 		document.body.appendChild(audio);
 	}
 
-	public stopAllSounds(exceptMusic: boolean = false) {
+	public stopAllSounds() {
 		this.activelyStoppingAudio = true;
 		audioFilesSounds.forEach((soundFile) => {
 			this.stopOne(soundFile);
@@ -108,28 +108,14 @@ export class AudioService {
 		audioFilesStings.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
-		if(!exceptMusic) {
-			audioFilesMusic.forEach((soundFile) => {
-				this.stopOne(soundFile);
-			});
-		}
-		audioFilesOther.forEach((soundFile) => {
-			this.stopOne(soundFile);
+		audioFilesMusic.forEach((soundFile) => {
+			this.fadeOut(soundFile, 0.5);
 		});
 		audioFilesStratagemHero.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
 		audioFilesSoundtrack.forEach((soundFile) => {
 			this.stopOne(soundFile);
-		});
-	}
-
-	public fadeAllMusic() {
-		this.stopAllSounds(true);
-		this.activelyStoppingAudio = true;
-		const fadeTime = 0.5;
-		audioFilesMusic.forEach((soundFile) => {
-			this.fadeOut(soundFile, fadeTime);
 		});
 	}
 
