@@ -170,7 +170,13 @@ export const audioFilesVoices: string[] = [
 	// 'reinforcements-male-1-1', not using
 ];
 
-export const audioFilesStings: string[] = ['the-helldiver-wakes', 'PA_Jingle', 'objective-complete-stinger-small', 'objective-complete-stinger-medium', 'objective-complete-stinger-large'];
+export const audioFilesStings: string[] = [
+	'the-helldiver-wakes',
+	'PA_Jingle',
+	'objective-complete-stinger-small',
+	'objective-complete-stinger-medium',
+	'objective-complete-stinger-large',
+];
 
 export const audioFilesMusic: string[] = [
 	'prep-landing-zone-full',
@@ -184,7 +190,13 @@ export const audioFilesMusic: string[] = [
 	'extraction-passive-loop',
 	'extraction-shuttle-close-loop',
 	'extraction-successful',
-	'terminid-combat',
+	'terminid-combat-1',
+	'terminid-combat-2',
+	'terminid-combat-3',
+	'terminid-combat-4',
+	'terminid-combat-5',
+	'terminid-combat-6',
+	'terminid-combat-7',
 	'automaton-combat',
 	'full-launch-sequence-with-voice-and-sound',
 	'ship-hellpod-launch-initiated-full',

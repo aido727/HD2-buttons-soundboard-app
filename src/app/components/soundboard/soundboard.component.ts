@@ -37,9 +37,19 @@ export class SoundboardComponent {
 		{ file: 'extraction-passive-loop', name: 'Extraction - Passive - Loop' },
 		{ file: 'extraction-shuttle-close-loop', name: 'Extraction - Shuttle Close Loop' },
 		{ file: 'extraction-successful', name: 'Extraction - Successful' },
-		{ file: 'terminid-combat', name: 'Terminid Combat (6:28)' },
 		{ file: 'automaton-combat', name: 'Automaton Combat (13:28)' },
 	];
+
+	public audioTerminidMusic: { file: string; name: string }[] = [
+		{ file: 'terminid-combat-1', name: 'Part 1' },
+		{ file: 'terminid-combat-2', name: 'Part 2' },
+		{ file: 'terminid-combat-3', name: 'Part 3' },
+		{ file: 'terminid-combat-4', name: 'Part 4' },
+		{ file: 'terminid-combat-5', name: 'Part 5' },
+		{ file: 'terminid-combat-6', name: 'Part 6' },
+		{ file: 'terminid-combat-7', name: 'Part 7' },
+	];
+
 	public audioOther: { file: string; name: string }[] = [
 		{ file: 'Intro', name: 'Intro Video (1:40)' },
 		{ file: 'advert-general-brash', name: 'Advert - General Brash' },
@@ -75,7 +85,7 @@ export class SoundboardComponent {
 		{ file: '9_The_Automaton_Legion', name: '9. The Automaton Legion (7:03)' },
 		{ file: '10_No_Diver_Left_Behind', name: '10. No Diver Left Behind (2:59)' },
 		{ file: '11_March_of_the_Helldivers', name: '11. March of the Helldivers (2:19)' },
-		{ file: '12_Super_Earth_National_Anthem', name: '12. Super Earth National Anthem (2:23)' },		
+		{ file: '12_Super_Earth_National_Anthem', name: '12. Super Earth National Anthem (2:23)' },
 	];
 
 	constructor(private audioService: AudioService) {}
@@ -95,23 +105,42 @@ export class SoundboardComponent {
 		this.audioService.stopAllSounds();
 	}
 
-	public playSound(file: string) {
-		this.audioService.stopAllSounds();
-		var button = document.getElementById(file + '-button') as HTMLButtonElement;
+	public playSound(file: string, skipStop: boolean = false) {
+		
 		var audio = document.getElementById(file) as HTMLAudioElement;
-		setTimeout(() => {
-			this.audioService.playOne(file);
-			button.classList.add('active');
-		});
 
-		audio.onended = () => {
-			button.classList.remove('active');
-			button.blur();
-		};
+		if (!audio.paused) {
+			audio.currentTime = 0;
+		} else {
+			var button = document.getElementById(file + '-button') as HTMLButtonElement;
+			var terminidPart = this.audioTerminidMusic.findIndex((x) => x.file === file);
 
-		audio.onpause = () => {
-			button.classList.remove('active');
-			button.blur();
-		};
+			if (!skipStop) {
+				this.audioService.stopAllSounds();
+			}
+
+			setTimeout(() => {
+				this.audioService.playOne(file);
+				button.classList.add('active');
+			});
+
+			if (terminidPart > -1 && terminidPart < this.audioTerminidMusic.length - 1) {
+				audio.addEventListener(
+					'timeupdate',
+					() => {
+						var buffer = 0.6;
+						if (audio.currentTime > audio.duration - buffer && (document.getElementById(this.audioTerminidMusic[terminidPart + 1].file) as HTMLAudioElement).paused) {
+							this.playSound(this.audioTerminidMusic[terminidPart + 1].file, true);
+						}
+					},
+					false,
+				);
+			}
+
+			audio.onpause = () => {
+				button.classList.remove('active');
+				button.blur();
+			};
+		}
 	}
 }
