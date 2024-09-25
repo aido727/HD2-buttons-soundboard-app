@@ -37,6 +37,7 @@ export class SoundboardComponent {
 		{ file: 'extraction-passive-loop', name: 'Extraction - Passive - Loop' },
 		{ file: 'extraction-shuttle-close-loop', name: 'Extraction - Shuttle Close Loop' },
 		{ file: 'extraction-successful', name: 'Extraction - Successful' },
+		{ file: 'extraction-full-sequence', name: 'Extraction - Full Audio Sequence (3:18)' },
 		{ file: 'automaton-combat', name: 'Automaton Combat (13:28)' },
 	];
 
@@ -50,17 +51,29 @@ export class SoundboardComponent {
 		{ file: 'terminid-combat-7', name: 'Part 7' },
 	];
 
-	public audioOther: { file: string; name: string }[] = [
-		{ file: 'Intro', name: 'Intro Video (1:40)' },
-		{ file: 'advert-general-brash', name: 'Advert - General Brash' },
-		{ file: 'advert-managed-democracy', name: 'Advert - Managed Democracy' },
-		{ file: 'automaton-march-loop', name: 'Automaton March - Loop' },
+	public audioVoices: { file: string; name: string }[] = [
 		{ file: 'ship-mission-coords-locked', name: 'Mission Co-ordinates Locked' },
 		{ file: 'ship-hellpods-primed', name: 'Hellpods Primed' },
 		{ file: 'ship-hellpod-launch-initiated', name: 'Hellpod Launch Initiated' },
 		{ file: 'ship-enemy-artillery-1', name: 'Enemy Artillery 1' },
 		{ file: 'ship-enemy-artillery-2', name: 'Enemy Artillery 2' },
 		{ file: 'ship-enemy-artillery-3', name: 'Enemy Artillery 3' },
+		{ file: 'pelican-extraction-request-confirmed', name: 'Pelican - Extraction Request Confirmed' },
+		{ file: 'pelican-eta-130', name: 'Pelican - ETA T-1:30' },
+		{ file: 'pelican-eta-100', name: 'Pelican - ETA T-1:00' },
+		{ file: 'pelican-eta-30', name: 'Pelican - ETA T-0:30' },
+		{ file: 'pelican-eta-20', name: 'Pelican - ETA T-0:20' },
+		{ file: 'pelican-eta-10', name: 'Pelican - ETA T-0:10' },
+		{ file: 'pelican-approaching-pickup', name: 'Pelican - Approaching Pickup' },
+		{ file: 'pelican-landing-sequence', name: 'Pelican - Landing Sequence Initiated' },
+		{ file: 'pelican-extraction-complete', name: 'Pelican - Extraction Complete' },
+	];
+
+	public audioOther: { file: string; name: string }[] = [
+		{ file: 'Intro', name: 'Intro Video (1:40)' },
+		{ file: 'advert-general-brash', name: 'Advert - General Brash' },
+		{ file: 'advert-managed-democracy', name: 'Advert - Managed Democracy' },
+		{ file: 'automaton-march-loop', name: 'Automaton March - Loop' },
 	];
 
 	public audioStratagemHero: { file: string; name: string }[] = [
@@ -105,8 +118,7 @@ export class SoundboardComponent {
 		this.audioService.stopAllSounds();
 	}
 
-	public playSound(file: string, skipStop: boolean = false) {
-		
+	public playSound(file: string, skipStop: boolean = false, dontStopMusic: boolean = false) {
 		var audio = document.getElementById(file) as HTMLAudioElement;
 
 		if (!audio.paused) {
@@ -116,7 +128,7 @@ export class SoundboardComponent {
 			var terminidPart = this.audioTerminidMusic.findIndex((x) => x.file === file);
 
 			if (!skipStop) {
-				this.audioService.stopAllSounds();
+				this.audioService.stopAllSounds(dontStopMusic);
 			}
 
 			setTimeout(() => {

@@ -97,7 +97,7 @@ export class AudioService {
 		document.body.appendChild(audio);
 	}
 
-	public stopAllSounds() {
+	public stopAllSounds(dontStopMusic: boolean = false) {
 		this.activelyStoppingAudio = true;
 		audioFilesSounds.forEach((soundFile) => {
 			this.stopOne(soundFile);
@@ -108,13 +108,18 @@ export class AudioService {
 		audioFilesStings.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
-		audioFilesMusic.forEach((soundFile) => {
-			this.fadeOut(soundFile, 0.5);
-		});
-		audioFilesStratagemHero.forEach((soundFile) => {
+		if (!dontStopMusic) {
+			audioFilesMusic.forEach((soundFile) => {
+				this.fadeOut(soundFile, 0.5);
+			});
+			audioFilesSoundtrack.forEach((soundFile) => {
+				this.fadeOut(soundFile, 0.5);
+			});
+		}
+		audioFilesOther.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
-		audioFilesSoundtrack.forEach((soundFile) => {
+		audioFilesStratagemHero.forEach((soundFile) => {
 			this.stopOne(soundFile);
 		});
 	}

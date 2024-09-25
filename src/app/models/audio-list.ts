@@ -190,6 +190,7 @@ export const audioFilesMusic: string[] = [
 	'extraction-passive-loop',
 	'extraction-shuttle-close-loop',
 	'extraction-successful',
+	'extraction-full-sequence',
 	'terminid-combat-1',
 	'terminid-combat-2',
 	'terminid-combat-3',
@@ -213,6 +214,15 @@ export const audioFilesOther: string[] = [
 	'ship-mission-coords-locked',
 	'ship-hellpods-primed',
 	'ship-hellpod-launch-initiated',
+	'pelican-extraction-request-confirmed',
+	'pelican-eta-130',
+	'pelican-eta-100',
+	'pelican-eta-30',
+	'pelican-eta-20',
+	'pelican-eta-10',
+	'pelican-approaching-pickup',
+	'pelican-landing-sequence',
+	'pelican-extraction-complete',
 ];
 
 export const audioFilesStratagemHero: string[] = ['Get_ready', 'Loop', 'Round_complete_1', 'Round_complete_2', 'Round_complete_3', 'Round_complete_4', 'Round_failed'];
